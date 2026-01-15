@@ -19,40 +19,75 @@ comment:  This course is auto-generated from the WSG MOOC repository.
 
 ## FED-01: Establishing Code Hygiene
 
-## The Decision
+### The Decision
 "Will I ship this code 'as is', or will I strip it down to its bare essentials first?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 In a busy sprint, "it works" is often the bar for merging code. But implementation details that are helpful for you (indented whitespace, descriptive comments, verbose wrapper elements) are dead weight to the browser. 
 
 Every extra byte costs electricity to transmit, parse, and render. "Cruft" doesn't just increase bandwidth bills; it forces the user's device to work harder, draining battery and delaying time-to-interactive. Clean, semantic code is not just about philosophy—it is the most fundamental performance optimization you can make.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Div Soup"**: Using generic `<div>` tags for everything, resulting in a deeply nested DOM that is hard to style, hard to read, and slower to render.
 *   **Dev Artifacts in Prod**: Shipping `console.log` statements, commented-out legacy code, or TODO notes to the end user.
 *   **Raw Delivery**: Serving files with all their human-readable formatting (newlines, tabs) intact, ballooning file sizes by 30-40%.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Configure Minification**: Ensure your build process (Webpack, Vite, etc.) is set to aggressively strip whitespace and comments for production builds.
 2.  **Validate Markup**: Run your templates through an HTML validator. Fix every unclosed tag and invalid nesting issue—browsers waste CPU cycles "guessing" how to fix broken HTML.
 3.  **Semantic Swap**: Identify 3 instances of generic `<div>` wrappers in your current component and replace them with semantic alternatives (`<article>`, `<nav>`, `<aside>`, `<section>`).
 4.  **Dead Code Sweep**: Search for and delete any CSS rules or JS functions that are commented out. If you need them later, that's what Git history is for.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Payload Size**: Compare the `kB` size of your CSS/JS bundles before and after turning on minification.
 *   **DOM Depth**: Use browser dev tools to count the depth of your HTML tree. Shallower is faster.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "If a new developer joined the team tomorrow and had to maintain this component, would the semantic tags explain *what* the content is, or would they have to decipher a maze of generic divs?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-3.2](https://w3c.github.io/sustyweb/#WSG-3.2)
 *   [WSG-3.7](https://w3c.github.io/sustyweb/#WSG-3.7)
 *   [STAR-WD02-1](https://w3c.github.io/sustyweb/#STAR-WD02-1)
 *   [STAR-WD07-1](https://w3c.github.io/sustyweb/#STAR-WD07-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-01) to suggest improvements.
 
 
@@ -133,32 +168,62 @@ Take a moment to reflect on what you learned.
 
 ## FED-02: Managing Dependencies
 
-## The Decision
+### The Decision
 "Do I actually need this library, or can I write a 10-line utility function instead?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 Modern web development often feels like assembling LEGO bricks, but each brick (npm package) comes with a cost. Dependencies can bring transitive bloat, security vulnerabilities, and maintenance debt. A 20kB library might not seem like much on fiber, but on a flaky 3G connection, the parse and compile time alone can block the main thread for hundreds of milliseconds. Sustainable development means treating every external dependency as a liability, not just an asset.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Component Garden"**: Importing entire UI frameworks just to use a single button or modal component.
 *   **"Lodash mainly for one function"**: Importing a massive utility library when modern ES6+ JavaScript can handle the task natively.
 *   **"Zombie Dependencies"**: Leaving packages in `package.json` that are no longer referenced in the codebase.
 *   **"Version Drift"**: Failing to update dependencies, leaving the site vulnerable and potentially less performant over time.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Bundle Analysis**: Run a visualization tool (like `webpack-bundle-analyzer` or `source-map-explorer`) to see exactly what is taking up space in your final build.
 2.  **Native Replacement**: Identify one utility library (e.g., date formatting, array manipulation) and check if native browser APIs (Intl.DateTimeFormat, Array.prototype) can replace it.
 3.  **Tree-Shaking Check**: Verify that your build pipeline effectively discards unused exports from the libraries you do keep.
 4.  **Audit Scripts**: Move tracking pixels and non-essential third-party scripts to be deferred or loaded only on interaction, not on initial page load.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **JS Bundle Size**: Track the total KB of JavaScript downloaded on the home page.
 *   **Coverage**: Use Chrome [DevTools](https://developer.chrome.com/docs/devtools/) "Coverage" tab to identify the percentage of loaded JS/CSS that is actually used on the current page.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "If this third-party service went offline or introduced a breaking change tomorrow, how much of my application would stop working?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-3.4](https://w3c.github.io/sustyweb/#WSG-3.4)
 *   [WSG-3.14](https://w3c.github.io/sustyweb/#WSG-3.14)
 *   [WSG-3.16](https://w3c.github.io/sustyweb/#WSG-3.16)
@@ -167,7 +232,12 @@ Modern web development often feels like assembling LEGO bricks, but each brick (
 *   [STAR-WD14-2](https://w3c.github.io/sustyweb/#STAR-WD14-2)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-02) to suggest improvements.
 
 
@@ -231,37 +301,72 @@ Take a moment to reflect on what you learned.
 
 ## FED-03: Optimizing Asset Loading
 
-## The Decision
+### The Decision
 "Does the user need this resource *right now*, or can it wait until they ask for it?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 The most sustainable data is data that is never transferred. Browsers are aggressive by default—they try to fetch everything linked in the document. As a developer, you know the user's journey better than the browser does. By controlling the loading priority, you ensure that critical content (what the user actually came for) arrives instantly, while secondary content (below-the-fold images, heavy interactive widgets) steps aside, saving bandwidth and energy.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Eager Everything"**: Loading all images, videos, and scripts immediately on page load, even if they are at the bottom of a long scroll.
 *   **"Chain Reactions"**: Loading a script that loads a stylesheet that loads an image—causing a waterfall effect that delays rendering.
 *   **"Invisible Heaviness"**: Loading high-res images for mobile users or requesting data for hidden UI tabs "just in case."
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Lazy by Default**: Add `loading="lazy"` to every image and iframe that is not in the initial viewport (above the fold).
 2.  **Explicit Priority**: Use `<link rel="preload">` for the single most important asset (hero image or main font) and `rel="prefetch"` for the next likely page navigation.
 3.  **Facade Pattern**: Replace heavy third-party widgets (chats, maps, YouTube embeds) with a static "facade" image that only loads the real widget when the user clicks/hovers.
 4.  **Async/Defer**: Ensure no script tags in the `<head>` are blocking rendering unless absolutely critical; use `defer` or `async` attributes.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **LCP (Largest Contentful Paint)**: Measure the time it takes for the main content to appear.
 *   **Network Requests**: Count the number of requests fired on initial load versus after scrolling to the bottom.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Am I using the user's data plan to download content they effectively never see?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-3.8](https://w3c.github.io/sustyweb/#WSG-3.8)
 *   [STAR-WD08-1](https://w3c.github.io/sustyweb/#STAR-WD08-1)
 *   [STAR-WD08-2](https://w3c.github.io/sustyweb/#STAR-WD08-2)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-03) to suggest improvements.
 
 
@@ -325,36 +430,71 @@ Take a moment to reflect on what you learned.
 
 ## FED-04: Adaptive User Interfaces
 
-## The Decision
+### The Decision
 "Will I force my design choices on the user, or will I listen to what their device is telling me they need?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 Users configure their devices to suit their health, environment, and battery needs. Some prefer "Dark Mode" to reduce eye strain and OLED power consumption. Others enable "Reduced Motion" to avoid vestibular disorders. Ignoring these signals isn't just an accessibility failing; it's wasteful. An animation that makes a user dizzy or a bright white background that drains their battery against their wishes is a failure of empathy and efficiency.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Flashbang"**: Ignoring system dark mode preferences, blasting a user with a bright screen in a dark room.
 *   **"Motion Sickness"**: Implementing parallax or swooping transitions that cannot be turned off.
 *   **"Data Indifference"**: Auto-playing high-res video even when the user has `prefers-reduced-data` active.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Dark Mode Query**: Implement a rudimentary `prefers-color-scheme: dark` media query that inverts your background and text colors.
 2.  **Stop the Motion**: Use `prefers-reduced-motion: reduce` to essentially turn off all non-essential CSS transitions and JavaScript animations.
 3.  **Respect Data Saver**: Check the `Save-Data` header or `prefers-reduced-data` query (if supported) to serve lower-res images or disable auto-play features.
 4.  **Meta Theme**: Ensure your `<meta name="theme-color">` matches your CSS background to blend the UI with the browser chrome.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Power Consumption**: While hard to measure directly, testing screen brightness impact on an OLED device provides a proxy.
 *   **Manual Testing**: Toggle system settings (Dark Mode, Reduced Motion) and verify the UI adapts instantly without a refresh.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Is my site fighting against the user's operating system settings, or working in harmony with them?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-3.12](https://w3c.github.io/sustyweb/#WSG-3.12)
 *   [STAR-WD12-1](https://w3c.github.io/sustyweb/#STAR-WD12-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-04) to suggest improvements.
 
 
@@ -418,39 +558,74 @@ Take a moment to reflect on what you learned.
 
 ## FED-05: Network & Transfer Efficiency
 
-## The Decision
+### The Decision
 "How can I ensure that data travels the shortest distance and is packed as tightly as possible?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 The journey of a byte from a server to a user's device involves routers, switches, cell towers, and massive energy expenditure. Compression and caching are your primary tools to shorten this journey. If a file is compressed, it travels faster and cheaper. If it is cached correctly, it doesn't travel at all after the first visit. This is the "infrastructure" side of front-end development that yields the highest sustainability ROI.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Text as Image"**: Sending pictures of text instead of actual text, preventing compression.
 *   **"Missing Gzip/Brotli"**: Serving plain text (HTML, CSS, JS) without server-side compression enabled.
 *   **"Cache Busting Everything"**: Aggressively expiring cache for assets that haven't changed.
 *   **"Chatty Protocols"**: Making dozens of small API calls where one aggregated call would suffice.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Compression Check**: Verify that your web server (Nginx, Apache, Netlify, Vercel) is serving text assets with Brotli (`br`) or Gzip compression.
 2.  **Immutable Caching**: Configure your build system to hash filenames (e.g., `main.a1b2c.js`) so you can set `Cache-Control: max-age=31536000, immutable`.
 3.  **Service Worker**: (Advanced) Implement a basic Service Worker to cache the application shell and critical assets for offline-first access.
 4.  **JSON Trimming**: Audit your API responses. If you only use "name" and "id", ensure the server isn't sending a 50-field user object.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Transfer Size vs. Resource Size**: In browser [DevTools](https://developer.chrome.com/docs/devtools/) Network tab, compare the "Transferred" size (compressed) vs "Resource" size (uncompressed).
 *   **Cache Hit Rate**: Monitor your CDN or server logs to see how many requests are being served from the edge vs. origin.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "When a user returns to my site tomorrow, how many bytes will they have to download again?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-4.2](https://w3c.github.io/sustyweb/#WSG-4.2)
 *   [WSG-4.3](https://w3c.github.io/sustyweb/#WSG-4.3)
 *   [STAR-HIS02-1](https://w3c.github.io/sustyweb/#STAR-HIS02-1)
 *   [STAR-HIS03-1](https://w3c.github.io/sustyweb/#STAR-HIS03-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-05) to suggest improvements.
 
 

@@ -239,15 +239,25 @@ comment:  This course is auto-generated from the WSG MOOC repository.
             const title = titleMatch ? titleMatch[1] : id;
             
             // Remove the H1 from body so it doesn't double print
-            const cleanBody = lessonBody.replace(/^# .*$/m, '').trim();
+            let cleanBody = lessonBody.replace(/^# .*$/m, '').trim();
 
-            // Create a module section with proper LiaScript page breaks
+            // Break lesson into sections (by H2 headers)
+            // This creates a page for: Decision, Why It Matters, Common Failures, Do This Now, Measurement, Reflection Prompt
+            const sections = cleanBody.split(/^## /m).filter(s => s.trim());
+            
+            // First page: Module intro with decision
             body += `\n---\n\n`;
             body += `## ${id}: ${title}\n\n`;
+            if (sections.length > 0) {
+                // Add first section (usually "The Decision")
+                body += `### ${sections[0]}\n\n`;
+            }
             
-            // Convert standard markdown links to LiaScript references if needed, 
-            // but standard Markdown works fine in LiaScript.
-            body += cleanBody + "\n\n";
+            // Subsequent pages: one section per page
+            for (let i = 1; i < sections.length; i++) {
+                body += `\n---\n\n`;
+                body += `### ${sections[i]}\n\n`;
+            }
             
             // --- 1. Quiz (LiaScript format) ---
             const quizPath = path.join(CONTENT_DIR, 'quizzes', `${id}.yaml`);

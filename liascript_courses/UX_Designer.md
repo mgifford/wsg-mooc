@@ -19,36 +19,71 @@ comment:  This course is auto-generated from the WSG MOOC repository.
 
 ## UXD-01: Validating User Intent
 
-## The Decision
+### The Decision
 "Does this feature solve a real problem, or are we building it because we *can*?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 The most sustainable product is the one you don't build. Countless development hours, server cycles, and storage bytes are wasted on features that users ignore. As a UX Designer, you are the first line of defense against "feature bloat." By ruthlessly validating intent before a single line of code is written, you prevent the creation of digital waste. This isn't just about business ROI; it's about respecting the planetary resources required to build and host software.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Solution Looking for a Problem"**: Designing a cool interaction or feature and then trying to justify why users need it.
 *   **"Hippo Design"**: Implementing features solely because the Highest Paid Person's Opinion demanded it, without data.
 *   **"Feature Parity"**: Copying a competitor's feature without understanding if *your* users actually need it.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **The "5 Whys"**: For the current feature request, ask "Why?" five times until you reach the root user need. If you can't find one, flag it.
 2.  **Paper Prototype**: Test the concept with a sketch or wireframe before any high-fidelity design work begins. Kill the idea cheap.
 3.  **Data Audit**: Look at analytics for existing features. Identify one rarely used section and purpose a plan to "sunset" (remove) it.
 4.  **User Interviews**: Talk to 3 real users. Ask them about their biggest pain points. If the new feature doesn't address one of them, pause.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Adoption Rate**: If the feature is built, what percentage of users actually engage with it?
 *   **Feedback Loops**: How quickly can you invalidate a hypothesis? (Days vs. Weeks).
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "If we cancelled this feature today, would any user actually complain?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-2.2](https://w3c.github.io/sustyweb/#WSG-2.2)
 *   [STAR-UX02-1](https://w3c.github.io/sustyweb/#STAR-UX02-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-01) to suggest improvements.
 
 
@@ -134,32 +169,62 @@ Take a moment to reflect on what you learned.
 
 ## UXD-02: Streamlining Navigation
 
-## The Decision
+### The Decision
 "How fast can I get the user to their goal, so they can stop using my product?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 A user spending 10 minutes confusedly clicking through menus isn't "high engagement"—it's frustration and energy waste. Every page load involves data transfer and device processing. Efficient navigation minimizes the "interaction cost" (mental effort + clicks) required to complete a task. Your goal is to be a helpful concierge, not a labyrinth. The faster users succeed, the less energy they consume.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Mystery Meat Navigation"**: Icons or labels that require hovering or clicking to understand what they do.
 *   **"Deep Hierarchies"**: Burying critical content 4+ levels deep in a menu structure.
 *   **"Broken Search"**: A search bar that returns irrelevant results, forcing the user to manually browse.
 *   **"Pogo-sticking"**: Users clicking into a category, realizing it's wrong, going back, and trying another.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Card Sort**: Run a quick card sorting exercise (even with colleagues) to verify your menu categories match mental models.
 2.  **Breadcrumbs**: Ensure clear "You are here" trails (Breadcrumbs) on deep pages so users can jump back up one level instantly.
 3.  **Label Audit**: Rename vague menu items like "Solutions" or "Resources" to be descriptive (e.g., "Developer API", "Case Studies").
 4.  **Search Check**: Test your site search with the 5 most common user queries. Do the right pages come up first?
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Task Time**: Measure the time (seconds) it takes a user to find a specific piece of information.
 *   **Click Depth**: What is the average number of clicks to reach content pages from the home page?
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Am I designing for 'time on site' metrics, or for user success?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-2.4](https://w3c.github.io/sustyweb/#WSG-2.4)
 *   [WSG-2.5](https://w3c.github.io/sustyweb/#WSG-2.5)
 *   [STAR-UX04-1](https://w3c.github.io/sustyweb/#STAR-UX04-1)
@@ -167,7 +232,12 @@ A user spending 10 minutes confusedly clicking through menus isn't "high engagem
 *   [STAR-UX05-2](https://w3c.github.io/sustyweb/#STAR-UX05-2)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-02) to suggest improvements.
 
 
@@ -252,39 +322,74 @@ Take a moment to reflect on what you learned.
 
 ## UXD-03: Removing Toxic Patterns
 
-## The Decision
+### The Decision
 "Am I helping the user make a choice, or am I tricking them into making *my* choice?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 "Dark Patterns" (or Deceptive Design) exploit cognitive biases to force users into actions they didn't intend—like subscribing to newsletters, buying insurance, or sharing contacts. Beyond the ethical failure, these patterns create waste. They generate unwanted emails (spam), trigger accidental downloads, and force users to spend time (energy) undoing mistakes. Honest design is sustainable design because it respects the user's intent and resources.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Roach Motel"**: Easy to sign up, impossible to cancel.
 *   **"Confirmshaming"**: "No, I don't want to save money" button text to guilt users.
 *   **"Sneak into Basket"**: Automatically adding items or insurance to a cart.
 *   **"Privacy Deception"**: Confusing toggle switches where "On" means "Opt-out" (or vice versa).
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Unsubscribe Test**: Try to delete an account or unsubscribe on your own platform. If it takes more than 3 clicks, redesign it.
 2.  **Toggle Clarity**: Review all settings. Ensure "On" implies a positive action or addition, and labels are unambiguous.
 3.  **Neutral Language**: Rewrite CTA (Call to Action) / Cancel buttons to be neutral and descriptive ("Subscribe" / "No Thanks"), not manipulative.
 4.  **Cart Audit**: verify that the cart total only reflects items the user explicitly clicked "Add" on.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Support Tickets**: Monitor complaints related to "I didn't mean to buy this" or "How do I cancel?".
 *   **Retention vs. Resentment**: High retention forced by difficult cancellation is not loyalty; it's captivity.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Would I be comfortable explaining this interaction flow to my grandmother?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-2.6](https://w3c.github.io/sustyweb/#WSG-2.6)
 *   [WSG-2.7](https://w3c.github.io/sustyweb/#WSG-2.7)
 *   [STAR-UX07-1](https://w3c.github.io/sustyweb/#STAR-UX07-1)
 *   [STAR-UX04-5](https://w3c.github.io/sustyweb/#STAR-UX04-5)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-03) to suggest improvements.
 
 
@@ -407,37 +512,72 @@ Take a moment to reflect on what you learned.
 
 ## UXD-04: Designing Efficient Forms
 
-## The Decision
+### The Decision
 "Do we absolutely need this piece of data, or are we just hoarding it 'in case'?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 Forms are friction. Every extra field increases the cognitive load on the user and the likelihood of abandonment. On a technical level, data collection has a tail: it must be validated, transmitted, processed, stored, backed up, and secured—forever. Collecting data you don't use is a liability. Sustainable forms ask for the minimum necessary information to complete the transaction.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Nice to Have"**: Asking for phone numbers or birthdays when they aren't needed for the service.
 *   **"Strict Formatting"**: Forcing users to manually format phone numbers or dates instead of handling it in code.
 *   **"Reset Rage"**: Clearing the entire form if one field has a validation error.
 *   **"Dropdown Fatigue"**: Using massive select lists for things (like Country) that could be auto-detected or predictive.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Field Audit**: Review your longest form. Remove any field that isn't strictly required for the immediate task.
 2.  **Smart Defaults**: Pre-fill known information (city/state based on ZIP, user name if logged in).
 3.  **Inline Validation**: Show errors immediately after the field loses focus, not after the "Submit" button is clicked.
 4.  **Autofill Support**: Ensure every input has the correct `autocomplete` attribute so browsers can fill it instantly.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Completion Rate**: What percentage of users who start the form actually finish it?
 *   **Time to Completion**: Average time spent filling out the form.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "If I had to pay $1.00 for every field I asked the user to fill out, which ones would I keep?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-2.15](https://w3c.github.io/sustyweb/#WSG-2.15)
 *   [STAR-UX15-1](https://w3c.github.io/sustyweb/#STAR-UX15-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-04) to suggest improvements.
 
 
@@ -522,36 +662,71 @@ Take a moment to reflect on what you learned.
 
 ## UXD-05: Scaling Consistency
 
-## The Decision
+### The Decision
 "Should I design a new button style for this campaign, or reuse the one we already have?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 Inconsistency breeds bloat. If every landing page has slightly different button styles, typography sizes, and spacing rules, the codebase grows exponentially. CSS files swell with overrides and special cases. Users have to "re-learn" the interface on every page. A robust Design System is a sustainability tool—it enforces reuse, allowing developers to ship features with zero new CSS, keeping page weight low and usability high.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Snowflakes"**: Special UI components created for one-off marketing pages that never get cleaned up.
 *   **"Fifty Shades of Grey"**: Having 20 slightly different hex codes for gray text across the site.
 *   **"Detached Components"**: Design files (Figma/Sketch) that don't match the live code defaults.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Token Inventory**: Audit your colors and spacing. Define a strict set of "Design Tokens" (e.g., `space-sm`, `space-md`, `color-primary`).
 2.  **Button Audit**: Find all variations of buttons on the site. Deprecate non-standard ones and map them to the core system.
 3.  **Component Library**: If you don't have one, start simple. Document the usage rules for the top 5 components (Button, Input, Card, Modal, Nav).
 4.  **No-Code Pact**: Agree with developers that "If it's in the system, we use the system code. If it's a snowflake, we discuss why."
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **CSS File Size**: A maturing design system should lead to a plateau or decrease in CSS bundle size even as features grow.
 *   **Visual Regression**: Fewer unintended layout shifts or style breaks during releases.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Are we inventing new patterns because the user needs them, or because we're bored with the old ones?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-2.9](https://w3c.github.io/sustyweb/#WSG-2.9)
 *   [STAR-UX09-1](https://w3c.github.io/sustyweb/#STAR-UX09-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-05) to suggest improvements.
 
 

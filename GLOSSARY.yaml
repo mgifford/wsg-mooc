@@ -1,0 +1,103 @@
+# Glossary of Web Sustainability Terms
+# Used by the MOOC to provide just-in-time learning support
+
+glossary:
+  - term: "Minification"
+    definition: "The process of removing unnecessary characters (whitespace, comments) from code without changing its functionality. This reduces file size by 20-40%, saving bandwidth and energy."
+    see_also: ["Tree-shaking", "Compression", "Code Hygiene"]
+    learn_more: "https://developer.mozilla.org/en-US/docs/Glossary/Minification"
+
+  - term: "Tree-shaking"
+    definition: "A build optimization that removes unused code exports from your JavaScript bundle. Only the code you actually import is included in the final output."
+    see_also: ["Minification", "Bundle Analysis", "Dead Code"]
+    learn_more: "https://webpack.js.org/guides/tree-shaking/"
+
+  - term: "Lazy Loading"
+    definition: "Deferring the loading of images and other resources until they are needed (e.g., when they become visible in the viewport). This saves bandwidth on first page load."
+    see_also: ["Progressive Enhancement", "Performance Budget"]
+    learn_more: "https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading"
+
+  - term: "Semantic HTML"
+    definition: "Using HTML elements that clearly describe their meaning and purpose (e.g., <article>, <nav>, <button>) instead of generic <div> tags. This improves accessibility, readability, and browser rendering efficiency."
+    see_also: ["Accessibility", "Code Hygiene", "DOM Depth"]
+    learn_more: "https://developer.mozilla.org/en-US/docs/Glossary/Semantic_HTML"
+
+  - term: "Web Performance Budget"
+    definition: "A set of limits for the size and speed of web assets (e.g., 'JavaScript must not exceed 200KB'). Teams use budgets to prevent performance regressions as features are added."
+    see_also: ["Lighthouse", "Core Web Vitals", "Measurement"]
+    learn_more: "https://www.smashingmagazine.com/2013/04/build-fast-maintaining-large-scale-html5-app/"
+
+  - term: "Accessibility (a11y)"
+    definition: "The practice of designing and developing websites and applications so they can be used by everyone, including people with disabilities. This improves both usability and energy efficiency."
+    see_also: ["WCAG", "Semantic HTML", "User Preferences"]
+    learn_more: "https://www.w3.org/WAI/fundamentals/accessibility-intro/"
+
+  - term: "Carbon Cost"
+    definition: "The amount of greenhouse gas emissions produced by transmitting and processing data. Reducing file sizes, requests, and computation directly reduces carbon emissions."
+    see_also: ["Energy Efficiency", "Data Transfer", "Measurement"]
+    learn_more: "https://www.websitecarbon.com/"
+
+  - term: "Progressive Enhancement"
+    definition: "A development strategy that provides a basic level of functionality to all browsers, then adds enhanced features for browsers that support them. This ensures resilience and reduces initial load time."
+    see_also: ["Graceful Degradation", "Lazy Loading"]
+    learn_more: "https://developer.mozilla.org/en-US/docs/Glossary/Progressive_enhancement"
+
+  - term: "Dark Mode (prefers-color-scheme)"
+    definition: "A user preference that many operating systems now provide to reduce eye strain and save energy on OLED screens. Web developers can respect this preference using CSS media queries."
+    see_also: ["User Preferences", "Energy Efficiency", "OLED"]
+    learn_more: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme"
+
+  - term: "Reduced Motion (prefers-reduced-motion)"
+    definition: "A user preference for minimal animations and transitions, often enabled by people with vestibular disorders or those wanting a calmer interface. Respecting this setting improves both accessibility and battery life."
+    see_also: ["User Preferences", "Accessibility", "Animation"]
+    learn_more: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+
+  - term: "Bundle Analysis"
+    definition: "The process of examining what code and assets are included in your final build artifact. Tools like webpack-bundle-analyzer show visually which dependencies are taking up the most space."
+    see_also: ["Tree-shaking", "Minification", "Performance Budget"]
+    learn_more: "https://webpack.js.org/guides/code-splitting/"
+
+  - term: "LCP (Largest Contentful Paint)"
+    definition: "A Core Web Vital metric that measures how quickly the largest visible element on the page becomes visible. Lower LCP = faster perceived performance."
+    see_also: ["Core Web Vitals", "Performance", "Measurement"]
+    learn_more: "https://web.dev/lcp/"
+
+  - term: "Gzip / Brotli Compression"
+    definition: "Server-side compression algorithms that reduce the size of text assets (HTML, CSS, JS) by 60-80% during transfer. All modern servers should support at least Gzip."
+    see_also: ["Data Transfer", "Minification", "Infrastructure"]
+    learn_more: "https://developer.mozilla.org/en-US/docs/Glossary/gzip_compression"
+
+  - term: "Cache Control"
+    definition: "HTTP headers that tell browsers how long to store assets locally. Proper caching means returning users don't re-download unchanged files, saving massive amounts of bandwidth."
+    see_also: ["Infrastructure", "Data Transfer", "Measurement"]
+    learn_more: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control"
+
+  - term: "DOM Depth"
+    definition: "The nesting level of HTML elements in the Document Object Model. A shallower DOM (fewer nested elements) renders faster and uses less memory."
+    see_also: ["Semantic HTML", "Performance", "Code Hygiene"]
+    learn_more: "https://web.dev/dom-size/"
+
+  - term: "Facade Pattern"
+    definition: "A design pattern where a static placeholder (image) is shown instead of a heavy interactive widget. The real widget only loads when the user interacts with the facade, saving bandwidth for users who never click it."
+    see_also: ["Lazy Loading", "Progressive Enhancement", "Performance"]
+    learn_more: "https://www.patterns.dev/posts/facade-pattern"
+
+  - term: "Transitive Dependencies"
+    definition: "Indirect dependencies—libraries that your dependencies rely on. A single npm package might pull in dozens of transitive deps, bloating your bundle."
+    see_also: ["Bundle Analysis", "Tree-shaking", "npm Audit"]
+    learn_more: "https://docs.npmjs.com/cli/v8/commands/npm-ls"
+
+  - term: "WCAG (Web Content Accessibility Guidelines)"
+    definition: "International standards for web accessibility maintained by the W3C. Conformance levels include A (minimum), AA (recommended), and AAA (enhanced)."
+    see_also: ["Accessibility", "Semantic HTML"]
+    learn_more: "https://www.w3.org/WAI/WCAG21/quickref/"
+
+  - term: "WSG (Web Sustainability Guidelines)"
+    definition: "W3C guidelines that define best practices for creating sustainable (low-impact) web applications. The MOOC teaches these principles."
+    see_also: ["Carbon Cost", "Measurement"]
+    learn_more: "https://w3c.github.io/sustyweb/"
+
+  - term: "Lighthouse"
+    definition: "A free Google tool that audits web pages for performance, accessibility, SEO, and best practices. It provides actionable recommendations."
+    see_also: ["Performance Budget", "Core Web Vitals", "Measurement"]
+    learn_more: "https://developers.google.com/web/tools/lighthouse"

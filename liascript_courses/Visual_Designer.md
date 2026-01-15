@@ -19,35 +19,70 @@ comment:  This course is auto-generated from the WSG MOOC repository.
 
 ## VIS-01: Setting the Weight Budget
 
-## The Decision
+### The Decision
 "How much 'data cost' can we afford to spend on this page before it becomes too slow or expensive for the user?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 Visual assets (images, fonts, videos, Lottie files) account for the vast majority of page weight. Without a budget, these assets tend to grow indefinitely until the site becomes unusable on non-fiber connections. A defined "Page Weight Budget" is a collaborative contract between design and engineering. It forces creative constraints that foster innovation—"If I want this full-screen video background, I have to cut the carousels."
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Infinity Scroll"**: Designing long pages with dozens of high-res images without considering total load size.
 *   **"Retina Everything"**: Exporting all assets at @3x resolution assuming everyone is on a high-end MacBook.
 *   **"It looks fine on my machine"**: Testing designs only on studio Wi-Fi and powerful workstation desktops.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Baseline Target**: Set a hard limit for initial load (e.g., 1.5MB total).
 2.  **Asset Allocation**: Break that budget down: 300KB for JS, 100KB for CSS, 100KB for Fonts, leaving ~1MB for Images/Media.
 3.  **Export Review**: check the file size of your design exports *before* handing them off. If a hero image is 800KB, it's already broken the budget.
 4.  **Device Testing**: Open your current production site on a phone, switch to 4G (or throttle in [DevTools](https://developer.chrome.com/docs/devtools/)), and feel the weight.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Total Page Weight**: Measure in KB/MB via tools like [SpeedCurve](https://speedcurve.com/) or [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/).
 *   **Speed Index**: How quickly is the content visually populated?
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Is this graphic worth the 3 seconds of load time it will cost the user on the train?"
 
-## References
+
+
+
+---
+
+### References
 *   [STAR-WD01-1](https://w3c.github.io/sustyweb/#STAR-WD01-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-01) to suggest improvements.
 
 
@@ -131,37 +166,72 @@ Take a moment to reflect on what you learned.
 
 ## VIS-02: Typography Strategy
 
-## The Decision
+### The Decision
 "Do we need five different weights of this custom font, or can we express hierarchy with size and color?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 Custom web fonts are expensive assets. A single font file (e.g., Roboto-Bold-Italic) can be 40-100KB. Loading a font family with Regular, Bold, Semibold, Light, and Italics for each can easily add half a megabyte to the critical rendering path, causing "Flash of Invisible Text" (FOIT) where the user stares at a blank screen waiting for letters to download. Sustainable typography balances brand identity with performance.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"All the Weights"**: Importing the entire font family "just in case" we need a specific weight later.
 *   **"System Font Phobia"**: Refusing to use performant system fonts (San Francisco, Segoe UI, Roboto) for UI text/body copy.
 *   **"Unoptimized Formats"**: Serving legacy `.ttf` files instead of modern compressed `.woff2`.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **System UI**: Switch body copy or administrative UI text to use System Fonts stack. It loads instantly (0KB).
 2.  **Subset**: Reduce custom font usage to 2-3 variants max (e.g., Regular, Bold).
 3.  **Variable Fonts**: Investigate if your chosen typeface has a "Variable Font" version. This bundles all weights into a single, often smaller, file.
 4.  **Display Only**: Reserve heavy custom fonts only for headings (H1, H2) where they have the most visual impact.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Font Payload**: Total KB of all font files loaded.
 *   **FOIT/FOUT**: Observation of how text renders on slow connections (does it blink in or swap styles?).
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Does the user's reading experience actually improve with this custom font, or is it just brand vanity?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-2.13](https://w3c.github.io/sustyweb/#WSG-2.13)
 *   [STAR-UX13-1](https://w3c.github.io/sustyweb/#STAR-UX13-1)
 *   [STAR-UX13-2](https://w3c.github.io/sustyweb/#STAR-UX13-2)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-02) to suggest improvements.
 
 
@@ -246,37 +316,72 @@ Take a moment to reflect on what you learned.
 
 ## VIS-03: Optimizing Image Assets
 
-## The Decision
+### The Decision
 "Is this image serving the right format for its content, or is it a PNG trying to do a JPEG's job?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 Images are often the heaviest single elements on a page. The wrong format choice can balloon file size by 10x without any perceptible quality difference. A photograph saved as a PNG is wasteful. A vector icon saved as a JPEG is blurry and heavy. Sustainable visual design involves understanding the technical strengths of each format: AVIF/WebP for photos, SVG for icons and illustrations.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"PNG Photos"**: Using PNG for photographs, resulting in massive files. Use JPG or WebP/AVIF.
 *   **"Rasterized Icons"**: Saving logos or icons as pixel bitmaps instead of crisp, tiny SVGs.
 *   **"Oversized Dimensions"**: Uploading a 4000px wide image for a slot that is only ever 800px wide.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Format Audit**: Check your last 5 designs. Photos -> AVIF/WebP. Icons/Logos -> SVG.
 2.  **SVG Clean**: Open an SVG file in a text editor. If you see mountains of metadata code, use a tool like SVGO (SVGOMG) to strip the junk.
 3.  **Modern Formats**: Instruct developers to implementation `<picture>` tags that serve AVIF to modern browsers and fallback to JPG.
 4.  **Blur Test**: Compress a hero image to 80% quality, then 60%. Can you actually tell the difference at normal viewing distance? Lower the setting until it breaks, then step back one.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Image Weight**: Total KB of images on the page.
 *   **[Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) Audit**: check the "Properly size images" and "Serve images in next-gen formats" warnings.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Could this 1MB photograph be replaced by a 5KB SVG illustration and tell the same story?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-2.11](https://w3c.github.io/sustyweb/#WSG-2.11)
 *   [WSG-2.14](https://w3c.github.io/sustyweb/#WSG-2.14)
 *   [STAR-UX14-3](https://w3c.github.io/sustyweb/#STAR-UX14-3)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-03) to suggest improvements.
 
 
@@ -361,35 +466,70 @@ Take a moment to reflect on what you learned.
 
 ## VIS-04: Designing for Energy Saving
 
-## The Decision
+### The Decision
 "Am I designing a screen that drains battery, or one that sips it?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 On OLED screens (most modern phones and high-end laptops), black pixels turn off completely. White pixels run at full power. A predominantly bright white interface consumes significantly more energy than a dark one. Designing with energy in mind means offering Dark Mode not just as an aesthetic choice, but as an environmental one.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Brand Lock"**: "Our brand color is bright orange, so the background must be bright orange."
 *   **"Ignored States"**: Designing the "Light Mode" perfectly but leaving "Dark Mode" to an automated (and often ugly) inversion algorithm.
 *   **"Blue Light"**: Excessive use of bright blue light content which can disrupt circadian rhythms (though this is more health than energy).
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Dark Mode Palette**: Define a specific dark-theme palette. Don't use pure black (#000000) for backgrounds (which can cause smearing); use very dark gray (#121212).
 2.  **Asset Handling**: Ensure your icons and logos have transparent backgrounds so they work on dark themes.
 3.  **Contrast Check**: Verify that your text contrast ratios meet WCAG AA limitations in *both* Light and Dark modes.
 4.  **OLED Optimization**: Consider using true blacks for video borders or inactive areas to maximize pixel-off states.
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **Color Analysis**: Tools exist to estimate the energy consumption of a specific color palette on OLED screens.
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "Is my design forcing the user's phone to act as a flashlight?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-3.12](https://w3c.github.io/sustyweb/#WSG-3.12)
 *   [STAR-WD12-1](https://w3c.github.io/sustyweb/#STAR-WD12-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-04) to suggest improvements.
 
 
@@ -474,36 +614,71 @@ Take a moment to reflect on what you learned.
 
 ## VIS-05: Responsible Animation
 
-## The Decision
+### The Decision
 "Does this motion convey meaning, or is it just decoration?"
 
-## Why It Matters
+
+
+
+---
+
+### Why It Matters
 Animation is computationally expensive. It triggers the CPU and GPU to repaint the screen 60 (or 120) times per second. Continuous, loops animations (like background ambient videos or auto-playing carousels) prevent the device from going into low-power idle states. They keep the processor revving. Sustainable design treats motion as a spice, not a main course—used sparingly to guide the eye or provide feedback, then stopping immediately.
 
-## Common Failure Modes
+
+
+
+---
+
+### Common Failure Modes
 *   **"Auto-Play Everything"**: Videos that start playing (and downloading) without user consent.
 *   **"Infinite Loops"**: Lottie files or CSS animations that loop forever, burning battery even when the user isn't interacting.
 *   **"Parallax Overload"**: JavaScript-heavy scroll effects that cause "jank" and heat up phones.
 
-## "Do This Now" Checklist
+
+
+
+---
+
+### "Do This Now" Checklist
 1.  **Toggle Switch**: Does the design allow for a "Pause" button on any auto-moving content? (Crucial for accessibility too).
 2.  **Interaction Trigger**: Change animations to run *only* on interaction (hover/click) rather than continuously.
 3.  **The 5-Second Rule**: If it must auto-play, ensure it stops after 5 seconds.
 4.  **Hardware Acceleration**: Ensure developers implement animations using CSS Transform/Opacity (cheap) rather than Top/Left/Width (expensive).
 
-## Measurement Options
+
+
+
+---
+
+### Measurement Options
 *   **CPU Usage**: Monitor Chrome Task Manager during the animation.
 *   **Frame Rate**: Does the animation maintain 60fps on a low-end device?
 
-## Reflection Prompt
+
+
+
+---
+
+### Reflection Prompt
 "If I removed this animation, would the interface still make sense? If yes, should it be there?"
 
-## References
+
+
+
+---
+
+### References
 *   [WSG-2.12](https://w3c.github.io/sustyweb/#WSG-2.12)
 *   [STAR-UX11-1](https://w3c.github.io/sustyweb/#STAR-UX11-1)
 
 
-## Feedback
+
+
+
+---
+
+### Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-05) to suggest improvements.
 
 

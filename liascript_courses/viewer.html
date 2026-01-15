@@ -49,6 +49,38 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       padding: 40px;
       min-height: 500px;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0;
+      }
+      .page-container {
+        padding: 20px;
+        margin: 0 -20px;
+        border-radius: 0;
+        max-height: 80vh;
+      }
+      body {
+        padding: 10px;
+      }
+      .nav {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .nav a {
+        flex: 1;
+        text-align: center;
+      }
+      .controls {
+        flex-direction: column;
+        gap: 10px;
+      }
+      button {
+        flex: 1;
+      }
     }
     
     .page { display: none; }
@@ -206,6 +238,20 @@
       <a href="viewer.html?course=UX_Designer.md">🎨 UX</a>
       <a href="viewer.html?course=Visual_Designer.md">👁️ Visual</a>
       <a href="viewer.html?course=Content_Author.md">✍️ Content</a>
+      <a href="#" onclick="showGlossary(); return false;">📖 Glossary</a>
+    </div>
+    
+    <div id="glossaryModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000;">
+      <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2>📖 Glossary</h2>
+          <button onclick="hideGlossary()" style="background: none; border: none; font-size: 1.5em; cursor: pointer;">✕</button>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <input type="text" id="glossarySearch" placeholder="Search glossary..." style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 4px; font-size: 1em;">
+        </div>
+        <div id="glossaryContent"></div>
+      </div>
     </div>
     
     <div class="page-container">
@@ -337,6 +383,60 @@
           '<p style="color: red;"><strong>Error loading course:</strong> ' + escapeHtml(error.message) + 
           '</p><p>Make sure you are running: <code>python3 -m http.server 8020 --directory liascript_courses</code></p>';
       });
+    
+    // Glossary functionality
+    const glossary = {
+      "Minification": "Removing unnecessary characters (whitespace, comments) from code to reduce file size by 20-40%. Saves bandwidth and energy.",
+      "Tree-shaking": "A build optimization that removes unused code exports. Only the code you import is included in the final output.",
+      "Lazy Loading": "Deferring the loading of images and resources until they are needed (e.g., when visible in viewport). Saves bandwidth on first load.",
+      "Semantic HTML": "Using HTML elements that describe their purpose (<article>, <nav>, <button>) instead of generic <div> tags. Improves accessibility and rendering efficiency.",
+      "Performance Budget": "A set of limits for asset size and speed (e.g., 'JS must not exceed 200KB'). Prevents performance regressions.",
+      "Accessibility": "Designing applications so they can be used by everyone, including people with disabilities. Improves usability and efficiency.",
+      "Carbon Cost": "The greenhouse gas emissions produced by transmitting and processing data. Smaller files and fewer requests = lower carbon.",
+      "Dark Mode": "A user preference that reduces eye strain and saves energy on OLED screens. Respect with CSS media queries.",
+      "Reduced Motion": "A user preference for minimal animations. Improves both accessibility and battery life.",
+      "Bundle Analysis": "Examining what code is in your build artifact. Tools show which dependencies take up the most space.",
+      "LCP": "Largest Contentful Paint—a Core Web Vital metric measuring how quickly the largest visible element appears.",
+      "Gzip": "Server-side compression that reduces text asset size by 60-80%. All modern servers should support it.",
+      "Cache Control": "HTTP headers telling browsers how long to store assets locally. Proper caching saves massive bandwidth.",
+      "DOM Depth": "The nesting level of HTML elements. Shallower DOM = faster rendering.",
+      "Progressive Enhancement": "Providing basic functionality to all browsers, then adding enhancements for capable ones. Ensures resilience.",
+      "WCAG": "Web Content Accessibility Guidelines—international standards for web accessibility (A, AA, AAA levels).",
+      "WSG": "Web Sustainability Guidelines—W3C standards for creating low-impact web applications.",
+      "Lighthouse": "Free Google tool that audits pages for performance, accessibility, SEO, and best practices."
+    };
+    
+    function showGlossary() {
+      document.getElementById('glossaryModal').style.display = 'block';
+      renderGlossary();
+    }
+    
+    function hideGlossary() {
+      document.getElementById('glossaryModal').style.display = 'none';
+    }
+    
+    function renderGlossary() {
+      const searchTerm = document.getElementById('glossarySearch').value.toLowerCase();
+      const terms = Object.keys(glossary).sort();
+      const filtered = searchTerm ? terms.filter(t => t.toLowerCase().includes(searchTerm)) : terms;
+      
+      let html = '';
+      filtered.forEach(term => {
+        html += `<div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+          <h4 style="color: #667eea; margin-bottom: 5px;">${escapeHtml(term)}</h4>
+          <p>${escapeHtml(glossary[term])}</p>
+        </div>`;
+      });
+      
+      document.getElementById('glossaryContent').innerHTML = html || '<p>No matching terms found.</p>';
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('glossarySearch').addEventListener('input', renderGlossary);
+      document.getElementById('glossaryModal').addEventListener('click', function(e) {
+        if (e.target === this) hideGlossary();
+      });
+    });
   </script>
 </body>
 </html>
