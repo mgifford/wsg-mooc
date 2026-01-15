@@ -198,6 +198,24 @@ Failure to meet these obligations blocks release.
 
 ---
 
+## Related Documents
+
+The following documents support and extend this agent model:
+
+### NORMATIVE (Binding)
+
+* **[PEDAGOGY.md](PEDAGOGY.md)** - Learning contract and pedagogical principles that drive all content and assessment decisions. Every agent decision must preserve the pedagogical loop and learning principles defined here.
+
+* **[DESIGN.md](DESIGN.md)** - System architecture and consistency standards. Defines how technical structure, content organization, and build processes implement the pedagogy through agent collaboration. Binding reference for infrastructure decisions.
+
+### INFORMATIVE (Background)
+
+* **[FORMATTING_IMPROVEMENTS.md](FORMATTING_IMPROVEMENTS.md)** - Summary of visual design improvements to quiz pagination and reflection formatting. Documents the rationale for slide design decisions.
+
+* **[SLIDE_DESIGN_FINAL_REPORT.md](SLIDE_DESIGN_FINAL_REPORT.md)** - Detailed analysis of slide design implementation. Reference for understanding current visual standards and quality metrics.
+
+---
+
 ## How to Use This File
 
 * Read this before authoring content.
