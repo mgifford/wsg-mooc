@@ -15,6 +15,8 @@ comment:  This course is auto-generated from the WSG MOOC repository.
 > Learn to apply the W3C Web Sustainability Guidelines (WSG) in your daily work. 
 
 
+---
+
 ## FED-01: Establishing Code Hygiene
 
 ## The Decision
@@ -53,68 +55,79 @@ Every extra byte costs electricity to transmit, parse, and render. "Cruft" doesn
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-01) to suggest improvements.
 
-### Knowledge Check
 
-You are reviewing a Pull Request for a blog post component. The developer has used `div` tags for the article title, date, and content  wrapping them in classes like `.article-title`, `.date`. They argue this is faster to style.
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** You are reviewing a Pull Request for a blog post component. The developer has used `div` tags for the article title, date, and content  wrapping them in classes like `.article-title`, `.date`. They argue this is faster to style.
 
 [ ] Approve it. As long as it looks right, the tag doesn't matter.
 [x] Request changes. Ask them to use `<article>`, `<h1>`, and `<time>` tags to improve rendering efficiency and accessibility.
 [ ] Ask them to add `aria-label` to every div to fix the semantics.
 [ ] Suggest using a JavaScript framework to render the HTML dynamically.
 
-*******************************************************
-> Generic `div` tags force the browser (and assistive technology) to guess the content structure. Semantic tags provide  "free" meaning and often come with native browser behaviors that save code.
-*******************************************************
+> **Explanation**: Generic `div` tags force the browser (and assistive technology) to guess the content structure. Semantic tags provide  "free" meaning and often come with native browser behaviors that save code.
 
-
-You notice your production CSS file is 400KB. It contains thousands of lines of whitespace, comments, and meaningful variable names (e.g., `--color-primary: blue`).
+**Question 2:** You notice your production CSS file is 400KB. It contains thousands of lines of whitespace, comments, and meaningful variable names (e.g., `--color-primary: blue`).
 
 [ ] Leave it. Identifying variables in production is helpful for debugging.
 [x] Minify the file. Removing whitespace and comments is the single easiest way to reduce transfer size without changing behavior.
 [ ] Split the file into 10 smaller files so they load in parallel.
 [ ] Delete the CSS and use inline styles for everything.
 
-*******************************************************
-> Minification strips "human-readable" characters that the browser doesn't need. It is a standard "Code Hygiene" practice  that directly reduces energy use in transmission and parsing.
-*******************************************************
+> **Explanation**: Minification strips "human-readable" characters that the browser doesn't need. It is a standard "Code Hygiene" practice  that directly reduces energy use in transmission and parsing.
 
 
-### 🛠 Practice: FED-01 Assignment
+---
 
-> Identify and remove 3 instances of non-semantic markup in your codebase.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Identify and remove 3 instances of non-semantic markup in your codebase.
+
+#### Steps
+
 1. Scan your latest Pull Request or feature branch.
 1. Find `div` or `span` tags acting as buttons, headings, or lists.
 1. Refactor them to `<button>`, `<h1>-<h6>`, or `<ul>`.
 
-**Deliverable**: Diff or screenshot of the refactored code.
+#### Deliverable
+
+Diff or screenshot of the refactored code.
+
+
+---
 
 ### 💭 Reflection
 
-Do you currently run a HTML validator as part of your CI/CD pipeline?
+Take a moment to reflect on what you learned.
+
+**Do you currently run a HTML validator as part of your CI/CD pipeline?**
 
 [[___]]
 
-Can you distinguish between 'semantic' and 'presentation' markup in your current project?
+**Can you distinguish between 'semantic' and 'presentation' markup in your current project?**
 
 [[___]]
 
-I have confirmed that my build process outputs minified files for production.
+**I have confirmed that my build process outputs minified files for production.**
 
 [[___]]
 
-I have replaced at least 3 generic `<div>` tags with semantic alternatives.
+**I have replaced at least 3 generic `<div>` tags with semantic alternatives.**
 
 [[___]]
 
-I have verified the page contains zero validation errors in the W3C validator.
+**I have verified the page contains zero validation errors in the W3C validator.**
 
 [[___]]
 
-Why do you think 'Div Soup' (nested generic containers) is so common in modern frameworks?
+**Why do you think 'Div Soup' (nested generic containers) is so common in modern frameworks?**
 
 [[___]]
+
 
 ---
 
@@ -157,57 +170,62 @@ Modern web development often feels like assembling LEGO bricks, but each brick (
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-02) to suggest improvements.
 
-### Knowledge Check
 
-A team member wants to install a 30KB library called `left-pad-super` just to add padding to a string in one component.
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** A team member wants to install a 30KB library called `left-pad-super` just to add padding to a string in one component.
 
 [ ] Install it. Developer productivity is more important than file size.
 [x] Reject the installation. Write a simple 3-line utility function to handle the padding natively.
 [ ] Install it, but use a CDN link instead of bundling it.
 [ ] Install a larger library that includes padding plus 50 other features, just in case.
 
-*******************************************************
-> Importing an entire library for a trivial task is "Dependency Bloat". Sustainable development prefers native language features  or small custom functions over heavy external code liabilities.
-*******************************************************
+> **Explanation**: Importing an entire library for a trivial task is "Dependency Bloat". Sustainable development prefers native language features  or small custom functions over heavy external code liabilities.
 
-
-Your bundle analyzer shows that you are including the entire `lodash` library (70KB), but you are only using the `debounce` function.
+**Question 2:** Your bundle analyzer shows that you are including the entire `lodash` library (70KB), but you are only using the `debounce` function.
 
 [ ] Keep it. Caching handles the file size problem.
 [x] Switch to importing only the specific function (e.g., `import debounce from 'lodash/debounce'`) or use a lighter alternative.
 [ ] Rewrite the entire application to avoid using debounce.
 [ ] Wrap the library in a lazy-load promise so it loads later.
 
-*******************************************************
-> "Tree-shaking" or specific imports ensure you only ship the code you actually use. Shipping dead code wastes bandwidth  and CPU time on parsing bytes that never run.
-*******************************************************
+> **Explanation**: "Tree-shaking" or specific imports ensure you only ship the code you actually use. Shipping dead code wastes bandwidth  and CPU time on parsing bytes that never run.
 
+
+---
 
 ### 💭 Reflection
 
-Do you verify the file size of an npm package before installing it?
+Take a moment to reflect on what you learned.
+
+**Do you verify the file size of an npm package before installing it?**
 
 [[___]]
 
-Do you know exactly how many unique JavaScript libraries are loaded on your home page?
+**Do you know exactly how many unique JavaScript libraries are loaded on your home page?**
 
 [[___]]
 
-I have visualized the bundle and identified the largest contributor.
+**I have visualized the bundle and identified the largest contributor.**
 
 [[___]]
 
-I have successfully removed or replaced at least one redundant dependency.
+**I have successfully removed or replaced at least one redundant dependency.**
 
 [[___]]
 
-I have verified that the application functionality remains unchanged.
+**I have verified that the application functionality remains unchanged.**
 
 [[___]]
 
-Is there a library in your stack that you use out of habit rather than necessity?
+**Is there a library in your stack that you use out of habit rather than necessity?**
 
 [[___]]
+
 
 ---
 
@@ -246,57 +264,62 @@ The most sustainable data is data that is never transferred. Browsers are aggres
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-03) to suggest improvements.
 
-### Knowledge Check
 
-A stakeholder wants the footer "Partner Logos" carousel to load immediately so users see it, even though it lies 2000px down the page.
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** A stakeholder wants the footer "Partner Logos" carousel to load immediately so users see it, even though it lies 2000px down the page.
 
 [ ] Agree. Stakeholder visibility requirements override performance.
 [x] Push back. Implementing `loading='lazy'` ensures the browser prioritizes the critical hero content first. The logos will load when the user scrolls near them.
 [ ] Preload the footer images using `<link rel='preload'>` to make them load even faster.
 [ ] Make the footer sticky so it is always visible.
 
-*******************************************************
-> Loading invisible resources competes for bandwidth with visible ones. Sustainable loading prioritizes user need (what they see now)  over theoretical need.
-*******************************************************
+> **Explanation**: Loading invisible resources competes for bandwidth with visible ones. Sustainable loading prioritizes user need (what they see now)  over theoretical need.
 
-
-You are loading a heavy 3D interactive widget on the homepage. It blocks the main thread for 500ms, making the site freeze during load.
+**Question 2:** You are loading a heavy 3D interactive widget on the homepage. It blocks the main thread for 500ms, making the site freeze during load.
 
 [ ] Leave it. Code is heavy, that's just how the web is.
 [x] Replace the widget with a static image (Facade). Only load the real 3D code if the user clicks 'Start 3D Experience'.
 [ ] Move the 3D widget to the top of the page so it loads first.
 [ ] Hide the page with a white screen until the widget is ready.
 
-*******************************************************
-> The "Facade Pattern" saves massive amounts of data and processing power by assuming the user *might not* want to interact  with the heavy element. It effectively makes the cost "opt-in".
-*******************************************************
+> **Explanation**: The "Facade Pattern" saves massive amounts of data and processing power by assuming the user *might not* want to interact  with the heavy element. It effectively makes the cost "opt-in".
 
+
+---
 
 ### 💭 Reflection
 
-Is your 'Above the Fold' content fully visible within 2 seconds on a 3G connection?
+Take a moment to reflect on what you learned.
+
+**Is your 'Above the Fold' content fully visible within 2 seconds on a 3G connection?**
 
 [[___]]
 
-Do you use the native `loading='lazy'` attribute on images today?
+**Do you use the native `loading='lazy'` attribute on images today?**
 
 [[___]]
 
-I have added `loading='lazy'` to all off-screen images.
+**I have added `loading='lazy'` to all off-screen images.**
 
 [[___]]
 
-I have identified the LCP element and ensured it is NOT lazy loaded.
+**I have identified the LCP element and ensured it is NOT lazy loaded.**
 
 [[___]]
 
-I have deferred at least one non-critical script.
+**I have deferred at least one non-critical script.**
 
 [[___]]
 
-How does 'perceived performance' (what the user sees) differ from 'actual performance' (when the loading spinner stops)?
+**How does 'perceived performance' (what the user sees) differ from 'actual performance' (when the loading spinner stops)?**
 
 [[___]]
+
 
 ---
 
@@ -334,57 +357,62 @@ Users configure their devices to suit their health, environment, and battery nee
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-04) to suggest improvements.
 
-### Knowledge Check
 
-A user visits your site with their OS set to "Dark Mode". Your site currently has a bright white background.
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** A user visits your site with their OS set to "Dark Mode". Your site currently has a bright white background.
 
 [ ] Do nothing. The brand guidelines clearly state the website background must be white.
 [x] Use a CSS media query to invert the colors (dark background, light text), respecting the user's choice and saving energy on OLED screens.
 [ ] Show a popup asking them to turn off Dark Mode.
 [ ] Invert only the images, but keep the background white.
 
-*******************************************************
-> Respecting `prefers-color-scheme: dark` is a direct energy-saving intervention for OLED devices. It also reduces  eye strain, aligning user health with device health.
-*******************************************************
+> **Explanation**: Respecting `prefers-color-scheme: dark` is a direct energy-saving intervention for OLED devices. It also reduces  eye strain, aligning user health with device health.
 
-
-Your homepage features a large, looping video background. A user arrives with `prefers-reduced-motion: reduce` enabled.
+**Question 2:** Your homepage features a large, looping video background. A user arrives with `prefers-reduced-motion: reduce` enabled.
 
 [ ] Play the video anyway. It's the core emotional hook of the page.
 [x] Pause the video automatically. Show a static poster image instead.
 [ ] Slow the video down to 50% speed.
 [ ] Play the video but blur it slightly.
 
-*******************************************************
-> Reduced motion isn't just about vestibular disorders; it's a signal that the user wants a calmer, less processor-intensive experience.  Stopping auto-play saves significant battery life.
-*******************************************************
+> **Explanation**: Reduced motion isn't just about vestibular disorders; it's a signal that the user wants a calmer, less processor-intensive experience.  Stopping auto-play saves significant battery life.
 
+
+---
 
 ### 💭 Reflection
 
-Have you ever tested your site with the OS set to 'Dark Mode'?
+Take a moment to reflect on what you learned.
+
+**Have you ever tested your site with the OS set to 'Dark Mode'?**
 
 [[___]]
 
-Does your site respect 'Reduce Motion' preferences?
+**Does your site respect 'Reduce Motion' preferences?**
 
 [[___]]
 
-I have implemented a basic dark theme using CSS variables.
+**I have implemented a basic dark theme using CSS variables.**
 
 [[___]]
 
-I have verified that text contrast ratios are sufficient in both modes.
+**I have verified that text contrast ratios are sufficient in both modes.**
 
 [[___]]
 
-I have wrapped heavy animations in a `prefers-reduced-motion: no-preference` query.
+**I have wrapped heavy animations in a `prefers-reduced-motion: no-preference` query.**
 
 [[___]]
 
-Why is 'Reduced Motion' considered both an accessibility feature AND a sustainability feature?
+**Why is 'Reduced Motion' considered both an accessibility feature AND a sustainability feature?**
 
 [[___]]
+
 
 ---
 
@@ -425,56 +453,59 @@ The journey of a byte from a server to a user's device involves routers, switche
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20FED-05) to suggest improvements.
 
-### Knowledge Check
 
-You inspect the HTTP headers for your main JavaScript bundle and see `Content-Encoding` is missing. The file is 500KB.
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** You inspect the HTTP headers for your main JavaScript bundle and see `Content-Encoding` is missing. The file is 500KB.
 
 [ ] This is fine. Broadband connections are fast enough.
 [x] Enable Gzip or Brotli compression on the server. This could reduce the transfer size by 60-70%.
 [ ] Split the file into two 250KB files.
 [ ] Rename the file to .txt so it transfers faster.
 
-*******************************************************
-> Text-based assets (HTML, CSS, JS) are highly compressible. Serving them "raw" is negligent waste of bandwidth.  Compression is the single most effective infrastructure-level optimization.
-*******************************************************
+> **Explanation**: Text-based assets (HTML, CSS, JS) are highly compressible. Serving them "raw" is negligent waste of bandwidth.  Compression is the single most effective infrastructure-level optimization.
 
-
-You update your site logo (an image) once every 3 years. Currently, the browser re-downloads it on every single visit.
+**Question 2:** You update your site logo (an image) once every 3 years. Currently, the browser re-downloads it on every single visit.
 
 [ ] Leave it. Images are cached by default.
 [x] Configure `Cache-Control` headers (e.g., `max-age=31536000`) so returning users load it from their disk, not the network.
 [ ] Embed the image as base64 in the HTML.
 [ ] Make the image smaller so the download creates less impact.
 
-*******************************************************
-> The most sustainable request is the one that never hits the network. Proper caching strategies ensure that unchanging assets  are stored locally (zero carbon cost) rather than fetched repeatedly.
-*******************************************************
+> **Explanation**: The most sustainable request is the one that never hits the network. Proper caching strategies ensure that unchanging assets  are stored locally (zero carbon cost) rather than fetched repeatedly.
 
+
+---
 
 ### 💭 Reflection
 
-Do you know if your server uses Gzip or Brotli compression?
+Take a moment to reflect on what you learned.
+
+**Do you know if your server uses Gzip or Brotli compression?**
 
 [[___]]
 
-Have you configured 'Immutable' caching for your static assets?
+**Have you configured 'Immutable' caching for your static assets?**
 
 [[___]]
 
-I have verified the 'Content-Encoding' header in the network tab.
+**I have verified the 'Content-Encoding' header in the network tab.**
 
 [[___]]
 
-I have set long-term cache headers for hashed assets.
+**I have set long-term cache headers for hashed assets.**
 
 [[___]]
 
-I have audited the compression ratio of textual assets.
+**I have audited the compression ratio of textual assets.**
 
 [[___]]
 
-Why is caching the 'greenest' form of data transfer?
+**Why is caching the 'greenest' form of data transfer?**
 
 [[___]]
 
----

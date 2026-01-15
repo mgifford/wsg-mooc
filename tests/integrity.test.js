@@ -106,7 +106,8 @@ describe('LiaScript Integrity Tests', () => {
             const filePath = path.join(LIASCRIPT_DIR, `${name}.md`);
             if (fs.existsSync(filePath)) {
                 const content = fs.readFileSync(filePath, 'utf8');
-                expect(content).toContain("**Deliverable**:");
+                // Accept either "**Deliverable**:" or "#### Deliverable" formats
+                expect(content).toMatch(/(\*\*Deliverable\*\*:|#### Deliverable)/);
             }
         });
     });

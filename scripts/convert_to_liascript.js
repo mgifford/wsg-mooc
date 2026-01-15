@@ -151,22 +151,25 @@ narrator: US English Female
 comment:  This course is auto-generated from the WSG MOOC repository.
 -->
 
-# Web Sustainability MOOC (WSG)
+# Web Sustainability MOOC
 
-Select a role-based track to begin. Each track teaches you how to apply the W3C Web Sustainability Guidelines (WSG) in your job.
+Learn role-based strategies from the W3C Web Sustainability Guidelines.
+
+Select your role to begin:
 
 `;
     
-    tracks.forEach(track => {
+    tracks.forEach((track, idx) => {
         const safeTrackName = track.replace(/\s+/g, '_');
         const color = trackColors[track] || '#666';
         const desc = trackDescriptions[track] || 'Learn sustainable practices for this role.';
+        homeContent += `\n---\n\n`;
         homeContent += `## ${track}\n\n`;
         homeContent += `${desc}\n\n`;
-        homeContent += `👉 [Launch ${track} Track](${safeTrackName}.md)\n\n`;
+        homeContent += `👉 [Launch ${track} Track →](${safeTrackName}.md)\n\n`;
     });
     
-    homeContent += `---\n\n## About This MOOC\n\n`;
+    homeContent += `\n---\n\n## About This MOOC\n\n`;
     homeContent += `This course teaches **role-based decision-making** grounded in the W3C Web Sustainability Guidelines (WSG). Each module includes:\n\n`;
     homeContent += `- **A decision context** (job-relevant scenario)\n`;
     homeContent += `- **A required action** (do something real)\n`;
@@ -238,7 +241,9 @@ comment:  This course is auto-generated from the WSG MOOC repository.
             // Remove the H1 from body so it doesn't double print
             const cleanBody = lessonBody.replace(/^# .*$/m, '').trim();
 
-            body += `\n## ${id}: ${title}\n\n`;
+            // Create a module section with proper LiaScript page breaks
+            body += `\n---\n\n`;
+            body += `## ${id}: ${title}\n\n`;
             
             // Convert standard markdown links to LiaScript references if needed, 
             // but standard Markdown works fine in LiaScript.
@@ -248,17 +253,17 @@ comment:  This course is auto-generated from the WSG MOOC repository.
             const quizPath = path.join(CONTENT_DIR, 'quizzes', `${id}.yaml`);
             const quizRaw = readFile(quizPath);
             if (quizRaw) {
-                body += `### Knowledge Check\n\n`;
+                body += `\n---\n\n`;
+                body += `### ✓ Knowledge Check\n\n`;
+                body += `Review what you've learned. Multiple attempts encouraged!\n\n`;
                 const questions = parseQuizYaml(quizRaw);
-                questions.forEach(q => {
-                    body += `${q.text}\n\n`;
+                questions.forEach((q, idx) => {
+                    body += `**Question ${idx + 1}:** ${q.text}\n\n`;
                     q.options.forEach(opt => {
                         body += `[${opt.correct ? 'x' : ' '}] ${opt.text}\n`;
                     });
                     if (q.remedy) {
-                        body += `\n*******************************************************\n`;
-                        body += `> ${q.remedy}\n`;
-                        body += `*******************************************************\n\n`;
+                        body += `\n> **Explanation**: ${q.remedy}\n`;
                     }
                     body += `\n`;
                 });
@@ -268,13 +273,14 @@ comment:  This course is auto-generated from the WSG MOOC repository.
             const assignPath = path.join(CONTENT_DIR, 'assignments', `${id}.yaml`);
             const assignRaw = readFile(assignPath);
             if (assignRaw) {
+                body += `\n---\n\n`;
+                body += `### 🛠 Assignment\n\n`;
                 const desc = extractValue(assignRaw, 'description');
                 const deliv = extractValue(assignRaw, 'deliverable');
                 
-                body += `### 🛠 Practice: ${id} Assignment\n\n`;
-                if (desc) body += `> ${desc}\n\n`;
+                if (desc) body += `**Goal**: ${desc}\n\n`;
                 
-                body += `**Steps:**\n`;
+                body += `#### Steps\n\n`;
                 // Try steps regex
                 const stepRegex = /- "(.*?)"/g;
                 let sMatch;
@@ -300,7 +306,7 @@ comment:  This course is auto-generated from the WSG MOOC repository.
                     }
                 }
 
-                if (deliv) body += `\n**Deliverable**: ${deliv}\n\n`;
+                if (deliv) body += `\n#### Deliverable\n\n${deliv}\n\n`;
             }
 
             // --- 3. Reflection ---
@@ -309,20 +315,20 @@ comment:  This course is auto-generated from the WSG MOOC repository.
             if (reflectRaw) {
                 const data = parseReflectionYaml(reflectRaw);
                 if (data.prompts.length > 0) {
+                    body += `\n---\n\n`;
                     body += `### 💭 Reflection\n\n`;
+                    body += `Take a moment to reflect on what you learned.\n\n`;
                     data.prompts.forEach(p => {
                         // LiaScript text input syntax
-                        body += `${p}\n\n[[___]]\n\n`;
+                        body += `**${p}**\n\n[[___]]\n\n`;
                     });
                 }
                 if (data.commitment) {
-                    body += `#### Commitment\n\n`;
+                    body += `#### Your Commitment\n\n`;
                     body += `"${data.commitment}"\n\n`;
                     body += `[[I Commit]]\n\n`; // A button to click
                 }
             }
-            
-            body += `---\n`;
         } // End ID loop
 
         fs.writeFileSync(path.join(OUTPUT_DIR, `${safeTrackName}.md`), header + body);

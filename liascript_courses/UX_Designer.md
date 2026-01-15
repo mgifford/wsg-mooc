@@ -15,6 +15,8 @@ comment:  This course is auto-generated from the WSG MOOC repository.
 > Learn to apply the W3C Web Sustainability Guidelines (WSG) in your daily work. 
 
 
+---
+
 ## UXD-01: Validating User Intent
 
 ## The Decision
@@ -49,73 +51,84 @@ The most sustainable product is the one you don't build. Countless development h
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-01) to suggest improvements.
 
-### Knowledge Check
 
-Which of the following is the most sustainable valid reason to build a new feature?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** Which of the following is the most sustainable valid reason to build a new feature?
 
 [ ] Competitors have it.
 [ ] Stakeholders asked for it.
 [x] User research proves it solves a critical problem.
 [ ] It utilizes a new technology we want to try.
 
-*******************************************************
-> Review 'The Greenest Feature is the One You Don't Build'.
-*******************************************************
+> **Explanation**: Review 'The Greenest Feature is the One You Don't Build'.
 
-
-True or False: A feature that is built efficiently but never used is sustainable.
+**Question 2:** True or False: A feature that is built efficiently but never used is sustainable.
 
 [ ] True
 [x] False
 
-*******************************************************
-> Unused code and data squander resources regardless of code quality.
-*******************************************************
+> **Explanation**: Unused code and data squander resources regardless of code quality.
 
 
-### 🛠 Practice: UXD-01 Assignment
+---
 
-> Select one feature currently in your backlog or product roadmap. Apply the '5 Whys' technique to drill down to the root user need. If you cannot find a documented user need by the 5th 'Why', propose removing or deprioritizing the feature.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Select one feature currently in your backlog or product roadmap. Apply the '5 Whys' technique to drill down to the root user need. If you cannot find a documented user need by the 5th 'Why', propose removing or deprioritizing the feature.
+
+#### Steps
+
 1. Identify a feature.
 1. Ask 'Why do we need this?' five times.
 1. Document the root cause.
 1. Recommendation: Verify, Pivot, or Kill.
 
-**Deliverable**: A one-page decision memo.
+#### Deliverable
+
+A one-page decision memo.
+
+
+---
 
 ### 💭 Reflection
 
-Do you require data/evidence before starting a high-fidelity design?
+Take a moment to reflect on what you learned.
+
+**Do you require data/evidence before starting a high-fidelity design?**
 
 [[___]]
 
-I have identified the primary user problem this feature solves.
+**I have identified the primary user problem this feature solves.**
 
 [[___]]
 
-I have prototyped the solution in low-fidelity first to save resources.
+**I have prototyped the solution in low-fidelity first to save resources.**
 
 [[___]]
 
-Who are the 'stakeholders' that push for features users don't need, and what are their incentives?
+**Who are the 'stakeholders' that push for features users don't need, and what are their incentives?**
 
 [[___]]
 
-How much design time do you spend on 'nice-to-haves' versus core tasks?
+**How much design time do you spend on 'nice-to-haves' versus core tasks?**
 
 [[___]]
 
-If you could delete one feature from your product today to save energy, what would it be?
+**If you could delete one feature from your product today to save energy, what would it be?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will ask 'What is the user evidence for this?' at the start of every new design ticket."
 
 [[I Commit]]
+
 
 ---
 
@@ -157,72 +170,83 @@ A user spending 10 minutes confusedly clicking through menus isn't "high engagem
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-02) to suggest improvements.
 
-### Knowledge Check
 
-What is 'Interaction Cost'?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** What is 'Interaction Cost'?
 
 [ ] The money users pay to use the site.
 [x] The mental and physical effort required to reach a goal.
 [ ] The bandwidth cost of loading the menu.
 
-*******************************************************
-> Review the Nielsen Norman Group definition of Interaction Cost.
-*******************************************************
+> **Explanation**: Review the Nielsen Norman Group definition of Interaction Cost.
 
-
-Which navigation pattern is generally more sustainable?
+**Question 2:** Which navigation pattern is generally more sustainable?
 
 [x] Broad and shallow (many items, few clicks).
 [ ] Deep and narrow (few items, many clicks).
 
-*******************************************************
-> Shallow structures reduce page reloads and round-trips.
-*******************************************************
+> **Explanation**: Shallow structures reduce page reloads and round-trips.
 
 
-### 🛠 Practice: UXD-02 Assignment
+---
 
-> Choose a top user task (e.g., 'Contact Support' or 'Buy Product'). Map the current flow path. Count the number of clicks and page loads. Redesign the path to reduce the steps by at least 20%.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Choose a top user task (e.g., 'Contact Support' or 'Buy Product'). Map the current flow path. Count the number of clicks and page loads. Redesign the path to reduce the steps by at least 20%.
+
+#### Steps
+
 1. Select a core user task.
 1. Walk the current flow, counting clicks/screens.
 1. Sketch a streamlined version.
 1. Calculate the theoretical savings.
 
-**Deliverable**: Before/After flow diagram.
+#### Deliverable
+
+Before/After flow diagram.
+
+
+---
 
 ### 💭 Reflection
 
-Can a user reach their goal in 3 clicks or less?
+Take a moment to reflect on what you learned.
+
+**Can a user reach their goal in 3 clicks or less?**
 
 [[___]]
 
-I have audited the menu structure for clear, descriptive labels.
+**I have audited the menu structure for clear, descriptive labels.**
 
 [[___]]
 
-I have ensured search results are relevant and fast.
+**I have ensured search results are relevant and fast.**
 
 [[___]]
 
-Is your navigation structured around how *you* view the company, or how the *user* views their problem?
+**Is your navigation structured around how *you* view the company, or how the *user* views their problem?**
 
 [[___]]
 
-What is the 'time cost' of a user getting lost on your site?
+**What is the 'time cost' of a user getting lost on your site?**
 
 [[___]]
 
-How does deep nesting affect mobile users on slow connections?
+**How does deep nesting affect mobile users on slow connections?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will perform a card-sorting test once a year to verify our IA matches mental models."
 
 [[I Commit]]
+
 
 ---
 
@@ -263,85 +287,76 @@ How does deep nesting affect mobile users on slow connections?
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-03) to suggest improvements.
 
-### Knowledge Check
 
-You are designing the "Delete Account" flow. A stakeholder argues that making it easy will increase churn.  They suggest adding a requirement to call customer support to finalize the deletion.
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** You are designing the "Delete Account" flow. A stakeholder argues that making it easy will increase churn.  They suggest adding a requirement to call customer support to finalize the deletion.
 
 [ ] Agree, as reducing churn is the primary business metric.
 [ ] Compromise by offering a 'Pause Account' option but keeping the 'Call Support' requirement for deletion.
 [x] Push back, arguing that forcing a digital-only user to use an analog channel (phone) creates unnecessary friction and keeps unwanted data on servers.
 [ ] Implement the phone requirement but add a tool tip explaining why.
 
-*******************************************************
-> This is a "Roach Motel" pattern. It artificially increases the energy and time cost to leave.  Sustainable design allows users to manage their data lifecycle autonomously without arbitrary barriers.
-*******************************************************
+> **Explanation**: This is a "Roach Motel" pattern. It artificially increases the energy and time cost to leave.  Sustainable design allows users to manage their data lifecycle autonomously without arbitrary barriers.
 
-
-You are auditing a newsletter signup modal. The subtle text below the "Sign Up" button says "No thanks, I prefer to stay uninformed."  The marketing team says this increased conversion by 2%.
+**Question 2:** You are auditing a newsletter signup modal. The subtle text below the "Sign Up" button says "No thanks, I prefer to stay uninformed."  The marketing team says this increased conversion by 2%.
 
 [ ] Keep it. A 2% increase in conversion justifies the tone.
 [x] Change the text to a neutral 'No thanks' or 'Close'.
 [ ] Make the text smaller so it's less offensive but still works.
 [ ] Remove the close option entirely and force a click outside the modal.
 
-*******************************************************
-> This is "Confirmshaming". While it may boost short-term metrics, it manipulates users through guilt.  Sustainable UX respects the user's emotional state and intent, building long-term trust over short-term "hacks".
-*******************************************************
+> **Explanation**: This is "Confirmshaming". While it may boost short-term metrics, it manipulates users through guilt.  Sustainable UX respects the user's emotional state and intent, building long-term trust over short-term "hacks".
 
-
-An e-commerce checkout flow automatically adds "Shipping Insurance" to the cart (checked by default).  Users must uncheck it to opt out.
+**Question 3:** An e-commerce checkout flow automatically adds "Shipping Insurance" to the cart (checked by default).  Users must uncheck it to opt out.
 
 [ ] Leave it. It protects the user's package and increases average order value.
 [x] Change it to 'Opt-in' (unchecked by default), requiring the user to actively select it if they want it.
 [ ] Move the checkbox to the end of the page so they see it right before paying.
 [ ] Add a second popup asking 'Are you sure?' if they uncheck it.
 
-*******************************************************
-> This is the "Sneak into Basket" or "Default Effect" pattern. Pre-checking inputs generates distinct waste—users  buying things they don't want, leading to potential refunds, customer service cycles, and financial waste. Intent should always be explicit.
-*******************************************************
+> **Explanation**: This is the "Sneak into Basket" or "Default Effect" pattern. Pre-checking inputs generates distinct waste—users  buying things they don't want, leading to potential refunds, customer service cycles, and financial waste. Intent should always be explicit.
 
-
-You notice a high number of users are accidentally enabling "Share my data with partners" because the toggle switch label  says "Opt-out of data sharing" but the switch is "On".
+**Question 4:** You notice a high number of users are accidentally enabling "Share my data with partners" because the toggle switch label  says "Opt-out of data sharing" but the switch is "On".
 
 [ ] Add a second switch to confirm the choice.
 [x] Rewrite the label to be positive and direct: 'Allow data sharing', set the switch to 'Off' by default.
 [ ] Change the color of the switch to red to indicate danger.
 [ ] Leave it, as data sharing is valuable for the business model.
 
-*******************************************************
-> This is "Privacy Deception" or confusing logic. Sustainable design minimizes cognitive load and unintentional data transfer.  Ambiguous controls lead to "data pollution"—collecting data users never meant to give.
-*******************************************************
+> **Explanation**: This is "Privacy Deception" or confusing logic. Sustainable design minimizes cognitive load and unintentional data transfer.  Ambiguous controls lead to "data pollution"—collecting data users never meant to give.
 
-
-You observe that after "simplifying" the unsubscribe flow to a single click, the "Retention Rate" metric dropped by 5%.  The Head of Product wants to revert to the old 4-step process.
+**Question 5:** You observe that after "simplifying" the unsubscribe flow to a single click, the "Retention Rate" metric dropped by 5%.  The Head of Product wants to revert to the old 4-step process.
 
 [ ] Revert immediately. Retention is the key indicator of product health.
 [x] Analyze the 5% who left. If they were inactive/unhappy, argue that their departure is 'healthy pruning' that saves resources.
 [ ] Compliment the 4-step process with a 10% discount offer to keep them.
 [ ] Hide the unsubscribe button in the footer to reduce visibility.
 
-*******************************************************
-> High retention forced by friction is a false signal ("Captivity", not loyalty). Sustainable product management values an active,  engaged user base over a bloated database of users who are only there because they couldn't find the exit.
-*******************************************************
+> **Explanation**: High retention forced by friction is a false signal ("Captivity", not loyalty). Sustainable product management values an active,  engaged user base over a bloated database of users who are only there because they couldn't find the exit.
 
-
-A stakeholder asks why the team should invest 2 days in fixing a "Exit Path" (cancellation flow) that generates zero revenue.
+**Question 6:** A stakeholder asks why the team should invest 2 days in fixing a "Exit Path" (cancellation flow) that generates zero revenue.
 
 [ ] 'It provides feature parity with our competitors.'
 [ ] 'It is required by law in some regions, so it is just a compliance task.'
 [x] 'Respecting the user's right to leave reduces 'revenge' costs (spam reports, negative reviews) and clears dead data from our systems.'
 [ ] 'It will make our designers feel better about their work.'
 
-*******************************************************
-> Reframing the exit path as a sustainability and reputation shield is effective. A user trapped in a system generates negative value  (support tickets, spam complaints) and wasted storage cost (dead accounts).
-*******************************************************
+> **Explanation**: Reframing the exit path as a sustainability and reputation shield is effective. A user trapped in a system generates negative value  (support tickets, spam complaints) and wasted storage cost (dead accounts).
 
 
-### 🛠 Practice: UXD-03 Assignment
+---
 
-> Select a live digital service (your own or a public one) and map the "Exit Path" for a user trying to unsubscribe, downgrade, or delete their account.  Document every distinct interaction required to achieve the goal.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Select a live digital service (your own or a public one) and map the "Exit Path" for a user trying to unsubscribe, downgrade, or delete their account.  Document every distinct interaction required to achieve the goal.
+
+#### Steps
+
 1. Target URL (e.g., Use a real newsletter unsubscribe link or account settings page)
 1. Screen capture tool or Flow mapping tool
 1. Screenshots of every modal, confirm dialog, and email verification step.
@@ -352,35 +367,41 @@ A stakeholder asks why the team should invest 2 days in fixing a "Exit Path" (ca
 1. Size of unwanted artifact (e.g., 50KB per email)
 1. Formula: (Users x 10% x Frequency x Size x 12 months) = Total Data Waste (GB).
 1. Carbon Equivalent: Convert Total Data Waste to kgCO2e using 0.81 kWh/GB (standard estimate).
+
+---
+
 ### 💭 Reflection
 
-Have you ever audited your product's cancellation flow yourself?
+Take a moment to reflect on what you learned.
+
+**Have you ever audited your product's cancellation flow yourself?**
 
 [[___]]
 
-Does your defined 'Happy Path' include users leaving the service?
+**Does your defined 'Happy Path' include users leaving the service?**
 
 [[___]]
 
-I have confirmed that the 'Exit' action is visible without scrolling.
+**I have confirmed that the 'Exit' action is visible without scrolling.**
 
 [[___]]
 
-I have ensured the language used is neutral (e.g., 'Cancel Subscription' instead of 'Lose My Benefits').
+**I have ensured the language used is neutral (e.g., 'Cancel Subscription' instead of 'Lose My Benefits').**
 
 [[___]]
 
-I have removed any step that requires contacting support for a purely digital transaction.
+**I have removed any step that requires contacting support for a purely digital transaction.**
 
 [[___]]
 
-What internal pressure (revenue goals, retention metrics) motivates the specific dark patterns you found?
+**What internal pressure (revenue goals, retention metrics) motivates the specific dark patterns you found?**
 
 [[___]]
 
-How can you reframe 'easy exit' as a brand value to your stakeholders?
+**How can you reframe 'easy exit' as a brand value to your stakeholders?**
 
 [[___]]
+
 
 ---
 
@@ -419,72 +440,83 @@ Forms are friction. Every extra field increases the cognitive load on the user a
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-04) to suggest improvements.
 
-### Knowledge Check
 
-Why is asking for a phone number when it's not needed an issue?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** Why is asking for a phone number when it's not needed an issue?
 
 [ ] It creates privacy risk.
 [ ] It increases friction and dropout rates.
 [x] Both of the above.
 
-*******************************************************
-> Data minimization protects users and improves conversion.
-*******************************************************
+> **Explanation**: Data minimization protects users and improves conversion.
 
-
-Which input type is best for entering a credit card expiry date?
+**Question 2:** Which input type is best for entering a credit card expiry date?
 
 [ ] Three separate dropdowns (Day/Month/Year).
 [x] A single text input with automatic formatting.
 
-*******************************************************
-> Native inputs usually perform better than custom dropdowns for data entry speed.
-*******************************************************
+> **Explanation**: Native inputs usually perform better than custom dropdowns for data entry speed.
 
 
-### 🛠 Practice: UXD-04 Assignment
+---
 
-> Take an existing form on your site. For every field, write down who uses the data and what happens if it is deleted. Remove any field that lacks a clear downstream consumer.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Take an existing form on your site. For every field, write down who uses the data and what happens if it is deleted. Remove any field that lacks a clear downstream consumer.
+
+#### Steps
+
 1. Inventory all fields.
 1. Identify the data consumer for each.
 1. Remove 'nice to have' fields.
 1. Prototype the shortened form.
 
-**Deliverable**: Annotated screenshot and rationalization table.
+#### Deliverable
+
+Annotated screenshot and rationalization table.
+
+
+---
 
 ### 💭 Reflection
 
-Do you know exactly why you collect every field in your sign-up form?
+Take a moment to reflect on what you learned.
+
+**Do you know exactly why you collect every field in your sign-up form?**
 
 [[___]]
 
-I have removed at least one optional field.
+**I have removed at least one optional field.**
 
 [[___]]
 
-I have enabled autocomplete on all inputs.
+**I have enabled autocomplete on all inputs.**
 
 [[___]]
 
-What 'legacy data' are you collecting that no one looks at anymore?
+**What 'legacy data' are you collecting that no one looks at anymore?**
 
 [[___]]
 
-How does a long form impact a user with anxiety or a motor impairment?
+**How does a long form impact a user with anxiety or a motor impairment?**
 
 [[___]]
 
-Does marketing actually use the demographic data you force users to provide?
+**Does marketing actually use the demographic data you force users to provide?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will challenge every new input field request with: 'How will this improve the user's immediate experience?'"
 
 [[I Commit]]
+
 
 ---
 
@@ -522,71 +554,80 @@ Inconsistency breeds bloat. If every landing page has slightly different button 
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20UXD-05) to suggest improvements.
 
-### Knowledge Check
 
-How does a design system reduce carbon emissions?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** How does a design system reduce carbon emissions?
 
 [ ] It uses greener colors.
 [x] It reduces code duplication and development churn.
 [ ] It forces users to upgrade their devices.
 
-*******************************************************
-> Reusability is the core sustainability benefit.
-*******************************************************
+> **Explanation**: Reusability is the core sustainability benefit.
 
-
-When should you break from the design system?
+**Question 2:** When should you break from the design system?
 
 [ ] Whenever you feel creative.
 [x] When user research proves the standard component fails the specific need.
 
-*******************************************************
-> Consistency builds trust; deviation requires justification.
-*******************************************************
+> **Explanation**: Consistency builds trust; deviation requires justification.
 
 
-### 🛠 Practice: UXD-05 Assignment
+---
 
-> Audit your product for *one* common element (e.g., primary buttons, date pickers, or headers). Screenshot every variation you find. Group them by similarity. Propose a single standard.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Audit your product for *one* common element (e.g., primary buttons, date pickers, or headers). Screenshot every variation you find. Group them by similarity. Propose a single standard.
+
+#### Steps
+
 1. Choose a component.
 1. Hunt for inconsistencies across the site.
 1. Collage them onto one canvas.
 1. Define the single source of truth.
 
-**Deliverable**: The 'Wall of Shame' collage and the proposed fix.
+#### Deliverable
+
+The 'Wall of Shame' collage and the proposed fix.
+
+
+---
 
 ### 💭 Reflection
 
-Do you have a shared component library with developers?
+Take a moment to reflect on what you learned.
+
+**Do you have a shared component library with developers?**
 
 [[___]]
 
-I have consolidated button styles to a core set.
+**I have consolidated button styles to a core set.**
 
 [[___]]
 
-I have defined a spacing system to reduce random pixel values.
+**I have defined a spacing system to reduce random pixel values.**
 
 [[___]]
 
-Why do designers feel the urge to reinvent common patterns (like inputs) for every project?
+**Why do designers feel the urge to reinvent common patterns (like inputs) for every project?**
 
 [[___]]
 
-How much CSS bloat is caused by 'detached' design components that act like one-offs?
+**How much CSS bloat is caused by 'detached' design components that act like one-offs?**
 
 [[___]]
 
-Can a strict design system actually liberate you to focus on bigger UX problems?
+**Can a strict design system actually liberate you to focus on bigger UX problems?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will use standard components for 90% of the UI and only break the system for high-impact innovation."
 
 [[I Commit]]
 
----

@@ -15,6 +15,8 @@ comment:  This course is auto-generated from the WSG MOOC repository.
 > Learn to apply the W3C Web Sustainability Guidelines (WSG) in your daily work. 
 
 
+---
+
 ## CON-01: Writing for Clarity
 
 ## The Decision
@@ -50,72 +52,83 @@ Reading requires energy—both biological (brain usage) and electrical (screen t
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20CON-01) to suggest improvements.
 
-### Knowledge Check
 
-Who benefits from Grade 8 level writing?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** Who benefits from Grade 8 level writing?
 
 [ ] Only children.
 [x] Everyone, including experts.
 
-*******************************************************
-> Experts prefer plain language because it saves them time.
-*******************************************************
+> **Explanation**: Experts prefer plain language because it saves them time.
 
-
-How does concise content help the environment?
+**Question 2:** How does concise content help the environment?
 
 [ ] Less data to store and transfer.
 [ ] Less time spent reading (screen on time).
 [x] Both of the above.
 
-*******************************************************
-> Cognitive load and server load are both reduced.
-*******************************************************
+> **Explanation**: Cognitive load and server load are both reduced.
 
 
-### 🛠 Practice: CON-01 Assignment
+---
 
-> Take a complex paragraph from your organization's 'About Us' or 'Policy' page. Use the [Hemingway Editor](https://hemingwayapp.com/) or similar to measure its grade level. Rewrite it to aim for Grade 8.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Take a complex paragraph from your organization's 'About Us' or 'Policy' page. Use the [Hemingway Editor](https://hemingwayapp.com/) or similar to measure its grade level. Rewrite it to aim for Grade 8.
+
+#### Steps
+
 1. Paste text into [Hemingway App](https://hemingwayapp.com/).
 1. Note the initial grade.
 1. Simplify sentences and remove adverbs.
 1. Note the final grade.
 
-**Deliverable**: Before/After text with scores.
+#### Deliverable
+
+Before/After text with scores.
+
+
+---
 
 ### 💭 Reflection
 
-Is the reading grade level of your content above grade 9?
+Take a moment to reflect on what you learned.
+
+**Is the reading grade level of your content above grade 9?**
 
 [[___]]
 
-I have used plain language and avoided jargon.
+**I have used plain language and avoided jargon.**
 
 [[___]]
 
-I have broken long paragraphs into bulleted lists.
+**I have broken long paragraphs into bulleted lists.**
 
 [[___]]
 
-How does complex language waste energy?
+**How does complex language waste energy?**
 
 [[___]]
 
-Why is 'plain language' an accessibility requirement, not just a style choice?
+**Why is 'plain language' an accessibility requirement, not just a style choice?**
 
 [[___]]
 
-Does this content actually need to be 1,000 words long?
+**Does this content actually need to be 1,000 words long?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will write for the user's understanding, not to sound impressive, aiming for Grade 8 readability."
 
 [[I Commit]]
+
 
 ---
 
@@ -153,70 +166,81 @@ A user clicking the "Back" button is a failure of sustainability. It means they 
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20CON-02) to suggest improvements.
 
-### Knowledge Check
 
-What is the primary sustainability goal of good SEO?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** What is the primary sustainability goal of good SEO?
 
 [ ] Getting more traffic.
 [x] Helping users find the right answer immediately.
 
-*******************************************************
-> Reducing 'pogo-sticking' saves energy and frustration.
-*******************************************************
+> **Explanation**: Reducing 'pogo-sticking' saves energy and frustration.
 
-
-Which element is crucial for screen reader navigation?
+**Question 2:** Which element is crucial for screen reader navigation?
 
 [ ] Keywords tag.
 [x] Proper heading structure (H1, H2, H3).
 
-*******************************************************
-> Headings provide the outline users skip through.
-*******************************************************
+> **Explanation**: Headings provide the outline users skip through.
 
 
-### 🛠 Practice: CON-02 Assignment
+---
 
-> Select 3 pages on your site. Read the current meta description. Does it accurately promise what is on the page? Rewrite them to be both enticing and strictly accurate.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Select 3 pages on your site. Read the current meta description. Does it accurately promise what is on the page? Rewrite them to be both enticing and strictly accurate.
+
+#### Steps
+
 1. View Source -> description.
 1. Evaluate accuracy vs clickbait.
 1. Draft new versions (150-160 chars).
 
-**Deliverable**: Spreadsheet of URLs and rewriting descriptions.
+#### Deliverable
+
+Spreadsheet of URLs and rewriting descriptions.
+
+
+---
 
 ### 💭 Reflection
 
-Does the page title accurately describe the specific content of the page?
+Take a moment to reflect on what you learned.
+
+**Does the page title accurately describe the specific content of the page?**
 
 [[___]]
 
-I have written a unique meta description that matches the user's need.
+**I have written a unique meta description that matches the user's need.**
 
 [[___]]
 
-I have used meaningful H1 and H2 headings.
+**I have used meaningful H1 and H2 headings.**
 
 [[___]]
 
-What is the carbon cost of 'pogo-sticking' (loading a page, finding it wrong, going back)?
+**What is the carbon cost of 'pogo-sticking' (loading a page, finding it wrong, going back)?**
 
 [[___]]
 
-How does clear structure help screen reader users jump to what they need?
+**How does clear structure help screen reader users jump to what they need?**
 
 [[___]]
 
-Is 'clickbait' sustainable?
+**Is 'clickbait' sustainable?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will optimize metadata to ensure users find exactly what they need on the first click."
 
 [[I Commit]]
+
 
 ---
 
@@ -255,72 +279,83 @@ Images and videos are often the primary storytelling elements, but for users wit
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20CON-03) to suggest improvements.
 
-### Knowledge Check
 
-When an image is purely decorative, what should the alt text be?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** When an image is purely decorative, what should the alt text be?
 
 [ ] alt='decorative'
 [ ] Leave it out completely.
 [x] alt='' (empty string)
 
-*******************************************************
-> An empty attribute tells screen readers to ignore it.
-*******************************************************
+> **Explanation**: An empty attribute tells screen readers to ignore it.
 
-
-Can auto-generated captions be used as-is?
+**Question 2:** Can auto-generated captions be used as-is?
 
 [ ] Yes, AI is perfect.
 [x] No, they must be reviewed for accuracy.
 
-*******************************************************
-> Inaccurate captions fail the WCAG requirement.
-*******************************************************
+> **Explanation**: Inaccurate captions fail the WCAG requirement.
 
 
-### 🛠 Practice: CON-03 Assignment
+---
 
-> Open your media library or a recent article. Find 5 images. Write the alt text that conveys the *information*, not just the visual description. If the image has no info, mark it as decorative.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Open your media library or a recent article. Find 5 images. Write the alt text that conveys the *information*, not just the visual description. If the image has no info, mark it as decorative.
+
+#### Steps
+
 1. Select images.
 1. Contextualize: Why is this image here?
 1. Write the text alternative.
 1. Test: If I remove the image and put the text here, is the meaning lost?
 
-**Deliverable**: 5 images with proposed alt text.
+#### Deliverable
+
+5 images with proposed alt text.
+
+
+---
 
 ### 💭 Reflection
 
-Does every image conveying meaning have a text alternative?
+Take a moment to reflect on what you learned.
+
+**Does every image conveying meaning have a text alternative?**
 
 [[___]]
 
-I have provided captions (not just auto-generated) for all video.
+**I have provided captions (not just auto-generated) for all video.**
 
 [[___]]
 
-I have written alt text that describes the *function* of the image, not just the appearance.
+**I have written alt text that describes the *function* of the image, not just the appearance.**
 
 [[___]]
 
-If an image fails to load (low bandwidth), does the text alternative save the experience?
+**If an image fails to load (low bandwidth), does the text alternative save the experience?**
 
 [[___]]
 
-Why are text transcripts 'greener' than video?
+**Why are text transcripts 'greener' than video?**
 
 [[___]]
 
-How does searching video content depend on text alternatives?
+**How does searching video content depend on text alternatives?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will provide text alternatives for every piece of non-text content I publish."
 
 [[I Commit]]
+
 
 ---
 
@@ -359,70 +394,79 @@ The web is littered with digital trash—outdated news, expired offers, and obso
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20CON-04) to suggest improvements.
 
-### Knowledge Check
 
-What is 'ROT' in content strategy?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** What is 'ROT' in content strategy?
 
 [ ] Return on Time.
 [x] Redundant, Obsolete, Trivial.
 
-*******************************************************
-> ROT is clutter that wastes hosting and user attention.
-*******************************************************
+> **Explanation**: ROT is clutter that wastes hosting and user attention.
 
-
-Ideally, when should you decide when a page will be deleted?
+**Question 2:** Ideally, when should you decide when a page will be deleted?
 
 [ ] When you run out of server space.
 [x] Before you even publish it.
 
-*******************************************************
-> The 'Sunset Date' should be part of the creation metadata.
-*******************************************************
+> **Explanation**: The 'Sunset Date' should be part of the creation metadata.
 
 
-### 🛠 Practice: CON-04 Assignment
+---
 
-> Identify 10 pages on your site that have not been viewed in the last 6 months. Review them. Decide whether to Update, Archive (remove but save), or Delete (remove and forget).
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Identify 10 pages on your site that have not been viewed in the last 6 months. Review them. Decide whether to Update, Archive (remove but save), or Delete (remove and forget).
+
+#### Steps
+
 1. Pull analytics for 'Bottom 50 pages'.
 1. Select 10.
 1. Check for regulatory reasons to keep.
 1. Execute the decision.
 
-**Deliverable**: List of 10 URLs and their fate.
+#### Deliverable
+
+List of 10 URLs and their fate.
+
+
+---
 
 ### 💭 Reflection
 
-Is there a 'Sunset Date' or 'Review Date' attached to this content?
+Take a moment to reflect on what you learned.
+
+**Is there a 'Sunset Date' or 'Review Date' attached to this content?**
 
 [[___]]
 
-I have identified related content that should be archived when this is published.
+**I have identified related content that should be archived when this is published.**
 
 [[___]]
 
-I have set a calendar reminder to review this content in 6 months.
+**I have set a calendar reminder to review this content in 6 months.**
 
 [[___]]
 
-What is the environmental cost of hosting 10,000 pages that nobody visits?
+**What is the environmental cost of hosting 10,000 pages that nobody visits?**
 
 [[___]]
 
-How does obsolete content harm user trust and findability?
+**How does obsolete content harm user trust and findability?**
 
 [[___]]
 
-Why is it harder to delete content than to create it?
+**Why is it harder to delete content than to create it?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will delete or archive content that no longer serves a user need, keeping the digital footprint light."
 
 [[I Commit]]
 
----

@@ -15,6 +15,8 @@ comment:  This course is auto-generated from the WSG MOOC repository.
 > Learn to apply the W3C Web Sustainability Guidelines (WSG) in your daily work. 
 
 
+---
+
 ## VIS-01: Setting the Weight Budget
 
 ## The Decision
@@ -48,71 +50,82 @@ Visual assets (images, fonts, videos, Lottie files) account for the vast majorit
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-01) to suggest improvements.
 
-### Knowledge Check
 
-What is a 'Performance Budget'?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** What is a 'Performance Budget'?
 
 [ ] The money spent on hosting.
 [x] A limit on valid page size (e.g., < 1MB) defined before design begins.
 
-*******************************************************
-> Budgets prevent 'bloat creep' during the project.
-*******************************************************
+> **Explanation**: Budgets prevent 'bloat creep' during the project.
 
-
-Who is responsible for the weight budget?
+**Question 2:** Who is responsible for the weight budget?
 
 [ ] Only the developers.
 [x] Designers sets the constraints, developers implement them.
 
-*******************************************************
-> Design decisions (like full-screen video) dictate the technical floor.
-*******************************************************
+> **Explanation**: Design decisions (like full-screen video) dictate the technical floor.
 
 
-### 🛠 Practice: VIS-01 Assignment
+---
 
-> Calculate a realistic performance budget for your next project based on a target 3G network speed (1.6 Mbps) and a 3-second load time goal. Break it down by asset type (HTML, CSS, JS, Images, Fonts).
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Calculate a realistic performance budget for your next project based on a target 3G network speed (1.6 Mbps) and a 3-second load time goal. Break it down by asset type (HTML, CSS, JS, Images, Fonts).
+
+#### Steps
+
 1. Use a budget calculator (e.g., [performancebudget.io](https://performancebudget.io)).
 1. Set the total limit (e.g. 600KB).
 1. Allocate slices to each asset type.
 1. Compare against your current portfolio site.
 
-**Deliverable**: Budget Breakdown Table.
+#### Deliverable
+
+A spreadsheet or table showing your performance budget breakdown by asset type (HTML, CSS, JS, Images, Fonts) with specific byte limits for each category.
+
+
+---
 
 ### 💭 Reflection
 
-Do you personally check the total file size of your designs before handoff?
+Take a moment to reflect on what you learned.
+
+**Do you personally check the total file size of your designs before handoff?**
 
 [[___]]
 
-I have established a maximum weight (e.g., 1.5MB) for this page.
+**I have established a maximum weight (e.g., 1.5MB) for this page.**
 
 [[___]]
 
-I removed visual elements that exceeded the budget.
+**I removed visual elements that exceeded the budget.**
 
 [[___]]
 
-Why is 'high resolution' often prioritized over 'fast loading' in design portfolios?
+**Why is 'high resolution' often prioritized over 'fast loading' in design portfolios?**
 
 [[___]]
 
-How does a heavy page affect a user on a metered connection in a rural area?
+**How does a heavy page affect a user on a metered connection in a rural area?**
 
 [[___]]
 
-Can a design be 'beautiful' if it is unusable due to slowness?
+**Can a design be 'beautiful' if it is unusable due to slowness?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will define a performance budget (KB limit) before adding the first pixel to the canvas."
 
 [[I Commit]]
+
 
 ---
 
@@ -151,72 +164,83 @@ Custom web fonts are expensive assets. A single font file (e.g., Roboto-Bold-Ita
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-02) to suggest improvements.
 
-### Knowledge Check
 
-Which font format typically offers the best compression for modern browsers?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** Which font format typically offers the best compression for modern browsers?
 
 [ ] TTF
 [x] WOFF2
 [ ] EOT
 
-*******************************************************
-> WOFF2 compresses ~30% better than WOFF.
-*******************************************************
+> **Explanation**: WOFF2 compresses ~30% better than WOFF.
 
-
-What is the primary benefit of Variable Fonts?
+**Question 2:** What is the primary benefit of Variable Fonts?
 
 [ ] They look better.
 [x] They allow multiple weights/styles in a single file request.
 
-*******************************************************
-> One file request reduces latency overhead.
-*******************************************************
+> **Explanation**: One file request reduces latency overhead.
 
 
-### 🛠 Practice: VIS-02 Assignment
+---
 
-> Analyze a live website. List every font file downloaded. Calculate the total size. Propose a reduction plan involving subsetting, removing weights, or switching to system fonts.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Analyze a live website. List every font file downloaded. Calculate the total size. Propose a reduction plan involving subsetting, removing weights, or switching to system fonts.
+
+#### Steps
+
 1. Open Network Tab -> Fonts.
 1. Sum the transfer sizes.
 1. Identify unused characters or styles.
 1. Redesign the typography stack to save 50%.
 
-**Deliverable**: Before/After weight calculation.
+#### Deliverable
+
+Before/After weight calculation.
+
+
+---
 
 ### 💭 Reflection
 
-Can you list every font file and weight currently loading on your homepage?
+Take a moment to reflect on what you learned.
+
+**Can you list every font file and weight currently loading on your homepage?**
 
 [[___]]
 
-I have removed unused weights (e.g., Bold Italic) from the load list.
+**I have removed unused weights (e.g., Bold Italic) from the load list.**
 
 [[___]]
 
-I have considered using system fonts for UI elements.
+**I have considered using system fonts for UI elements.**
 
 [[___]]
 
-Does the user really notice the difference between 'Lato' and 'Open Sans' in body text?
+**Does the user really notice the difference between 'Lato' and 'Open Sans' in body text?**
 
 [[___]]
 
-What is the environmental cost of loading 5 different font files on every page view?
+**What is the environmental cost of loading 5 different font files on every page view?**
 
 [[___]]
 
-How does variable font technology change the trade-off?
+**How does variable font technology change the trade-off?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will limit my design to 2 font families and maximum 3 weights per page."
 
 [[I Commit]]
+
 
 ---
 
@@ -255,72 +279,83 @@ Images are often the heaviest single elements on a page. The wrong format choice
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-03) to suggest improvements.
 
-### Knowledge Check
 
-Which format is best for a flat icon or logo?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** Which format is best for a flat icon or logo?
 
 [ ] JPG
 [ ] PNG
 [x] SVG
 
-*******************************************************
-> Vectors (SVG) are resolution-independent and usually tiny.
-*******************************************************
+> **Explanation**: Vectors (SVG) are resolution-independent and usually tiny.
 
-
-True or False: You should upload the highest quality image possible and let the browser resize it.
+**Question 2:** True or False: You should upload the highest quality image possible and let the browser resize it.
 
 [ ] True
 [x] False
 
-*******************************************************
-> Browsers still download the full file. Resize on the server or build time.
-*******************************************************
+> **Explanation**: Browsers still download the full file. Resize on the server or build time.
 
 
-### 🛠 Practice: VIS-03 Assignment
+---
 
-> Take 3 unoptimized images (a photo, a transparent logo, a screenshot). Optimize them using modern formats (WebP/AVIF) and tools ([Squoosh](https://squoosh.app/) / [ImageOptim](https://imageoptim.com/)). Aim for visual purity but minimal size.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Take 3 unoptimized images (a photo, a transparent logo, a screenshot). Optimize them using modern formats (WebP/AVIF) and tools ([Squoosh](https://squoosh.app/) / [ImageOptim](https://imageoptim.com/)). Aim for visual purity but minimal size.
+
+#### Steps
+
 1. Gather source assets.
 1. Record starting file sizes.
 1. Process them.
 1. Record ending file sizes.
 
-**Deliverable**: Table showing % reduction achieved (aim for >60%).
+#### Deliverable
+
+Table showing % reduction achieved (aim for >60%).
+
+
+---
 
 ### 💭 Reflection
 
-Do you export images at 2x/3x retina resolution by default?
+Take a moment to reflect on what you learned.
+
+**Do you export images at 2x/3x retina resolution by default?**
 
 [[___]]
 
-I have chosen the correct format (SVG for vectors, JPG/WebP for photos).
+**I have chosen the correct format (SVG for vectors, JPG/WebP for photos).**
 
 [[___]]
 
-I have run all assets through a compression tool (tinypng, imageoptim) before handoff.
+**I have run all assets through a compression tool (tinypng, imageoptim) before handoff.**
 
 [[___]]
 
-Why do we keep full-resolution master files on the live web server?
+**Why do we keep full-resolution master files on the live web server?**
 
 [[___]]
 
-Is a transparent PNG always clearer than a JPG with a matching background color?
+**Is a transparent PNG always clearer than a JPG with a matching background color?**
 
 [[___]]
 
-How does image weight interact with CO2 emissions?
+**How does image weight interact with CO2 emissions?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will compress every single image asset and choose next-gen formats (WebP/AVIF) where possible."
 
 [[I Commit]]
+
 
 ---
 
@@ -357,72 +392,83 @@ On OLED screens (most modern phones and high-end laptops), black pixels turn off
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-04) to suggest improvements.
 
-### Knowledge Check
 
-Which screen technology benefits most from Dark Mode energy savings?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** Which screen technology benefits most from Dark Mode energy savings?
 
 [ ] LCD
 [x] OLED
 [ ] CRT
 
-*******************************************************
-> OLED pixels turn off completely for true black, saving energy.
-*******************************************************
+> **Explanation**: OLED pixels turn off completely for true black, saving energy.
 
-
-Why is pure blue (#0000FF) problematic for energy efficiency?
+**Question 2:** Why is pure blue (#0000FF) problematic for energy efficiency?
 
 [x] Blue pixels consume significantly more power than red or green.
 [ ] It isn't.
 
-*******************************************************
-> Blue light generation is less efficient in current display tech.
-*******************************************************
+> **Explanation**: Blue light generation is less efficient in current display tech.
 
 
-### 🛠 Practice: VIS-04 Assignment
+---
 
-> Take a bright, high-key interface design. Create a dark mode variant that ensures accessible contrast ratios. ensure it uses true blacks or very dark greys.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Take a bright, high-key interface design. Create a dark mode variant that ensures accessible contrast ratios. ensure it uses true blacks or very dark greys.
+
+#### Steps
+
 1. Select a light mode screen.
 1. Invert the palette sensibly.
 1. Check WCAG contrast for text.
 1. Test on a mobile device if possible.
 
-**Deliverable**: Side-by-side Light vs Dark comparison.
+#### Deliverable
+
+Side-by-side Light vs Dark comparison.
+
+
+---
 
 ### 💭 Reflection
 
-Does your design include a true dark mode (not just inverted colors)?
+Take a moment to reflect on what you learned.
+
+**Does your design include a true dark mode (not just inverted colors)?**
 
 [[___]]
 
-I have provided a 'Dark Mode' option that respects system preferences.
+**I have provided a 'Dark Mode' option that respects system preferences.**
 
 [[___]]
 
-I have avoided pure white (#FFFFFF) backgrounds on large areas where possible.
+**I have avoided pure white (#FFFFFF) backgrounds on large areas where possible.**
 
 [[___]]
 
-How much battery life can a dark theme save on an OLED screen?
+**How much battery life can a dark theme save on an OLED screen?**
 
 [[___]]
 
-Is 'Dark Mode' just an aesthetic trend or an accessibility/sustainability necessity?
+**Is 'Dark Mode' just an aesthetic trend or an accessibility/sustainability necessity?**
 
 [[___]]
 
-Does your color palette rely on brightness levels that force screens to max power?
+**Does your color palette rely on brightness levels that force screens to max power?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will design a dark mode variant for every interface to support energy saving and eye health."
 
 [[I Commit]]
+
 
 ---
 
@@ -460,70 +506,79 @@ Animation is computationally expensive. It triggers the CPU and GPU to repaint t
 ## Feedback
 [Open an issue](https://github.com/mgifford/wsg-mooc/issues/new?title=Feedback%20on%20VIS-05) to suggest improvements.
 
-### Knowledge Check
 
-What is the CPU impact of continuous Javascript-based animation?
+---
+
+### ✓ Knowledge Check
+
+Review what you've learned. Multiple attempts encouraged!
+
+**Question 1:** What is the CPU impact of continuous Javascript-based animation?
 
 [ ] Negligible.
 [x] High; it prevents the processor from idling.
 
-*******************************************************
-> It keeps the CPU awake, draining battery.
-*******************************************************
+> **Explanation**: It keeps the CPU awake, draining battery.
 
-
-Who needs a 'Stop Animation' button?
+**Question 2:** Who needs a 'Stop Animation' button?
 
 [x] People with vestibular disorders.
 [ ] People with slow internet.
 
-*******************************************************
-> Motion triggers nausea for some users.
-*******************************************************
+> **Explanation**: Motion triggers nausea for some users.
 
 
-### 🛠 Practice: VIS-05 Assignment
+---
 
-> Identify every moving element on your homepage. Classify them as 'Essential' (conveys data) or 'Decor' (delight). Create a plan to pause or remove the 'Decor' items.
+### 🛠 Assignment
 
-**Steps:**
+**Goal**: Identify every moving element on your homepage. Classify them as 'Essential' (conveys data) or 'Decor' (delight). Create a plan to pause or remove the 'Decor' items.
+
+#### Steps
+
 1. Watch the page load.
 1. List all animations.
 1. Check for 'prefers-reduced-motion' support.
 1. Code a patch to disable decor if that flag is true.
 
-**Deliverable**: Motion audit list.
+#### Deliverable
+
+Motion audit list.
+
+
+---
 
 ### 💭 Reflection
 
-Does the animation play automatically without user interaction?
+Take a moment to reflect on what you learned.
+
+**Does the animation play automatically without user interaction?**
 
 [[___]]
 
-I have ensured all animation stops after 5 seconds or has a pause button.
+**I have ensured all animation stops after 5 seconds or has a pause button.**
 
 [[___]]
 
-I have designed a static state for 'prefers-reduced-motion'.
+**I have designed a static state for 'prefers-reduced-motion'.**
 
 [[___]]
 
-Is this animation conveying information, or just 'delight'?
+**Is this animation conveying information, or just 'delight'?**
 
 [[___]]
 
-How does continuous WebGL or CSS animation affect CPU usage and battery?
+**How does continuous WebGL or CSS animation affect CPU usage and battery?**
 
 [[___]]
 
-Who is excluded when we rely on motion to signal state changes?
+**Who is excluded when we rely on motion to signal state changes?**
 
 [[___]]
 
-#### Commitment
+#### Your Commitment
 
 "I will use motion only for user feedback, never for decoration, and always respect reduced-motion settings."
 
 [[I Commit]]
 
----

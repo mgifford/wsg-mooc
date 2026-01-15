@@ -65,9 +65,9 @@ describe('Build Process Validation', () => {
                 const content = fs.readFileSync(path.join(LIASCRIPT_DIR, file), 'utf8');
                 
                 if (content.includes('Assignment')) {
-                    // Should have Steps and Deliverable sections
-                    expect(content).toMatch(/\*\*Steps:\*\*/);
-                    expect(content).toMatch(/\*\*Deliverable\*\*:/);
+                    // Should have Steps and Deliverable sections (flexible format)
+                    expect(content).toMatch(/(\*\*Steps:\*\*|#### Steps)/);
+                    expect(content).toMatch(/(\*\*Deliverable\*\*:|#### Deliverable)/);
                 }
             });
         });

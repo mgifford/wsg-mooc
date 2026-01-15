@@ -8,33 +8,48 @@ narrator: US English Female
 comment:  This course is auto-generated from the WSG MOOC repository.
 -->
 
-# Web Sustainability MOOC (WSG)
+# Web Sustainability MOOC
 
-Select a role-based track to begin. Each track teaches you how to apply the W3C Web Sustainability Guidelines (WSG) in your job.
+Learn role-based strategies from the W3C Web Sustainability Guidelines.
+
+Select your role to begin:
+
+
+---
 
 ## Front-end Developer
 
 Reduce client-side compute and optimization.
 
-👉 [Launch Front-end Developer Track](Front-end_Developer.md)
+👉 [Launch Front-end Developer Track →](Front-end_Developer.md)
+
+
+---
 
 ## UX Designer
 
 Eliminate dark patterns and high-friction flows.
 
-👉 [Launch UX Designer Track](UX_Designer.md)
+👉 [Launch UX Designer Track →](UX_Designer.md)
+
+
+---
 
 ## Visual Designer
 
 Optimize assets, palettes, and typography.
 
-👉 [Launch Visual Designer Track](Visual_Designer.md)
+👉 [Launch Visual Designer Track →](Visual_Designer.md)
+
+
+---
 
 ## Content Author
 
 Improve clarity, findability, and content lifecycle.
 
-👉 [Launch Content Author Track](Content_Author.md)
+👉 [Launch Content Author Track →](Content_Author.md)
+
 
 ---
 
