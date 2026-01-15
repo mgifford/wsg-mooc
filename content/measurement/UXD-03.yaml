@@ -1,0 +1,39 @@
+# Measurement Tool Recommendations for Lesson UXD-03
+# Context: Removing Toxic Patterns (Dark Patterns, Friction)
+
+id: UXD-03-M
+lesson_id: UXD-03
+
+recommendations:
+  primary_tool:
+    name: "CO2.js (via Manual Calculation)"
+    type: "Calculation Library / Formula"
+    applicability: "High"
+    valid_uses:
+      - "Calculating the carbon impact of 'Ghost Data' (e.g., unwanted emails sent to 10k users)."
+      - "Quantifying the aggregate waste of 10 extra seconds of screen time across a user base."
+    limitations:
+      - "Requires manual input estimates (Email size, Send frequency)."
+      - "Not a 'point-and-click' scanner."
+
+  secondary_tool:
+    name: "Chrome DevTools (Network Tab)"
+    type: "Browser Utility"
+    applicability: "Medium"
+    valid_uses:
+      - "Summing the total payload of the 'Exit Path' (e.g., measuring the combined weight of the 4 pages required to unsubscribe)."
+    limitations:
+      - "Does not measure server-side processing cost."
+
+  excluded_tools:
+    - name: "Ecograder / Website Carbon"
+      reason: "False Positive Risk"
+      explanation: >
+        These tools measure the performance of a single URL. A deceptively designed cancellation page might be very lightweight (getting an 'A' grade), 
+        masking the fact that the user was forced to visit 5 such pages to complete a simple task. 
+        They measure *efficiency*, not *intent* or *friction*.
+
+  learner_warning: >
+    "⚠️ WARNING: Do not use single-page scanners (like Website Carbon) to validate this lesson. 
+    A 'Green' score on a page that traps users is a failure of measurement. 
+    For UX, you must measure the *Process Cost* (Sum of all steps), not the *Page Cost*."

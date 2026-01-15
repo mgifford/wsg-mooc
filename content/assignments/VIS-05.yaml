@@ -1,0 +1,10 @@
+id: VIS-05-A
+lesson_id: VIS-05
+title: "Assignment: Motion Audit"
+description: "Identify every moving element on your homepage. Classify them as 'Essential' (conveys data) or 'Decor' (delight). Create a plan to pause or remove the 'Decor' items."
+steps:
+  - "Watch the page load."
+  - "List all animations."
+  - "Check for 'prefers-reduced-motion' support."
+  - "Code a patch to disable decor if that flag is true."
+deliverable: "Motion audit list."

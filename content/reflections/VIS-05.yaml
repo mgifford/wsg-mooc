@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson VIS-05
+id: VIS-05-R
+lesson_id: VIS-05
+
+diagnostic:
+  title: "Motion Audit"
+  questions:
+    - id: "diag_1"
+      text: "Does the animation play automatically without user interaction?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have ensured all animation stops after 5 seconds or has a pause button."
+    - id: "rubric_2"
+      text: "I have designed a static state for 'prefers-reduced-motion'."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "Is this animation conveying information, or just 'delight'?"
+      placeholder: "e.g., Just delight, usually..."
+    - id: "reflect_2"
+      text: "How does continuous WebGL or CSS animation affect CPU usage and battery?"
+      placeholder: "e.g., Drains battery rapidly, makes fans spin..."
+    - id: "reflect_3"
+      text: "Who is excluded when we rely on motion to signal state changes?"
+      placeholder: "e.g., People with vestibular disorders..."
+  commitment:
+    text: "I will use motion only for user feedback, never for decoration, and always respect reduced-motion settings."

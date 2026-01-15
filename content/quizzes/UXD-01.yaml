@@ -1,0 +1,24 @@
+id: UXD-01-Q
+lesson_id: UXD-01
+title: "Quiz: Validating User Intent"
+questions:
+  - id: q1
+    text: "Which of the following is the most sustainable valid reason to build a new feature?"
+    options:
+      - text: "Competitors have it."
+        correct: false
+      - text: "Stakeholders asked for it."
+        correct: false
+      - text: "User research proves it solves a critical problem."
+        correct: true
+      - text: "It utilizes a new technology we want to try."
+        correct: false
+    remedy: "Review 'The Greenest Feature is the One You Don't Build'."
+  - id: q2
+    text: "True or False: A feature that is built efficiently but never used is sustainable."
+    options:
+      - text: "True"
+        correct: false
+      - text: "False"
+        correct: true
+    remedy: "Unused code and data squander resources regardless of code quality."

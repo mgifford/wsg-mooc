@@ -1,0 +1,22 @@
+id: VIS-02-Q
+lesson_id: VIS-02
+title: "Quiz: Typography Strategy"
+questions:
+  - id: q1
+    text: "Which font format typically offers the best compression for modern browsers?"
+    options:
+      - text: "TTF"
+        correct: false
+      - text: "WOFF2"
+        correct: true
+      - text: "EOT"
+        correct: false
+    remedy: "WOFF2 compresses ~30% better than WOFF."
+  - id: q2
+    text: "What is the primary benefit of Variable Fonts?"
+    options:
+      - text: "They look better."
+        correct: false
+      - text: "They allow multiple weights/styles in a single file request."
+        correct: true
+    remedy: "One file request reduces latency overhead."

@@ -1,0 +1,9 @@
+id: CON-02-A
+lesson_id: CON-02
+title: "Assignment: Meta Prep"
+description: "Select 3 pages on your site. Read the current meta description. Does it accurately promise what is on the page? Rewrite them to be both enticing and strictly accurate."
+steps:
+  - "View Source -> description."
+  - "Evaluate accuracy vs clickbait."
+  - "Draft new versions (150-160 chars)."
+deliverable: "Spreadsheet of URLs and rewriting descriptions."

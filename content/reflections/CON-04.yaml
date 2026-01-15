@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson CON-04
+id: CON-04-R
+lesson_id: CON-04
+
+diagnostic:
+  title: "Lifecycle Planning"
+  questions:
+    - id: "diag_1"
+      text: "Is there a 'Sunset Date' or 'Review Date' attached to this content?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have identified related content that should be archived when this is published."
+    - id: "rubric_2"
+      text: "I have set a calendar reminder to review this content in 6 months."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "What is the environmental cost of hosting 10,000 pages that nobody visits?"
+      placeholder: "e.g., Server storage, backup energy, indexing bots..."
+    - id: "reflect_2"
+      text: "How does obsolete content harm user trust and findability?"
+      placeholder: "e.g., Confuses search results..."
+    - id: "reflect_3"
+      text: "Why is it harder to delete content than to create it?"
+      placeholder: "e.g., Organizational politics, fear of losing history..."
+  commitment:
+    text: "I will delete or archive content that no longer serves a user need, keeping the digital footprint light."

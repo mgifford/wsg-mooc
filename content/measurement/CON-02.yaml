@@ -1,0 +1,10 @@
+id: CON-02-M
+lesson_id: CON-02
+metric: "Search Success Rate"
+unit: "Percentage (%)"
+description: "The percentage of searches that result in a click on a relevant result without immediate return."
+formula: "100 - Bounce Rate (on landing from search)"
+success_threshold: "> 70%"
+method: "Search Console / Analytics"
+frequency: "Monthly"
+wsg_mapping: "WSG-3.11"

@@ -1,0 +1,10 @@
+id: VIS-01-A
+lesson_id: VIS-01
+title: "Assignment: Establish Your Budget"
+description: "Calculate a realistic performance budget for your next project based on a target 3G network speed (1.6 Mbps) and a 3-second load time goal. Break it down by asset type (HTML, CSS, JS, Images, Fonts)."
+steps:
+  - "Use a budget calculator (e.g., [performancebudget.io](https://performancebudget.io))."
+  - "Set the total limit (e.g. 600KB)."
+  - "Allocate slices to each asset type."
+  - "Compare against your current portfolio site."
+deliverable: "Budget Breakdown Table."

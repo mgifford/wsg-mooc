@@ -1,0 +1,37 @@
+# Scenario-Based Quiz for Lesson FED-05
+# Topic: Network & Transfer Efficiency
+
+id: FED-05-Q
+lesson_id: FED-05
+questions:
+  - scenario: >
+      You inspect the HTTP headers for your main JavaScript bundle and see `Content-Encoding` is missing. The file is 500KB.
+    choices:
+      - text: "This is fine. Broadband connections are fast enough."
+        correct: false
+      - text: "Enable Gzip or Brotli compression on the server. This could reduce the transfer size by 60-70%."
+        correct: true
+      - text: "Split the file into two 250KB files."
+        correct: false
+      - text: "Rename the file to .txt so it transfers faster."
+        correct: false
+    explanation: >
+      Text-based assets (HTML, CSS, JS) are highly compressible. Serving them "raw" is negligent waste of bandwidth. 
+      Compression is the single most effective infrastructure-level optimization.
+    related_ids: ["WSG-4.3", "STAR-HIS03-1"]
+
+  - scenario: >
+      You update your site logo (an image) once every 3 years. Currently, the browser re-downloads it on every single visit.
+    choices:
+      - text: "Leave it. Images are cached by default."
+        correct: false
+      - text: "Configure `Cache-Control` headers (e.g., `max-age=31536000`) so returning users load it from their disk, not the network."
+        correct: true
+      - text: "Embed the image as base64 in the HTML."
+        correct: false
+      - text: "Make the image smaller so the download creates less impact."
+        correct: false
+    explanation: >
+      The most sustainable request is the one that never hits the network. Proper caching strategies ensure that unchanging assets 
+      are stored locally (zero carbon cost) rather than fetched repeatedly.
+    related_ids: ["WSG-4.2", "STAR-HIS02-1"]

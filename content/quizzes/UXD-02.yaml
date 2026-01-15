@@ -1,0 +1,22 @@
+id: UXD-02-Q
+lesson_id: UXD-02
+title: "Quiz: Streamlining Navigation"
+questions:
+  - id: q1
+    text: "What is 'Interaction Cost'?"
+    options:
+      - text: "The money users pay to use the site."
+        correct: false
+      - text: "The mental and physical effort required to reach a goal."
+        correct: true
+      - text: "The bandwidth cost of loading the menu."
+        correct: false
+    remedy: "Review the Nielsen Norman Group definition of Interaction Cost."
+  - id: q2
+    text: "Which navigation pattern is generally more sustainable?"
+    options:
+      - text: "Broad and shallow (many items, few clicks)."
+        correct: true
+      - text: "Deep and narrow (few items, many clicks)."
+        correct: false
+    remedy: "Shallow structures reduce page reloads and round-trips."

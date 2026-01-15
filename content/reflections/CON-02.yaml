@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson CON-02
+id: CON-02-R
+lesson_id: CON-02
+
+diagnostic:
+  title: "Search Intent"
+  questions:
+    - id: "diag_1"
+      text: "Does the page title accurately describe the specific content of the page?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have written a unique meta description that matches the user's need."
+    - id: "rubric_2"
+      text: "I have used meaningful H1 and H2 headings."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "What is the carbon cost of 'pogo-sticking' (loading a page, finding it wrong, going back)?"
+      placeholder: "e.g., Wasted round trips, frustration..."
+    - id: "reflect_2"
+      text: "How does clear structure help screen reader users jump to what they need?"
+      placeholder: "e.g., Navigate by headings..."
+    - id: "reflect_3"
+      text: "Is 'clickbait' sustainable?"
+      placeholder: "e.g., No, it erodes trust and wastes time..."
+  commitment:
+    text: "I will optimize metadata to ensure users find exactly what they need on the first click."

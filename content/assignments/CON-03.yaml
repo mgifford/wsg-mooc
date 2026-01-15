@@ -1,0 +1,10 @@
+id: CON-03-A
+lesson_id: CON-03
+title: "Assignment: Alt Text Review"
+description: "Open your media library or a recent article. Find 5 images. Write the alt text that conveys the *information*, not just the visual description. If the image has no info, mark it as decorative."
+steps:
+  - "Select images."
+  - "Contextualize: Why is this image here?"
+  - "Write the text alternative."
+  - "Test: If I remove the image and put the text here, is the meaning lost?"
+deliverable: "5 images with proposed alt text."

@@ -1,0 +1,36 @@
+# Interaction Definitions for Lesson UXD-03
+# Includes Pre-assessment, Self-Audit Rubric, and Reflection Prompt
+
+id: UXD-03-R
+lesson_id: UXD-03
+
+diagnostic:
+  title: "Current State Check"
+  questions:
+    - id: "diag_1"
+      text: "Have you ever audited your product's cancellation flow yourself?"
+      type: "boolean"
+    - id: "diag_2"
+      text: "Does your defined 'Happy Path' include users leaving the service?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  description: "Verify your assignment against these quality criteria before marking complete."
+  items:
+    - id: "rubric_1"
+      text: "I have confirmed that the 'Exit' action is visible without scrolling."
+    - id: "rubric_2"
+      text: "I have ensured the language used is neutral (e.g., 'Cancel Subscription' instead of 'Lose My Benefits')."
+    - id: "rubric_3"
+      text: "I have removed any step that requires contacting support for a purely digital transaction."
+
+reflection:
+  title: "The Learner Journal"
+  prompts:
+    - id: "reflect_1"
+      text: "What internal pressure (revenue goals, retention metrics) motivates the specific dark patterns you found?"
+      placeholder: "e.g., We are measured on churn rate..."
+    - id: "reflect_2"
+      text: "How can you reframe 'easy exit' as a brand value to your stakeholders?"
+      placeholder: "e.g., Respect for user time increases NPS..."

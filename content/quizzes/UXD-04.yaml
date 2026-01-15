@@ -1,0 +1,22 @@
+id: UXD-04-Q
+lesson_id: UXD-04
+title: "Quiz: Efficient Forms"
+questions:
+  - id: q1
+    text: "Why is asking for a phone number when it's not needed an issue?"
+    options:
+      - text: "It creates privacy risk."
+        correct: false
+      - text: "It increases friction and dropout rates."
+        correct: false
+      - text: "Both of the above."
+        correct: true
+    remedy: "Data minimization protects users and improves conversion."
+  - id: q2
+    text: "Which input type is best for entering a credit card expiry date?"
+    options:
+      - text: "Three separate dropdowns (Day/Month/Year)."
+        correct: false
+      - text: "A single text input with automatic formatting."
+        correct: true
+    remedy: "Native inputs usually perform better than custom dropdowns for data entry speed."

@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson VIS-02
+id: VIS-02-R
+lesson_id: VIS-02
+
+diagnostic:
+  title: "Font Usage"
+  questions:
+    - id: "diag_1"
+      text: "Can you list every font file and weight currently loading on your homepage?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have removed unused weights (e.g., Bold Italic) from the load list."
+    - id: "rubric_2"
+      text: "I have considered using system fonts for UI elements."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "Does the user really notice the difference between 'Lato' and 'Open Sans' in body text?"
+      placeholder: "e.g., Probably not..."
+    - id: "reflect_2"
+      text: "What is the environmental cost of loading 5 different font files on every page view?"
+      placeholder: "e.g., Extra HTTP requests, latency..."
+    - id: "reflect_3"
+      text: "How does variable font technology change the trade-off?"
+      placeholder: "e.g., One file, many styles..."
+  commitment:
+    text: "I will limit my design to 2 font families and maximum 3 weights per page."

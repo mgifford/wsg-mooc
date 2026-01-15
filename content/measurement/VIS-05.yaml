@@ -1,0 +1,10 @@
+id: VIS-05-M
+lesson_id: VIS-05
+metric: "Animation CPU Usage"
+unit: "Percentage (%)"
+description: "Average CPU usage while the page is 'idle' (user not interacting)."
+formula: "Browser Profiling"
+success_threshold: "< 1%"
+method: "[Chrome Performance Monitor](https://developer.chrome.com/docs/devtools/evaluate-performance/resource-loading)"
+frequency: "Per Release"
+wsg_mapping: "WSG-2.12"

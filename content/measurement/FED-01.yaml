@@ -1,0 +1,28 @@
+# Measurement Tool Recommendations for Lesson FED-01
+# Context: Establishing Code Hygiene
+
+id: FED-01-M
+lesson_id: FED-01
+
+recommendations:
+  primary_tool:
+    name: "W3C Markup Validator"
+    type: "Validation Service"
+    applicability: "High"
+    valid_uses:
+      - "Identifying unclosed tags and nesting errors that cause browser repainting."
+      - "Verifying semantic structure."
+    limitations:
+      - "Does not measure file size directly."
+      
+  secondary_tool:
+    name: "Build Tool Output (Webpack/Vite Stats)"
+    type: "Terminal Output"
+    applicability: "High"
+    valid_uses:
+      - "Comparing 'Raw' vs 'Minified' file sizes."
+    limitations:
+      - "Only measures static assets, not runtime performance."
+
+  learner_warning: >
+    "⚠️ Validation errors are not just academic; they force the browser's parser to work harder (consuming CPU) to fix your mistakes on the fly."

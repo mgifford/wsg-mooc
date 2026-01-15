@@ -1,0 +1,10 @@
+id: UXD-05-A
+lesson_id: UXD-05
+title: "Assignment: Component Inventory"
+description: "Audit your product for *one* common element (e.g., primary buttons, date pickers, or headers). Screenshot every variation you find. Group them by similarity. Propose a single standard."
+steps:
+  - "Choose a component."
+  - "Hunt for inconsistencies across the site."
+  - "Collage them onto one canvas."
+  - "Define the single source of truth."
+deliverable: "The 'Wall of Shame' collage and the proposed fix."

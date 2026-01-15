@@ -1,0 +1,38 @@
+# Scenario-Based Quiz for Lesson FED-01
+# Topic: Code Hygiene & Semantics
+
+id: FED-01-Q
+lesson_id: FED-01
+questions:
+  - scenario: >
+      You are reviewing a Pull Request for a blog post component. The developer has used `div` tags for the article title, date, and content 
+      wrapping them in classes like `.article-title`, `.date`. They argue this is faster to style.
+    choices:
+      - text: "Approve it. As long as it looks right, the tag doesn't matter."
+        correct: false
+      - text: "Request changes. Ask them to use `<article>`, `<h1>`, and `<time>` tags to improve rendering efficiency and accessibility."
+        correct: true
+      - text: "Ask them to add `aria-label` to every div to fix the semantics."
+        correct: false
+      - text: "Suggest using a JavaScript framework to render the HTML dynamically."
+        correct: false
+    explanation: >
+      Generic `div` tags force the browser (and assistive technology) to guess the content structure. Semantic tags provide 
+      "free" meaning and often come with native browser behaviors that save code.
+    related_ids: ["WSG-3.7"]
+
+  - scenario: >
+      You notice your production CSS file is 400KB. It contains thousands of lines of whitespace, comments, and meaningful variable names (e.g., `--color-primary: blue`).
+    choices:
+      - text: "Leave it. Identifying variables in production is helpful for debugging."
+        correct: false
+      - text: "Minify the file. Removing whitespace and comments is the single easiest way to reduce transfer size without changing behavior."
+        correct: true
+      - text: "Split the file into 10 smaller files so they load in parallel."
+        correct: false
+      - text: "Delete the CSS and use inline styles for everything."
+        correct: false
+    explanation: >
+      Minification strips "human-readable" characters that the browser doesn't need. It is a standard "Code Hygiene" practice 
+      that directly reduces energy use in transmission and parsing.
+    related_ids: ["WD02-1"]

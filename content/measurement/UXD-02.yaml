@@ -1,0 +1,10 @@
+id: UXD-02-M
+lesson_id: UXD-02
+metric: "Task Success Rate vs. Steps"
+unit: "Count"
+description: "The average number of steps taken to complete a core task successfully."
+formula: "Sum(Steps for all successful completions) / Count(Successful completions)"
+success_threshold: "< 5 steps"
+method: "Usability Testing or Funnel Analysis"
+frequency: "Quarterly"
+wsg_mapping: "WSG-2.4"

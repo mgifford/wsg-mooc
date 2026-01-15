@@ -1,0 +1,22 @@
+id: UXD-05-Q
+lesson_id: UXD-05
+title: "Quiz: Design Systems"
+questions:
+  - id: q1
+    text: "How does a design system reduce carbon emissions?"
+    options:
+      - text: "It uses greener colors."
+        correct: false
+      - text: "It reduces code duplication and development churn."
+        correct: true
+      - text: "It forces users to upgrade their devices."
+        correct: false
+    remedy: "Reusability is the core sustainability benefit."
+  - id: q2
+    text: "When should you break from the design system?"
+    options:
+      - text: "Whenever you feel creative."
+        correct: false
+      - text: "When user research proves the standard component fails the specific need."
+        correct: true
+    remedy: "Consistency builds trust; deviation requires justification."

@@ -1,0 +1,20 @@
+id: CON-04-Q
+lesson_id: CON-04
+title: "Quiz: Content Lifecycle"
+questions:
+  - id: q1
+    text: "What is 'ROT' in content strategy?"
+    options:
+      - text: "Return on Time."
+        correct: false
+      - text: "Redundant, Obsolete, Trivial."
+        correct: true
+    remedy: "ROT is clutter that wastes hosting and user attention."
+  - id: q2
+    text: "Ideally, when should you decide when a page will be deleted?"
+    options:
+      - text: "When you run out of server space."
+        correct: false
+      - text: "Before you even publish it."
+        correct: true
+    remedy: "The 'Sunset Date' should be part of the creation metadata."

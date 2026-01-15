@@ -1,0 +1,10 @@
+id: UXD-01-M
+lesson_id: UXD-01
+metric: "Feature Adoption Rate"
+unit: "Percentage (%)"
+description: "The percentage of users who use a specific feature within a given timeframe."
+formula: "(Train Users / Total Users) * 100"
+success_threshold: "> 10% for niche features, > 50% for core features"
+method: "Analytics ([Mixpanel](https://mixpanel.com/), [GA4](https://marketingplatform.google.com/about/analytics/))"
+frequency: "Monthly"
+wsg_mapping: "WSG-2.2"

@@ -1,0 +1,143 @@
+# Internationalization Strings for Lesson UXD-03
+# Includes Lesson Content and Quiz Content
+
+id: UXD-03
+
+lesson:
+  title: "Removing Toxic Patterns"
+  track: "UX Designer"
+  
+  sections:
+    decision:
+      title: "The Decision"
+      text: "Am I helping the user make a choice, or am I tricking them into making *my* choice?"
+    
+    why_it_matters:
+      title: "Why It Matters"
+      text: |
+        "Dark Patterns" (or Deceptive Design) exploit cognitive biases to force users into actions they didn't intend—like subscribing to newsletters, buying insurance, or sharing contacts. Beyond the ethical failure, these patterns create waste. They generate unwanted emails (spam), trigger accidental downloads, and force users to spend time (energy) undoing mistakes. Honest design is sustainable design because it respects the user's intent and resources.
+    
+    failure_modes:
+      title: "Common Failure Modes"
+      items:
+        mode_1:
+          term: "Roach Motel"
+          desc: "Easy to sign up, impossible to cancel."
+        mode_2:
+          term: "Confirmshaming"
+          desc: "\"No, I don't want to save money\" button text to guilt users."
+        mode_3:
+          term: "Sneak into Basket"
+          desc: "Automatically adding items or insurance to a cart."
+        mode_4:
+          term: "Privacy Deception"
+          desc: "Confusing toggle switches where \"On\" means \"Opt-out\" (or vice versa)."
+          
+    checklist:
+      title: "\"Do This Now\" Checklist"
+      items:
+        check_1:
+          term: "Unsubscribe Test"
+          desc: "Try to delete an account or unsubscribe on your own platform. If it takes more than 3 clicks, redesign it."
+        check_2:
+          term: "Toggle Clarity"
+          desc: "Review all settings. Ensure \"On\" implies a positive action or addition, and labels are unambiguous."
+        check_3:
+          term: "Neutral Language"
+          desc: "Rewrite CTA (Call to Action) / Cancel buttons to be neutral and descriptive (\"Subscribe\" / \"No Thanks\"), not manipulative."
+        check_4:
+          term: "Cart Audit"
+          desc: "Verify that the cart total only reflects items the user explicitly clicked \"Add\" on."
+
+    measurement:
+      title: "Measurement Options"
+      items:
+        measure_1:
+          term: "Support Tickets"
+          desc: "Monitor complaints related to \"I didn't mean to buy this\" or \"How do I cancel?\"."
+        measure_2:
+          term: "Retention vs. Resentment"
+          desc: "High retention forced by difficult cancellation is not loyalty; it's captivity."
+
+    reflection:
+      title: "Reflection Prompt"
+      prompt: "Would I be comfortable explaining this interaction flow to my grandmother?"
+
+quiz:
+  questions:
+    q1:
+      scenario: |
+         You are designing the "Delete Account" flow. A stakeholder argues that making it easy will increase churn. 
+         They suggest adding a requirement to call customer support to finalize the deletion.
+      choices:
+        a: "Agree, as reducing churn is the primary business metric."
+        b: "Compromise by offering a 'Pause Account' option but keeping the 'Call Support' requirement for deletion."
+        c: "Push back, arguing that forcing a digital-only user to use an analog channel (phone) creates unnecessary friction and keeps unwanted data on servers."
+        d: "Implement the phone requirement but add a tool tip explaining why."
+      explanation: |
+         This is a "Roach Motel" pattern. It artificially increases the energy and time cost to leave. 
+         Sustainable design allows users to manage their data lifecycle autonomously without arbitrary barriers.
+
+    q2:
+      scenario: |
+         You are auditing a newsletter signup modal. The subtle text below the "Sign Up" button says "No thanks, I prefer to stay uninformed." 
+         The marketing team says this increased conversion by 2%.
+      choices:
+        a: "Keep it. A 2% increase in conversion justifies the tone."
+        b: "Change the text to a neutral 'No thanks' or 'Close'."
+        c: "Make the text smaller so it's less offensive but still works."
+        d: "Remove the close option entirely and force a click outside the modal."
+      explanation: |
+         This is "Confirmshaming". While it may boost short-term metrics, it manipulates users through guilt. 
+         Sustainable UX respects the user's emotional state and intent, building long-term trust over short-term "hacks".
+
+    q3:
+      scenario: |
+         An e-commerce checkout flow automatically adds "Shipping Insurance" to the cart (checked by default). 
+         Users must uncheck it to opt out.
+      choices:
+        a: "Leave it. It protects the user's package and increases average order value."
+        b: "Change it to 'Opt-in' (unchecked by default), requiring the user to actively select it if they want it."
+        c: "Move the checkbox to the end of the page so they see it right before paying."
+        d: "Add a second popup asking 'Are you sure?' if they uncheck it."
+      explanation: |
+         This is the "Sneak into Basket" or "Default Effect" pattern. Pre-checking inputs generates distinct waste—users 
+         buying things they don't want, leading to potential refunds, customer service cycles, and financial waste. Intent should always be explicit.
+
+    q4:
+      scenario: |
+         You notice a high number of users are accidentally enabling "Share my data with partners" because the toggle switch label 
+         says "Opt-out of data sharing" but the switch is "On".
+      choices:
+        a: "Add a second switch to confirm the choice."
+        b: "Rewrite the label to be positive and direct: 'Allow data sharing', set the switch to 'Off' by default."
+        c: "Change the color of the switch to red to indicate danger."
+        d: "Leave it, as data sharing is valuable for the business model."
+      explanation: |
+         This is "Privacy Deception" or confusing logic. Sustainable design minimizes cognitive load and unintentional data transfer. 
+         Ambiguous controls lead to "data pollution"—collecting data users never meant to give.
+
+    q5:
+      scenario: |
+         You observe that after "simplifying" the unsubscribe flow to a single click, the "Retention Rate" metric dropped by 5%. 
+         The Head of Product wants to revert to the old 4-step process.
+      choices:
+        a: "Revert immediately. Retention is the key indicator of product health."
+        b: "Analyze the 5% who left. If they were inactive/unhappy, argue that their departure is 'healthy pruning' that saves resources."
+        c: "Compliment the 4-step process with a 10% discount offer to keep them."
+        d: "Hide the unsubscribe button in the footer to reduce visibility."
+      explanation: |
+         High retention forced by friction is a false signal ("Captivity", not loyalty). Sustainable product management values an active, 
+         engaged user base over a bloated database of users who are only there because they couldn't find the exit.
+
+    q6:
+      scenario: |
+         A stakeholder asks why the team should invest 2 days in fixing a "Exit Path" (cancellation flow) that generates zero revenue.
+      choices:
+        a: "'It provides feature parity with our competitors.'"
+        b: "'It is required by law in some regions, so it is just a compliance task.'"
+        c: "'Respecting the user's right to leave reduces 'revenge' costs (spam reports, negative reviews) and clears dead data from our systems.'"
+        d: "'It will make our designers feel better about their work.'"
+      explanation: |
+         Reframing the exit path as a sustainability and reputation shield is effective. A user trapped in a system generates negative value 
+         (support tickets, spam complaints) and wasted storage cost (dead accounts).

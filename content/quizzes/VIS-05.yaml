@@ -1,0 +1,20 @@
+id: VIS-05-Q
+lesson_id: VIS-05
+title: "Quiz: Responsible Animation"
+questions:
+  - id: q1
+    text: "What is the CPU impact of continuous Javascript-based animation?"
+    options:
+      - text: "Negligible."
+        correct: false
+      - text: "High; it prevents the processor from idling."
+        correct: true
+    remedy: "It keeps the CPU awake, draining battery."
+  - id: q2
+    text: "Who needs a 'Stop Animation' button?"
+    options:
+      - text: "People with vestibular disorders."
+        correct: true
+      - text: "People with slow internet."
+        correct: false
+    remedy: "Motion triggers nausea for some users."

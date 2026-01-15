@@ -1,0 +1,10 @@
+id: VIS-01-M
+lesson_id: VIS-01
+metric: "Total Page Weight"
+unit: "Kilobytes (KB)"
+description: "The transferable size of all resources required to load the initial view."
+formula: "Sum(Size of all network requests)"
+success_threshold: "< 1000 KB (1MB)"
+method: "[Browser DevTools (Network Tab)](https://developer.chrome.com/docs/devtools/network/) or [WebPageTest](https://www.webpagetest.org/)"
+frequency: "Per Deploy"
+wsg_mapping: "STAR-WD01-1"

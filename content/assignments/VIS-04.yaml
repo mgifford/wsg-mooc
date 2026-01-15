@@ -1,0 +1,10 @@
+id: VIS-04-A
+lesson_id: VIS-04
+title: "Assignment: Dark Mode Mockup"
+description: "Take a bright, high-key interface design. Create a dark mode variant that ensures accessible contrast ratios. ensure it uses true blacks or very dark greys."
+steps:
+  - "Select a light mode screen."
+  - "Invert the palette sensibly."
+  - "Check WCAG contrast for text."
+  - "Test on a mobile device if possible."
+deliverable: "Side-by-side Light vs Dark comparison."

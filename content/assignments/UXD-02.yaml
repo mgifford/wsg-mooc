@@ -1,0 +1,10 @@
+id: UXD-02-A
+lesson_id: UXD-02
+title: "Assignment: Click-Depth Audit"
+description: "Choose a top user task (e.g., 'Contact Support' or 'Buy Product'). Map the current flow path. Count the number of clicks and page loads. Redesign the path to reduce the steps by at least 20%."
+steps:
+  - "Select a core user task."
+  - "Walk the current flow, counting clicks/screens."
+  - "Sketch a streamlined version."
+  - "Calculate the theoretical savings."
+deliverable: "Before/After flow diagram."

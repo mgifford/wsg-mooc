@@ -1,0 +1,10 @@
+id: CON-01-M
+lesson_id: CON-01
+metric: "Readability Score"
+unit: "Grade Level"
+description: "The estimated school grade required to understand the text."
+formula: "Flesch-Kincaid Grade Level"
+success_threshold: "< Grade 8"
+method: "Automated analysis (e.g., [Hemingway](https://hemingwayapp.com/), MS Word)"
+frequency: "Per Article"
+wsg_mapping: "WSG-2.10"

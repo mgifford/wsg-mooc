@@ -1,0 +1,68 @@
+name: Monthly Drift Detection
+
+on:
+  schedule:
+    # Run at 00:00 on the 1st of every month
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  analyze-drift:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Previous Snapshot
+        id: fetch-prev
+        run: |
+          # In a real scenario, this would fetch from a persistent store or release artifact
+          # For MVP, we assume the committed snapshot is the "old" one
+          if [ -f data/snapshot_latest.json ]; then
+            cp data/snapshot_latest.json old_snapshot.json
+          else
+            echo "{}" > old_snapshot.json
+          fi
+
+      - name: Run Normalization Agent (Ingest Upstream)
+        run: |
+          # Placeholder for the Normalization Agent
+          # node scripts/normalize-upstream.js > new_snapshot.json
+          echo "Simulating normalization..."
+          cp old_snapshot.json new_snapshot.json # preventing failure for now
+
+      - name: Run Drift Detector
+        id: drift
+        run: |
+          node scripts/drift-detector.js old_snapshot.json new_snapshot.json > drift_report.yaml
+          
+          # Check if severity is HIGH/MEDIUM to trigger issue creation
+          cat drift_report.yaml
+          
+          # Set output var for next step
+          SEVERITY=$(grep "severity:" drift_report.yaml | awk '{print $2}')
+          echo "severity=$SEVERITY" >> $GITHUB_OUTPUT
+
+      - name: Create Drift Issue
+        if: steps.drift.outputs.severity == 'HIGH' || steps.drift.outputs.severity == 'MEDIUM'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('drift_report.yaml', 'utf8');
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⚠️ Upstream Drift Detected [${new Date().toISOString().split('T')[0]}]`,
+              body: "The Drift Analysis Agent has detected significant changes in the upstream WSG source.\n\n```yaml\n" + report + "\n```\n\nPlease review and approve the required curriculum mapping changes."
+            });

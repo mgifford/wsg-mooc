@@ -1,0 +1,10 @@
+id: UXD-04-M
+lesson_id: UXD-04
+metric: "Form Completion Rate"
+unit: "Percentage (%)"
+description: "The percentage of users who start a form and successfully submit it."
+formula: "(Submitted / Started) * 100"
+success_threshold: "> 60%"
+method: "Analytics"
+frequency: "Monthly"
+wsg_mapping: "WSG-2.15"

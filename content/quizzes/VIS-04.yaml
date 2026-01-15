@@ -1,0 +1,22 @@
+id: VIS-04-Q
+lesson_id: VIS-04
+title: "Quiz: Design for Energy"
+questions:
+  - id: q1
+    text: "Which screen technology benefits most from Dark Mode energy savings?"
+    options:
+      - text: "LCD"
+        correct: false
+      - text: "OLED"
+        correct: true
+      - text: "CRT"
+        correct: false
+    remedy: "OLED pixels turn off completely for true black, saving energy."
+  - id: q2
+    text: "Why is pure blue (#0000FF) problematic for energy efficiency?"
+    options:
+      - text: "Blue pixels consume significantly more power than red or green."
+        correct: true
+      - text: "It isn't."
+        correct: false
+    remedy: "Blue light generation is less efficient in current display tech."

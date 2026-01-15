@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson VIS-04
+id: VIS-04-R
+lesson_id: VIS-04
+
+diagnostic:
+  title: "Scheme Awareness"
+  questions:
+    - id: "diag_1"
+      text: "Does your design include a true dark mode (not just inverted colors)?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have provided a 'Dark Mode' option that respects system preferences."
+    - id: "rubric_2"
+      text: "I have avoided pure white (#FFFFFF) backgrounds on large areas where possible."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "How much battery life can a dark theme save on an OLED screen?"
+      placeholder: "e.g., Up to 60% in some cases..."
+    - id: "reflect_2"
+      text: "Is 'Dark Mode' just an aesthetic trend or an accessibility/sustainability necessity?"
+      placeholder: "e.g., Reduces eye strain and energy..."
+    - id: "reflect_3"
+      text: "Does your color palette rely on brightness levels that force screens to max power?"
+      placeholder: "e.g., Neon colors require high brightness..."
+  commitment:
+    text: "I will design a dark mode variant for every interface to support energy saving and eye health."

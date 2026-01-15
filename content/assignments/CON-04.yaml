@@ -1,0 +1,10 @@
+id: CON-04-A
+lesson_id: CON-04
+title: "Assignment: The Purge"
+description: "Identify 10 pages on your site that have not been viewed in the last 6 months. Review them. Decide whether to Update, Archive (remove but save), or Delete (remove and forget)."
+steps:
+  - "Pull analytics for 'Bottom 50 pages'."
+  - "Select 10."
+  - "Check for regulatory reasons to keep."
+  - "Execute the decision."
+deliverable: "List of 10 URLs and their fate."

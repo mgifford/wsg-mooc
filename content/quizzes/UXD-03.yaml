@@ -1,0 +1,106 @@
+# Scenario-Based Quiz for Lesson UXD-03
+# Topic: Deceptive Design & Toxic Patterns
+
+id: UXD-03-Q
+lesson_id: UXD-03
+questions:
+  - scenario: >
+      You are designing the "Delete Account" flow. A stakeholder argues that making it easy will increase churn. 
+      They suggest adding a requirement to call customer support to finalize the deletion.
+    choices:
+      - text: "Agree, as reducing churn is the primary business metric."
+        correct: false
+      - text: "Compromise by offering a 'Pause Account' option but keeping the 'Call Support' requirement for deletion."
+        correct: false
+      - text: "Push back, arguing that forcing a digital-only user to use an analog channel (phone) creates unnecessary friction and keeps unwanted data on servers."
+        correct: true
+      - text: "Implement the phone requirement but add a tool tip explaining why."
+        correct: false
+    explanation: >
+      This is a "Roach Motel" pattern. It artificially increases the energy and time cost to leave. 
+      Sustainable design allows users to manage their data lifecycle autonomously without arbitrary barriers.
+    related_ids: ["WSG-2.6", "STAR-UX07-1"]
+
+  - scenario: >
+      You are auditing a newsletter signup modal. The subtle text below the "Sign Up" button says "No thanks, I prefer to stay uninformed." 
+      The marketing team says this increased conversion by 2%.
+    choices:
+      - text: "Keep it. A 2% increase in conversion justifies the tone."
+        correct: false
+      - text: "Change the text to a neutral 'No thanks' or 'Close'."
+        correct: true
+      - text: "Make the text smaller so it's less offensive but still works."
+        correct: false
+      - text: "Remove the close option entirely and force a click outside the modal."
+        correct: false
+    explanation: >
+      This is "Confirmshaming". While it may boost short-term metrics, it manipulates users through guilt. 
+      Sustainable UX respects the user's emotional state and intent, building long-term trust over short-term "hacks".
+    related_ids: ["WSG-2.7"]
+
+  - scenario: >
+      An e-commerce checkout flow automatically adds "Shipping Insurance" to the cart (checked by default). 
+      Users must uncheck it to opt out.
+    choices:
+      - text: "Leave it. It protects the user's package and increases average order value."
+        correct: false
+      - text: "Change it to 'Opt-in' (unchecked by default), requiring the user to actively select it if they want it."
+        correct: true
+      - text: "Move the checkbox to the end of the page so they see it right before paying."
+        correct: false
+      - text: "Add a second popup asking 'Are you sure?' if they uncheck it."
+        correct: false
+    explanation: >
+      This is the "Sneak into Basket" or "Default Effect" pattern. Pre-checking inputs generates distinct waste—users 
+      buying things they don't want, leading to potential refunds, customer service cycles, and financial waste. Intent should always be explicit.
+    related_ids: ["STAR-UX04-5"]
+
+  - scenario: >
+      You notice a high number of users are accidentally enabling "Share my data with partners" because the toggle switch label 
+      says "Opt-out of data sharing" but the switch is "On".
+    choices:
+      - text: "Add a second switch to confirm the choice."
+        correct: false
+      - text: "Rewrite the label to be positive and direct: 'Allow data sharing', set the switch to 'Off' by default."
+        correct: true
+      - text: "Change the color of the switch to red to indicate danger."
+        correct: false
+      - text: "Leave it, as data sharing is valuable for the business model."
+        correct: false
+    explanation: >
+      This is "Privacy Deception" or confusing logic. Sustainable design minimizes cognitive load and unintentional data transfer. 
+      Ambiguous controls lead to "data pollution"—collecting data users never meant to give.
+    related_ids: ["WSG-2.6"]
+
+  - scenario: >
+      You observe that after "simplifying" the unsubscribe flow to a single click, the "Retention Rate" metric dropped by 5%. 
+      The Head of Product wants to revert to the old 4-step process.
+    choices:
+      - text: "Revert immediately. Retention is the key indicator of product health."
+        correct: false
+      - text: "Analyze the 5% who left. If they were inactive/unhappy, argue that their departure is 'healthy pruning' that saves resources."
+        correct: true
+      - text: "Compliment the 4-step process with a 10% discount offer to keep them."
+        correct: false
+      - text: "Hide the unsubscribe button in the footer to reduce visibility."
+        correct: false
+    explanation: >
+      High retention forced by friction is a false signal ("Captivity", not loyalty). Sustainable product management values an active, 
+      engaged user base over a bloated database of users who are only there because they couldn't find the exit.
+    related_ids: ["WSG-2.7", "STAR-UX07-1"]
+
+  - scenario: >
+      A stakeholder asks why the team should invest 2 days in fixing a "Exit Path" (cancellation flow) that generates zero revenue.
+    choices:
+      - text: "'It provides feature parity with our competitors.'"
+        correct: false
+      - text: "'It is required by law in some regions, so it is just a compliance task.'"
+        correct: false
+      - text: "'Respecting the user's right to leave reduces 'revenge' costs (spam reports, negative reviews) and clears dead data from our systems.'"
+        correct: true
+      - text: "'It will make our designers feel better about their work.'"
+        correct: false
+    explanation: >
+      Reframing the exit path as a sustainability and reputation shield is effective. A user trapped in a system generates negative value 
+      (support tickets, spam complaints) and wasted storage cost (dead accounts).
+    related_ids: ["WSG-2.6"]

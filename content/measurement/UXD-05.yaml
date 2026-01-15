@@ -1,0 +1,10 @@
+id: UXD-05-M
+lesson_id: UXD-05
+metric: "Design System Coverage"
+unit: "Percentage (%)"
+description: "The percentage of UI elements on a page that are derived from the standard component library."
+formula: "(System Components / Total Components) * 100"
+success_threshold: "> 90%"
+method: "Code Audit or visual inspection"
+frequency: "Per Release"
+wsg_mapping: "WSG-2.9"

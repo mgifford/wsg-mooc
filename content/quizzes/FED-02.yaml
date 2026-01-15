@@ -1,0 +1,37 @@
+# Scenario-Based Quiz for Lesson FED-02
+# Topic: Managing Dependencies
+
+id: FED-02-Q
+lesson_id: FED-02
+questions:
+  - scenario: >
+      A team member wants to install a 30KB library called `left-pad-super` just to add padding to a string in one component.
+    choices:
+      - text: "Install it. Developer productivity is more important than file size."
+        correct: false
+      - text: "Reject the installation. Write a simple 3-line utility function to handle the padding natively."
+        correct: true
+      - text: "Install it, but use a CDN link instead of bundling it."
+        correct: false
+      - text: "Install a larger library that includes padding plus 50 other features, just in case."
+        correct: false
+    explanation: >
+      Importing an entire library for a trivial task is "Dependency Bloat". Sustainable development prefers native language features 
+      or small custom functions over heavy external code liabilities.
+    related_ids: ["WSG-3.16"]
+
+  - scenario: >
+      Your bundle analyzer shows that you are including the entire `lodash` library (70KB), but you are only using the `debounce` function.
+    choices:
+      - text: "Keep it. Caching handles the file size problem."
+        correct: false
+      - text: "Switch to importing only the specific function (e.g., `import debounce from 'lodash/debounce'`) or use a lighter alternative."
+        correct: true
+      - text: "Rewrite the entire application to avoid using debounce."
+        correct: false
+      - text: "Wrap the library in a lazy-load promise so it loads later."
+        correct: false
+    explanation: >
+      "Tree-shaking" or specific imports ensure you only ship the code you actually use. Shipping dead code wastes bandwidth 
+      and CPU time on parsing bytes that never run.
+    related_ids: ["WSG-3.4", "STAR-WD04-1"]

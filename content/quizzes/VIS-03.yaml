@@ -1,0 +1,22 @@
+id: VIS-03-Q
+lesson_id: VIS-03
+title: "Quiz: Image Optimization"
+questions:
+  - id: q1
+    text: "Which format is best for a flat icon or logo?"
+    options:
+      - text: "JPG"
+        correct: false
+      - text: "PNG"
+        correct: false
+      - text: "SVG"
+        correct: true
+    remedy: "Vectors (SVG) are resolution-independent and usually tiny."
+  - id: q2
+    text: "True or False: You should upload the highest quality image possible and let the browser resize it."
+    options:
+      - text: "True"
+        correct: false
+      - text: "False"
+        correct: true
+    remedy: "Browsers still download the full file. Resize on the server or build time."

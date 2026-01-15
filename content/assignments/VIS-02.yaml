@@ -1,0 +1,10 @@
+id: VIS-02-A
+lesson_id: VIS-02
+title: "Assignment: The Font Audit"
+description: "Analyze a live website. List every font file downloaded. Calculate the total size. Propose a reduction plan involving subsetting, removing weights, or switching to system fonts."
+steps:
+  - "Open Network Tab -> Fonts."
+  - "Sum the transfer sizes."
+  - "Identify unused characters or styles."
+  - "Redesign the typography stack to save 50%."
+deliverable: "Before/After weight calculation."

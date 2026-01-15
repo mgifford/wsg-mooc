@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WSG MOOC - LiaScript Reader</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <!-- LiaScript Config -->
+  <script>
+    window.CONFIG = {
+      // Optional: Configuration for the viewer
+      // logo: 'assets/logo.png',
+    };
+  </script>
+</head>
+<body>
+  <!-- 
+    The LiaScript viewer will replace the body content.
+    We point the source to the markdown file passed in the URL query param '?course=...'
+    If no param, default to a landing page or the first track.
+  -->
+  
+  <script>
+    // Simple router
+    const params = new URLSearchParams(window.location.search);
+    const course = params.get('course');
+    
+    // Base URL for raw content if hosted on GitHub Pages
+    // For local dev (localhost), we can use relative paths if served correctly.
+    // GitHub Pages standard: https://mgifford.github.io/wsg-mooc/liascript_courses/Front-end_Developer.md
+    
+    let readmeUrl = "liascript_courses/Home.md"; // Default
+    if (course) {
+        readmeUrl = `liascript_courses/${course}.md`;
+    }
+    
+    // Redirect to the LiaScript reader logic
+    // Normally, one uses https://liascript.github.io/course/?URL_TO_MD
+    // But to EMBED it, we use the LiaScript web component or strict JS injection.
+    
+    // For the "I want it on my domain" requirement:
+    // We load the LiaScript source JS. Note: It's heavy.
+    // The "Unified" way is often just an iframe or redirect, but for *embedding*:
+    
+    /* 
+       LiaScript requires a specific setup to run "locally" or on a custom domain without the official viewer.
+       We'll use the CDN version which bootstraps the app on YOUR page.
+    */
+  </script>
+
+  <!-- Load LiaScript from CDN 
+     This script takes over the page and renders the Markdown at 'readmeUrl' 
+     Wait, LiaScript usually expects to parse the URL itself.
+  -->
+  
+  <!-- 
+     OPTION A: Use the official reader logic
+     We need to construct the URL so LiaScript knows what to fetch.
+     Typically: index.html?README_URL
+  -->
+
+  <!-- 
+    OPTION B: Component Mode (Newer)
+    <lia-script src="path/to/script.md"></lia-script>
+    This is what the user probably wants ("Embed").
+  -->
+  
+  <lia-script src="placeholder.md"></lia-script>
+  
+  <script>
+      // Dyamically set the src attribute before the component loads/initiates?
+      const el = document.querySelector('lia-script');
+      el.setAttribute('src', readmeUrl);
+  </script>
+
+  <!-- The LiaScript Web Component -->
+  <!-- Using version 1.x stable -->
+  <script src="https://cdn.jsdelivr.net/npm/liascript/dist/lia.js"></script>
+    
+</body>
+</html>

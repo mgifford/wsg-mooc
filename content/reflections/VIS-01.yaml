@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson VIS-01
+id: VIS-01-R
+lesson_id: VIS-01
+
+diagnostic:
+  title: "Budget Awareness"
+  questions:
+    - id: "diag_1"
+      text: "Do you personally check the total file size of your designs before handoff?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have established a maximum weight (e.g., 1.5MB) for this page."
+    - id: "rubric_2"
+      text: "I removed visual elements that exceeded the budget."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "Why is 'high resolution' often prioritized over 'fast loading' in design portfolios?"
+      placeholder: "e.g., Looks better in static screenshots..."
+    - id: "reflect_2"
+      text: "How does a heavy page affect a user on a metered connection in a rural area?"
+      placeholder: "e.g., Costs them money, loads slowly..."
+    - id: "reflect_3"
+      text: "Can a design be 'beautiful' if it is unusable due to slowness?"
+      placeholder: "e.g., No, function comes first..."
+  commitment:
+    text: "I will define a performance budget (KB limit) before adding the first pixel to the canvas."

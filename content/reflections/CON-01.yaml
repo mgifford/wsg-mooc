@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson CON-01
+id: CON-01-R
+lesson_id: CON-01
+
+diagnostic:
+  title: "Clarity Check"
+  questions:
+    - id: "diag_1"
+      text: "Is the reading grade level of your content above grade 9?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have used plain language and avoided jargon."
+    - id: "rubric_2"
+      text: "I have broken long paragraphs into bulleted lists."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "How does complex language waste energy?"
+      placeholder: "e.g., Takes longer to read..."
+    - id: "reflect_2"
+      text: "Why is 'plain language' an accessibility requirement, not just a style choice?"
+      placeholder: "e.g., Cognitive disabilities, non-native speakers..."
+    - id: "reflect_3"
+      text: "Does this content actually need to be 1,000 words long?"
+      placeholder: "e.g., Probably not..."
+  commitment:
+    text: "I will write for the user's understanding, not to sound impressive, aiming for Grade 8 readability."

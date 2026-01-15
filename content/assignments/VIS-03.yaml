@@ -1,0 +1,10 @@
+id: VIS-03-A
+lesson_id: VIS-03
+title: "Assignment: Compression Challenge"
+description: "Take 3 unoptimized images (a photo, a transparent logo, a screenshot). Optimize them using modern formats (WebP/AVIF) and tools ([Squoosh](https://squoosh.app/) / [ImageOptim](https://imageoptim.com/)). Aim for visual purity but minimal size."
+steps:
+  - "Gather source assets."
+  - "Record starting file sizes."
+  - "Process them."
+  - "Record ending file sizes."
+deliverable: "Table showing % reduction achieved (aim for >60%)."

@@ -1,0 +1,37 @@
+# Scenario-Based Quiz for Lesson FED-04
+# Topic: Adaptive User Interfaces
+
+id: FED-04-Q
+lesson_id: FED-04
+questions:
+  - scenario: >
+      A user visits your site with their OS set to "Dark Mode". Your site currently has a bright white background.
+    choices:
+      - text: "Do nothing. The brand guidelines clearly state the website background must be white."
+        correct: false
+      - text: "Use a CSS media query to invert the colors (dark background, light text), respecting the user's choice and saving energy on OLED screens."
+        correct: true
+      - text: "Show a popup asking them to turn off Dark Mode."
+        correct: false
+      - text: "Invert only the images, but keep the background white."
+        correct: false
+    explanation: >
+      Respecting `prefers-color-scheme: dark` is a direct energy-saving intervention for OLED devices. It also reduces 
+      eye strain, aligning user health with device health.
+    related_ids: ["WSG-3.12"]
+
+  - scenario: >
+      Your homepage features a large, looping video background. A user arrives with `prefers-reduced-motion: reduce` enabled.
+    choices:
+      - text: "Play the video anyway. It's the core emotional hook of the page."
+        correct: false
+      - text: "Pause the video automatically. Show a static poster image instead."
+        correct: true
+      - text: "Slow the video down to 50% speed."
+        correct: false
+      - text: "Play the video but blur it slightly."
+        correct: false
+    explanation: >
+      Reduced motion isn't just about vestibular disorders; it's a signal that the user wants a calmer, less processor-intensive experience. 
+      Stopping auto-play saves significant battery life.
+    related_ids: ["STAR-WD12-1"]

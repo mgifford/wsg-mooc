@@ -1,0 +1,28 @@
+# Measurement Tool Recommendations for Lesson FED-04
+# Context: Adaptive User Interfaces
+
+id: FED-04-M
+lesson_id: FED-04
+
+recommendations:
+  primary_tool:
+    name: "Chrome DevTools (Rendering -> Emulate CSS Media Features)"
+    type: "Browser Utility"
+    applicability: "High"
+    valid_uses:
+      - "Simulating 'prefers-color-scheme: dark'."
+      - "Simulating 'prefers-reduced-motion: reduce'."
+    limitations:
+      - "Simulation only; doesn't measure actual device power draw."
+
+  secondary_tool:
+    name: "Android/OLED Manual Check"
+    type: "Physical Test"
+    applicability: "Low (Requires Hardware)"
+    valid_uses:
+      - "Observing if 'black' pixels truly turn off (emit no light)."
+    limitations:
+      - "Hard to quantify without external meters."
+
+  learner_warning: >
+    "⚠️ Automated tools check if the *code* exists (media query present), not if the design is actually usable or energy-efficient in that mode."

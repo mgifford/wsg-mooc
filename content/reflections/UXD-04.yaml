@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson UXD-04
+id: UXD-04-R
+lesson_id: UXD-04
+
+diagnostic:
+  title: "Form Friction"
+  questions:
+    - id: "diag_1"
+      text: "Do you know exactly why you collect every field in your sign-up form?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have removed at least one optional field."
+    - id: "rubric_2"
+      text: "I have enabled autocomplete on all inputs."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "What 'legacy data' are you collecting that no one looks at anymore?"
+      placeholder: "e.g., Fax numbers..."
+    - id: "reflect_2"
+      text: "How does a long form impact a user with anxiety or a motor impairment?"
+      placeholder: "e.g., Increases abandonment risk..."
+    - id: "reflect_3"
+      text: "Does marketing actually use the demographic data you force users to provide?"
+      placeholder: "e.g., We collect job title but never segment by it..."
+  commitment:
+    text: "I will challenge every new input field request with: 'How will this improve the user's immediate experience?'"

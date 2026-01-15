@@ -1,0 +1,37 @@
+# Scenario-Based Quiz for Lesson FED-03
+# Topic: Optimizing Asset Loading
+
+id: FED-03-Q
+lesson_id: FED-03
+questions:
+  - scenario: >
+      A stakeholder wants the footer "Partner Logos" carousel to load immediately so users see it, even though it lies 2000px down the page.
+    choices:
+      - text: "Agree. Stakeholder visibility requirements override performance."
+        correct: false
+      - text: "Push back. Implementing `loading='lazy'` ensures the browser prioritizes the critical hero content first. The logos will load when the user scrolls near them."
+        correct: true
+      - text: "Preload the footer images using `<link rel='preload'>` to make them load even faster."
+        correct: false
+      - text: "Make the footer sticky so it is always visible."
+        correct: false
+    explanation: >
+      Loading invisible resources competes for bandwidth with visible ones. Sustainable loading prioritizes user need (what they see now) 
+      over theoretical need.
+    related_ids: ["WSG-3.8", "STAR-WD08-1"]
+
+  - scenario: >
+      You are loading a heavy 3D interactive widget on the homepage. It blocks the main thread for 500ms, making the site freeze during load.
+    choices:
+      - text: "Leave it. Code is heavy, that's just how the web is."
+        correct: false
+      - text: "Replace the widget with a static image (Facade). Only load the real 3D code if the user clicks 'Start 3D Experience'."
+        correct: true
+      - text: "Move the 3D widget to the top of the page so it loads first."
+        correct: false
+      - text: "Hide the page with a white screen until the widget is ready."
+        correct: false
+    explanation: >
+      The "Facade Pattern" saves massive amounts of data and processing power by assuming the user *might not* want to interact 
+      with the heavy element. It effectively makes the cost "opt-in".
+    related_ids: ["STAR-WD08-2"]

@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson UXD-05
+id: UXD-05-R
+lesson_id: UXD-05
+
+diagnostic:
+  title: "System Scale"
+  questions:
+    - id: "diag_1"
+      text: "Do you have a shared component library with developers?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have consolidated button styles to a core set."
+    - id: "rubric_2"
+      text: "I have defined a spacing system to reduce random pixel values."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "Why do designers feel the urge to reinvent common patterns (like inputs) for every project?"
+      placeholder: "e.g., Boredom, desire to show creativity..."
+    - id: "reflect_2"
+      text: "How much CSS bloat is caused by 'detached' design components that act like one-offs?"
+      placeholder: "e.g., Hundreds of overrides..."
+    - id: "reflect_3"
+      text: "Can a strict design system actually liberate you to focus on bigger UX problems?"
+      placeholder: "e.g., Yes, less pixel pushing..."
+  commitment:
+    text: "I will use standard components for 90% of the UI and only break the system for high-impact innovation."

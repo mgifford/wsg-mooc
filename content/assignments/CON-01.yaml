@@ -1,0 +1,10 @@
+id: CON-01-A
+lesson_id: CON-01
+title: "Assignment: Jargon Busting"
+description: "Take a complex paragraph from your organization's 'About Us' or 'Policy' page. Use the [Hemingway Editor](https://hemingwayapp.com/) or similar to measure its grade level. Rewrite it to aim for Grade 8."
+steps:
+  - "Paste text into [Hemingway App](https://hemingwayapp.com/)."
+  - "Note the initial grade."
+  - "Simplify sentences and remove adverbs."
+  - "Note the final grade."
+deliverable: "Before/After text with scores."

@@ -1,0 +1,11 @@
+id: CON-03-M
+lesson_id: CON-03
+title: "Metric: Accessible Media Coverage"
+metric: "Accessible Media Coverage"
+unit: "Percentage (%)"
+description: "Percentage of non-text content with valid alternatives."
+formula: "(Images with Alt + Videos with Captions) / Total Media"
+success_threshold: "100%"
+method: "Automated Accessibility Scan ([Axe](https://www.deque.com/axe/), [Wave](https://wave.webaim.org/))"
+frequency: "Per Release"
+wsg_mapping: "WSG-2.14"

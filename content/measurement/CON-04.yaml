@@ -1,0 +1,10 @@
+id: CON-04-M
+lesson_id: CON-04
+metric: "Content Freshness Rate"
+unit: "Percentage (%)"
+description: "Percentage of content reviewed or updated within its designated lifecycle window (e.g., 1 year)."
+formula: "(Pages Reviewed / Total Pages) * 100"
+success_threshold: "> 90%"
+method: "CMS Reports"
+frequency: "Quarterly"
+wsg_mapping: "WSG-4.7"

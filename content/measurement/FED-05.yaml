@@ -1,0 +1,28 @@
+# Measurement Tool Recommendations for Lesson FED-05
+# Context: Network & Transfer Efficiency
+
+id: FED-05-M
+lesson_id: FED-05
+
+recommendations:
+  primary_tool:
+    name: "Chrome DevTools (Network Headers)"
+    type: "Browser Utility"
+    applicability: "High"
+    valid_uses:
+      - "Verifying 'Content-Encoding: br' or 'gzip'."
+      - "Verifying 'Cache-Control' max-age values."
+    limitations:
+      - "Requires understanding of HTTP protocol."
+
+  secondary_tool:
+    name: "Lighthouse (Best Practices)"
+    type: "Audit Tool"
+    applicability: "Medium"
+    valid_uses:
+      - "Flagging uncompressed text resources."
+    limitations:
+      - "Can give false positives on local dev servers."
+
+  learner_warning: >
+    "⚠️ Compression ratios vary wildly. A minified JS file compresses much better than a non-minified one. Efficiency is cumulative."

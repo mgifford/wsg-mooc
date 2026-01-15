@@ -1,0 +1,19 @@
+{
+  "analysis_date": "2026-02-01T00:00:00Z",
+  "snapshots": { "from": "v1.0", "to": "v1.1" },
+  "severity": "HIGH",
+  "changes": {
+    "guidelines": {
+      "added": ["WSG-3.9"],
+      "removed": ["WSG-3.8"],
+      "modified": []
+    },
+    "star": {
+      "added": ["WD08-3"],
+      "removed": ["WD08-1"],
+      "modified": ["UX07-1"]
+    },
+    "narratives": [],
+    "assets": []
+  }
+}

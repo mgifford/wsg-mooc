@@ -1,0 +1,20 @@
+id: CON-02-Q
+lesson_id: CON-02
+title: "Quiz: Findability"
+questions:
+  - id: q1
+    text: "What is the primary sustainability goal of good SEO?"
+    options:
+      - text: "Getting more traffic."
+        correct: false
+      - text: "Helping users find the right answer immediately."
+        correct: true
+    remedy: "Reducing 'pogo-sticking' saves energy and frustration."
+  - id: q2
+    text: "Which element is crucial for screen reader navigation?"
+    options:
+      - text: "Keywords tag."
+        correct: false
+      - text: "Proper heading structure (H1, H2, H3)."
+        correct: true
+    remedy: "Headings provide the outline users skip through."

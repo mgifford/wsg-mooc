@@ -1,0 +1,123 @@
+# Learning Modules Sequence
+# Grouped by Role Track, aligned with real-world workflows.
+
+modules:
+  
+  # ==========================================
+  # TRACK: FRONT-END DEVELOPER
+  # Context: Implementation and Optimization
+  # ==========================================
+  - track: "Front-end Developer"
+    items:
+      - id: "FED-01"
+        title: "Establishing Code Hygiene"
+        objective: "Establish a baseline of semantic, valid, and minified code."
+        related_ids: ["WSG-3.2", "WSG-3.7", "STAR-WD02-1", "STAR-WD07-1"]
+      
+      - id: "FED-02"
+        title: "Managing Dependencies"
+        objective: "Audit, prune, and maintain third-party scripts to reduce bloat."
+        related_ids: ["WSG-3.4", "WSG-3.14", "WSG-3.16", "STAR-WD04-1", "STAR-WD16-3", "STAR-WD14-2"]
+
+      - id: "FED-03"
+        title: "Optimizing Asset Loading"
+        objective: "Control exactly when and how resources are fetched by the browser."
+        related_ids: ["WSG-3.8", "STAR-WD08-1", "STAR-WD08-2"]
+
+      - id: "FED-04"
+        title: "Adaptive User Interfaces"
+        objective: "Respect user system preferences for motion and theme to save energy."
+        related_ids: ["WSG-3.12", "STAR-WD12-1"]
+
+      - id: "FED-05"
+        title: "Network & Transfer Efficiency"
+        objective: "Configure server compression vs client caching for minimal transfer."
+        related_ids: ["WSG-4.2", "WSG-4.3", "STAR-HIS02-1", "STAR-HIS03-1"]
+
+  # ==========================================
+  # TRACK: UX DESIGNER
+  # Context: Flow and Architecture
+  # ==========================================
+  - track: "UX Designer"
+    items:
+      - id: "UXD-01"
+        title: "Validating User Intent"
+        objective: "Ensure every feature built requires actual user need to avoid waste."
+        related_ids: ["WSG-2.2", "STAR-UX02-1"]
+
+      - id: "UXD-02"
+        title: "Streamlining Navigation"
+        objective: "Reduce the 'interaction cost' (clicks/time) to find content."
+        related_ids: ["WSG-2.4", "WSG-2.5", "STAR-UX04-1", "STAR-UX05-1", "STAR-UX05-2"]
+
+      - id: "UXD-03"
+        title: "Removing Toxic Patterns"
+        objective: "Identify and remove deceptive designs that trick users into unnecessary actions."
+        related_ids: ["WSG-2.6", "WSG-2.7", "STAR-UX07-1", "STAR-UX04-5"]
+
+      - id: "UXD-04"
+        title: "Designing Efficient Forms"
+        objective: "Minimize data collection and friction in input scenarios."
+        related_ids: ["WSG-2.15", "STAR-UX15-1"]
+
+      - id: "UXD-05"
+        title: "Scaling Consistency"
+        objective: "Implement a design system to prevent component redundancy."
+        related_ids: ["WSG-2.9", "STAR-UX09-1"]
+
+  # ==========================================
+  # TRACK: VISUAL DESIGNER
+  # Context: Assets and Aesthetics
+  # ==========================================
+  - track: "Visual Designer"
+    items:
+      - id: "VIS-01"
+        title: "Setting the Weight Budget"
+        objective: "Define and stick to a page-weight budget for visual assets."
+        related_ids: ["STAR-WD01-1"]
+
+      - id: "VIS-02"
+        title: "Typography Strategy"
+        objective: "Select and optimize fonts to balance aesthetics with file size."
+        related_ids: ["WSG-2.13", "STAR-UX13-1", "STAR-UX13-2"]
+
+      - id: "VIS-03"
+        title: "Optimizing Image Assets"
+        objective: "Choose the correct format and compression for the visual context."
+        related_ids: ["WSG-2.11", "WSG-2.14", "STAR-UX14-3"]
+
+      - id: "VIS-04"
+        title: "Designing for Energy Saving"
+        objective: "Create palettes and themes (Dark Mode) that reduce display energy."
+        related_ids: ["WSG-3.12", "STAR-WD12-1"]
+
+      - id: "VIS-05"
+        title: "Responsible Animation"
+        objective: "Ensure motion is decorative (removable) or user-initiated."
+        related_ids: ["WSG-2.12", "STAR-UX11-1"]
+
+  # ==========================================
+  # TRACK: CONTENT AUTHOR
+  # Context: Copy and Lifecycle
+  # ==========================================
+  - track: "Content Author"
+    items:
+      - id: "CON-01"
+        title: "Writing for Clarity"
+        objective: "Structure content to reduce reading time and cognitive load."
+        related_ids: ["WSG-2.10", "STAR-UX10-1", "STAR-UX10-2"]
+
+      - id: "CON-02"
+        title: "Findability & SEO"
+        objective: "Write metadata that helps users find the page without pogo-sticking."
+        related_ids: ["WSG-3.11", "STAR-WD11-2"]
+
+      - id: "CON-03"
+        title: "Accessible Media"
+        objective: "Create comprehensive non-text alternatives for images and video."
+        related_ids: ["WSG-2.14", "STAR-UX14-3", "STAR-UX14-4"]
+
+      - id: "CON-04"
+        title: "Content Lifecycle"
+        objective: "Set review dates to prevent the accumulation of 'ROT' (Redundant, Obsolete, Trivial) content."
+        related_ids: ["WSG-4.7", "WSG-4.12", "STAR-HIS12-2"]

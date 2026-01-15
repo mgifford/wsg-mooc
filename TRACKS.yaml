@@ -1,0 +1,177 @@
+# Learning Tracks (ARRM Role-Based)
+
+This file defines the scoped learning tracks for the four primary roles.
+
+---
+
+## Role: Front-end Developer
+
+**ARRM Scope**: Implementation, Asset Optimization, Technical Performance.
+**Focus**: Reducing compute, storage, and network transmission through code.
+
+```yaml
+track: "Front-end Developer"
+goals:
+  - "Master efficient coding practices (Minification, Tree-shaking, DRY)"
+  - "Optimize asset delivery (Formats, Caching, Lazy-loading)"
+  - "Implement user-preference adaptive loading"
+  - "Reduce client-side processing overhead"
+
+included_wsg_guidelines:
+  - "WSG-3.2"  # Remove unnecessary or redundant information
+  - "WSG-3.4"  # Remove unnecessary code (Tree shaking)
+  - "WSG-3.7"  # Ensure code follows good semantic practices
+  - "WSG-3.8"  # Defer the loading of non-critical resources (Lazy load)
+  - "WSG-3.12" # Use sustainability beneficial user preference media queries
+  - "WSG-3.14" # Use standards-based JavaScript and APIs
+  - "WSG-3.16" # Use dependencies appropriately and ensure maintenance
+  - "WSG-4.2"  # Optimize caching and support offline access
+  - "WSG-4.3"  # Reduce data transfer with compression
+
+included_star_techniques:
+  - "WD02-1"   # Minify front-end code
+  - "WD04-1"   # Remove unused CSS/JS
+  - "WD07-1"   # Validate source code
+  - "WD08-1"   # Lazy loading images/media
+  - "WD08-2"   # Preload/Prefetch strategies
+  - "WD12-1"   # CSS Media Queries (Dark mode/Reduced motion)
+  - "WD14-2"   # Efficient JS APIs
+  - "WD16-3"   # Dependency audit
+  - "HIS02-1"  # Cache-Control headers implementation
+  - "HIS03-1"  # Gzip/Brotli compression
+
+exclusions:
+  - "WSG-4.1 (Hosting)" # Usually a DevOps/Infra decision, FE can only advocate.
+  - "WSG-3.1 (Goals)"   # Strategic decision, not implementation task.
+  - "WSG-2.x (UX)"      # Responsibility of Design team, FE implements the spec.
+
+expected_outcomes:
+  - "Learner can demonstrate a 20% reduction in KB size of a sample page."
+  - "Learner can implement dark-mode toggles that respect system preferences."
+  - "Learner can audit and remove 3 unused dependencies from a project."
+```
+
+---
+
+## Role: UX Designer
+
+**ARRM Scope**: Interaction Design, Information Architecture, User Journey.
+**Focus**: Reducing friction, time-on-task, and wasted steps.
+
+```yaml
+track: "UX Designer"
+goals:
+  - "Streamline user journeys to reduce required steps"
+  - "Eliminate deceptive patterns that cause waste"
+  - "Design for findability (Information Architecture)"
+  - "Support task completion with minimal friction"
+
+included_wsg_guidelines:
+  - "WSG-2.2"  # Understand user requirements (User research)
+  - "WSG-2.4"  # Minimize non-essential content/journeys
+  - "WSG-2.5"  # Ensure navigation is well-structured
+  - "WSG-2.6"  # Design to assist not distract
+  - "WSG-2.7"  # Avoid manipulative/deceptive patterns
+  - "WSG-2.9"  # Use a design system
+  - "WSG-2.15" # Provide accessible, minimal web forms
+
+included_star_techniques:
+  - "UX02-1"   # Quantitative user needs research
+  - "UX04-1"   # Measure interaction cost (click depth)
+  - "UX04-5"   # Remove non-user initiated pop-ups
+  - "UX05-1"   # Accessible navigation structure
+  - "UX05-2"   # Sitemap/Wayfinding
+  - "UX07-1"   # Audit for Dark Patterns
+  - "UX09-1"   # Implement Design System
+  - "UX15-1"   # Minimize form fields
+
+exclusions:
+  - "WSG-3.x (Code)"    # Implementation detail.
+  - "WSG-4.x (Hosting)" # Infrastructure detail.
+  - "WSG-2.13 (Typo)"   # Visual Design specific (unless combined role).
+
+expected_outcomes:
+  - "Learner can map a user journey and identify 2 removable steps."
+  - "Learner can audit a UI for dark patterns."
+  - "Learner can restructure a navigation menu to reduce search time."
+```
+
+---
+
+## Role: Visual Designer
+
+**ARRM Scope**: UI Design, Asset Creation, Typography, Color.
+**Focus**: Reducing asset weight, efficient formats, rendering performance.
+
+```yaml
+track: "Visual Designer"
+goals:
+  - "Optimize media assets for quality vs. weight"
+  - "Select efficient typography systems"
+  - "Design for energy-efficient colour modes (OLED)"
+  - "Reduce non-essential animation"
+
+included_wsg_guidelines:
+  - "WSG-2.11" # Optimize media for sustainability
+  - "WSG-2.12" # Ensure animation is proportionate
+  - "WSG-2.13" # Use optimized typography
+  - "WSG-2.14" # Offer suitable alternatives (Media)
+  - "WSG-3.12" # (Design side) Dark Mode / Reduced Motion design
+
+included_star_techniques:
+  - "UX11-1"   # Remove auto-playing animation
+  - "UX13-1"   # Use System Fonts where possible
+  - "UX13-2"   # Efficient custom typefaces (Subset, WOFF2)
+  - "UX14-3"   # Alternative text / Captions (Design context)
+  - "WD01-1"   # (Design side) Page weight budgeting
+  - "WD12-1"   # (Design side) Defining Dark Mode palette
+
+exclusions:
+  - "WSG-3.x"  # Code implementation.
+  - "WSG-2.5"  # Navigation structure (UX).
+
+expected_outcomes:
+  - "Learner can optimize an image set to reduce weight by 40% without visual loss."
+  - "Learner can select and subset a web font."
+  - "Learner can design a localized Dark Mode palette."
+```
+
+---
+
+## Role: Content Author
+
+**ARRM Scope**: Copywriting, Content Lifecycle, Metadata.
+**Focus**: Clarity, Findability, Data Rot.
+
+```yaml
+track: "Content Author"
+goals:
+  - "Write clear, concise content (Findability, Processing time)"
+  - "Manage content lifecycle (Creation -> Archive -> Delete)"
+  - "Ensure media accessibility (Alt text, Captions)"
+  - "Write for search intent (Reduce wasted clicks)"
+
+included_wsg_guidelines:
+  - "WSG-2.10" # Provide clear, inclusive content
+  - "WSG-2.14" # Offer suitable alternatives (Text transcripts, Alt text)
+  - "WSG-4.7"  # Define frequency of data refreshes
+  - "WSG-4.12" # Store data according to needs (Archiving policy)
+  - "WSG-3.11" # Structure metadata (Title, Description tags)
+
+included_star_techniques:
+  - "UX10-1"   # Plain language review
+  - "UX10-2"   # Break down long-form content
+  - "UX14-3"   # Write efficient Alt Text
+  - "UX14-4"   # Provide transcripts
+  - "HIS12-2"  # Set content expiration/review dates
+  - "WD11-2"   # Write effective Meta Descriptions
+
+exclusions:
+  - "WSG-3.x"  # Technical implementation.
+  - "WSG-2.x"  # Visual/UX layout decisions.
+
+expected_outcomes:
+  - "Learner can rewrite a complex policy into plain English."
+  - "Learner can audit a content library and mark items for archival."
+  - "Learner can write effective alt-text for complex images."
+```

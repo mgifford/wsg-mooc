@@ -1,0 +1,20 @@
+id: VIS-01-Q
+lesson_id: VIS-01
+title: "Quiz: Weight Budgets"
+questions:
+  - id: q1
+    text: "What is a 'Performance Budget'?"
+    options:
+      - text: "The money spent on hosting."
+        correct: false
+      - text: "A limit on valid page size (e.g., < 1MB) defined before design begins."
+        correct: true
+    remedy: "Budgets prevent 'bloat creep' during the project."
+  - id: q2
+    text: "Who is responsible for the weight budget?"
+    options:
+      - text: "Only the developers."
+        correct: false
+      - text: "Designers sets the constraints, developers implement them."
+        correct: true
+    remedy: "Design decisions (like full-screen video) dictate the technical floor."

@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson FED-01
+# Includes Pre-assessment, Self-Audit Rubric, and Reflection Prompt
+
+id: FED-01-R
+lesson_id: FED-01
+
+diagnostic:
+  title: "Current Practice Check"
+  questions:
+    - id: "diag_1"
+      text: "Do you currently run a HTML validator as part of your CI/CD pipeline?"
+      type: "boolean"
+    - id: "diag_2"
+      text: "Can you distinguish between 'semantic' and 'presentation' markup in your current project?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  description: "Verify your assignment against these quality criteria."
+  items:
+    - id: "rubric_1"
+      text: "I have confirmed that my build process outputs minified files for production."
+    - id: "rubric_2"
+      text: "I have replaced at least 3 generic `<div>` tags with semantic alternatives."
+    - id: "rubric_3"
+      text: "I have verified the page contains zero validation errors in the W3C validator."
+
+reflection:
+  title: "The Learner Journal"
+  prompts:
+    - id: "reflect_1"
+      text: "Why do you think 'Div Soup' (nested generic containers) is so common in modern frameworks?"
+      placeholder: "e.g., Component isolation makes us forget the global document structure..."

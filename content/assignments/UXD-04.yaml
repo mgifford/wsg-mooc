@@ -1,0 +1,10 @@
+id: UXD-04-A
+lesson_id: UXD-04
+title: "Assignment: Field Rationalization"
+description: "Take an existing form on your site. For every field, write down who uses the data and what happens if it is deleted. Remove any field that lacks a clear downstream consumer."
+steps:
+  - "Inventory all fields."
+  - "Identify the data consumer for each."
+  - "Remove 'nice to have' fields."
+  - "Prototype the shortened form."
+deliverable: "Annotated screenshot and rationalization table."

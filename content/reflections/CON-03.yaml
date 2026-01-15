@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson CON-03
+id: CON-03-R
+lesson_id: CON-03
+
+diagnostic:
+  title: "Media Audit"
+  questions:
+    - id: "diag_1"
+      text: "Does every image conveying meaning have a text alternative?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have provided captions (not just auto-generated) for all video."
+    - id: "rubric_2"
+      text: "I have written alt text that describes the *function* of the image, not just the appearance."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "If an image fails to load (low bandwidth), does the text alternative save the experience?"
+      placeholder: "e.g., Yes, if written well..."
+    - id: "reflect_2"
+      text: "Why are text transcripts 'greener' than video?"
+      placeholder: "e.g., KBs vs MBs..."
+    - id: "reflect_3"
+      text: "How does searching video content depend on text alternatives?"
+      placeholder: "e.g., Search engines can't watch video..."
+  commitment:
+    text: "I will provide text alternatives for every piece of non-text content I publish."

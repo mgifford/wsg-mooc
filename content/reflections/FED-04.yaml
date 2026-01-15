@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson FED-04
+# Includes Pre-assessment, Self-Audit Rubric, and Reflection Prompt
+
+id: FED-04-R
+lesson_id: FED-04
+
+diagnostic:
+  title: "Adaptive Design Check"
+  questions:
+    - id: "diag_1"
+      text: "Have you ever tested your site with the OS set to 'Dark Mode'?"
+      type: "boolean"
+    - id: "diag_2"
+      text: "Does your site respect 'Reduce Motion' preferences?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  description: "Verify your assignment against these quality criteria."
+  items:
+    - id: "rubric_1"
+      text: "I have implemented a basic dark theme using CSS variables."
+    - id: "rubric_2"
+      text: "I have verified that text contrast ratios are sufficient in both modes."
+    - id: "rubric_3"
+      text: "I have wrapped heavy animations in a `prefers-reduced-motion: no-preference` query."
+
+reflection:
+  title: "The Learner Journal"
+  prompts:
+    - id: "reflect_1"
+      text: "Why is 'Reduced Motion' considered both an accessibility feature AND a sustainability feature?"
+      placeholder: "e.g., stopping animations saves GPU cycles..."

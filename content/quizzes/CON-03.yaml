@@ -1,0 +1,22 @@
+id: CON-03-Q
+lesson_id: CON-03
+title: "Quiz: Accessible Media"
+questions:
+  - id: q1
+    text: "When an image is purely decorative, what should the alt text be?"
+    options:
+      - text: "alt='decorative'"
+        correct: false
+      - text: "Leave it out completely."
+        correct: false
+      - text: "alt='' (empty string)"
+        correct: true
+    remedy: "An empty attribute tells screen readers to ignore it."
+  - id: q2
+    text: "Can auto-generated captions be used as-is?"
+    options:
+      - text: "Yes, AI is perfect."
+        correct: false
+      - text: "No, they must be reviewed for accuracy."
+        correct: true
+    remedy: "Inaccurate captions fail the WCAG requirement."

@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson UXD-02
+id: UXD-02-R
+lesson_id: UXD-02
+
+diagnostic:
+  title: "Navigation Check"
+  questions:
+    - id: "diag_1"
+      text: "Can a user reach their goal in 3 clicks or less?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have audited the menu structure for clear, descriptive labels."
+    - id: "rubric_2"
+      text: "I have ensured search results are relevant and fast."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "Is your navigation structured around how *you* view the company, or how the *user* views their problem?"
+      placeholder: "e.g., Organized by department instead of task..."
+    - id: "reflect_2"
+      text: "What is the 'time cost' of a user getting lost on your site?"
+      placeholder: "e.g., Frustration, support calls..."
+    - id: "reflect_3"
+      text: "How does deep nesting affect mobile users on slow connections?"
+      placeholder: "e.g., Needs more page loads to drill down..."
+  commitment:
+    text: "I will perform a card-sorting test once a year to verify our IA matches mental models."

@@ -1,0 +1,20 @@
+{
+  "name": "wsg-mooc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "liascript-devserver",
+    "test": "jest",
+    "convert": "node scripts/convert_to_liascript.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@liascript/devserver": "^1.1.52--1.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

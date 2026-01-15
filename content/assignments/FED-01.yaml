@@ -1,0 +1,8 @@
+id: FED-01-A
+title: "Cleanup Campaign"
+description: "Identify and remove 3 instances of non-semantic markup in your codebase."
+steps:
+  - "Scan your latest Pull Request or feature branch."
+  - "Find `div` or `span` tags acting as buttons, headings, or lists."
+  - "Refactor them to `<button>`, `<h1>-<h6>`, or `<ul>`."
+deliverable: "Diff or screenshot of the refactored code."

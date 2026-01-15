@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson VIS-03
+id: VIS-03-R
+lesson_id: VIS-03
+
+diagnostic:
+  title: "Asset Management"
+  questions:
+    - id: "diag_1"
+      text: "Do you export images at 2x/3x retina resolution by default?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have chosen the correct format (SVG for vectors, JPG/WebP for photos)."
+    - id: "rubric_2"
+      text: "I have run all assets through a compression tool (tinypng, imageoptim) before handoff."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "Why do we keep full-resolution master files on the live web server?"
+      placeholder: "e.g., Laziness, fear of quality loss..."
+    - id: "reflect_2"
+      text: "Is a transparent PNG always clearer than a JPG with a matching background color?"
+      placeholder: "e.g., No, and it's 5x bigger..."
+    - id: "reflect_3"
+      text: "How does image weight interact with CO2 emissions?"
+      placeholder: "e.g., Data transfer equals energy use..."
+  commitment:
+    text: "I will compress every single image asset and choose next-gen formats (WebP/AVIF) where possible."

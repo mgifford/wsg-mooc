@@ -1,0 +1,10 @@
+id: UXD-01-A
+lesson_id: UXD-01
+title: "Assignment: The '5 Whys' Feature Audit"
+description: "Select one feature currently in your backlog or product roadmap. Apply the '5 Whys' technique to drill down to the root user need. If you cannot find a documented user need by the 5th 'Why', propose removing or deprioritizing the feature."
+steps:
+  - "Identify a feature."
+  - "Ask 'Why do we need this?' five times."
+  - "Document the root cause."
+  - "Recommendation: Verify, Pivot, or Kill."
+deliverable: "A one-page decision memo."

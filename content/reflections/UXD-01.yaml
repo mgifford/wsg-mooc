@@ -1,0 +1,33 @@
+# Interaction Definitions for Lesson UXD-01
+id: UXD-01-R
+lesson_id: UXD-01
+
+diagnostic:
+  title: "Intent Validation"
+  questions:
+    - id: "diag_1"
+      text: "Do you require data/evidence before starting a high-fidelity design?"
+      type: "boolean"
+
+rubric:
+  title: "Self-Correction Checklist"
+  items:
+    - id: "rubric_1"
+      text: "I have identified the primary user problem this feature solves."
+    - id: "rubric_2"
+      text: "I have prototyped the solution in low-fidelity first to save resources."
+
+reflection:
+  title: "Sustainability in Context"
+  prompts:
+    - id: "reflect_1"
+      text: "Who are the 'stakeholders' that push for features users don't need, and what are their incentives?"
+      placeholder: "e.g., Sales team asking for parity..."
+    - id: "reflect_2"
+      text: "How much design time do you spend on 'nice-to-haves' versus core tasks?"
+      placeholder: "e.g., 20% on animation..."
+    - id: "reflect_3"
+      text: "If you could delete one feature from your product today to save energy, what would it be?"
+      placeholder: "e.g., The auto-play carousel..."
+  commitment:
+    text: "I will ask 'What is the user evidence for this?' at the start of every new design ticket."

@@ -1,0 +1,95 @@
+# Open Badges Definitions for Web Sustainability MOOC tracks
+# Conforms to Open Badges v3.0 conceptual model (Profile -> Achievement -> Credential)
+
+badges:
+  - id: badge-fed-01
+    track_id: "Front-end Developer"
+    name: "Sustainable Web Implementation: Front-end"
+    description: >
+      Validation that the learner has completed the self-directed curriculum on reducing the environmental and performance footprint of client-side code.
+      Focuses on minification, asset optimization, dependency management, and transfer efficiency.
+    image: "assets/badges/badge-fed.svg" # Placeholder
+    criteria:
+      narrative: >
+        The earner has completed 5 practical learning modules and documented interventions to reduce page weight and improve rendering efficiency on a local project.
+      requirements:
+        - "Complete Modules FED-01 through FED-05."
+        - "Submit 5 'Before/After' measurements demonstrating payload reduction."
+        - "Submit 1 code-hygiene audit of a production codebase."
+        - "Pass all self-graded rubrics for code quality and semantic HTML."
+    evidence_structure:
+      type: "VerificationObject"
+      description: "SHA-256 Hash of learner's specific intervention metrics and reflection journal."
+    disclaimers:
+      - "This badge attests to the completion of a curriculum, not the professional competence of the earner."
+      - "Holding this badge does not guarantee that the earner's work is WCAG 2.2 compliant."
+      - "This badge does not certify compliance with the W3C Web Sustainability Guidelines."
+
+  - id: badge-uxd-01
+    track_id: "UX Designer"
+    name: "Sustainable Web Design: UX Strategy"
+    description: >
+      Validation that the learner has completed the self-directed curriculum on reducing digital waste through user-centered design decisions.
+      Focuses on removing dark patterns, streamlining navigation, and validating feature intent.
+    image: "assets/badges/badge-uxd.svg" # Placeholder
+    criteria:
+      narrative: >
+        The earner has completed 5 practical learning modules and performed audits to identify and remove user-hostile patterns and unnecessary interaction costs.
+      requirements:
+        - "Complete Modules UXD-01 through UXD-05."
+        - "Conduct 1 'Friction Audit' of a cancellation/exit flow."
+        - "Map and optimize 1 core user journey to reduce interaction steps."
+        - "Submit reflection journals on the business impact of ethical design."
+    evidence_structure:
+      type: "VerificationObject"
+      description: "SHA-256 Hash of learner's audit logs and interaction cost calculations."
+    disclaimers:
+      - "This badge attests to the completion of a curriculum, not the professional competence of the earner."
+      - "Holding this badge does not guarantee that the earner's designs are WCAG 2.2 compliant."
+      - "This badge does not certify compliance with the W3C Web Sustainability Guidelines."
+
+  - id: badge-vis-01
+    track_id: "Visual Designer"
+    name: "Sustainable Web Design: Visual Assets"
+    description: >
+      Validation that the learner has completed the self-directed curriculum on low-impact visual aesthetics and asset management.
+      Focuses on weight budgeting, image formats, typography strategy, and energy-efficient color modes.
+    image: "assets/badges/badge-vis.svg" # Placeholder
+    criteria:
+      narrative: >
+        The earner has completed 5 practical learning modules and demonstrated the ability to create visually engaging designs within strict performance budgets.
+      requirements:
+        - "Complete Modules VIS-01 through VIS-05."
+        - "Create and adhere to a 'Page Weight Budget' for a sample project."
+        - "Demonstrate optimization of images and fonts (format selection, subsetting)."
+        - "Verify design contrast in both Light and Dark energy modes."
+    evidence_structure:
+      type: "VerificationObject"
+      description: "SHA-256 Hash of learner's asset optimization logs and budget calculations."
+    disclaimers:
+      - "This badge attests to the completion of a curriculum, not the professional competence of the earner."
+      - "Holding this badge does not guarantee that the earner's designs are WCAG 2.2 compliant."
+      - "This badge does not certify compliance with the W3C Web Sustainability Guidelines."
+
+  - id: badge-con-01
+    track_id: "Content Author"
+    name: "Sustainable Content Strategy"
+    description: >
+      Validation that the learner has completed the self-directed curriculum on creating accessible, findable, and lifecycle-managed content.
+      Focuses on plain language, findability, media accessibility, and ROT (Redundant, Obsolete, Trivial) management.
+    image: "assets/badges/badge-con.svg" # Placeholder
+    criteria:
+      narrative: >
+        The earner has completed 4 practical learning modules and executed a content lifecycle audit to improve clarity and reduce digital clutter.
+      requirements:
+        - "Complete Modules CON-01 through CON-04."
+        - "Conduct a 'ROT' audit to identify and archive obsolete content."
+        - "Rewrite 1 complex policy/article into Plain Language."
+        - "Verify media accessibility (Alt text/Captions) for a content sample."
+    evidence_structure:
+      type: "VerificationObject"
+      description: "SHA-256 Hash of learner's content audit results and readability scores."
+    disclaimers:
+      - "This badge attests to the completion of a curriculum, not the professional competence of the earner."
+      - "Holding this badge does not guarantee that the earner's content is WCAG 2.2 compliant."
+      - "This badge does not certify compliance with the W3C Web Sustainability Guidelines."

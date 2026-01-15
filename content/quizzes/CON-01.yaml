@@ -1,0 +1,22 @@
+id: CON-01-Q
+lesson_id: CON-01
+title: "Quiz: Writing for Clarity"
+questions:
+  - id: q1
+    text: "Who benefits from Grade 8 level writing?"
+    options:
+      - text: "Only children."
+        correct: false
+      - text: "Everyone, including experts."
+        correct: true
+    remedy: "Experts prefer plain language because it saves them time."
+  - id: q2
+    text: "How does concise content help the environment?"
+    options:
+      - text: "Less data to store and transfer."
+        correct: false
+      - text: "Less time spent reading (screen on time)."
+        correct: false
+      - text: "Both of the above."
+        correct: true
+    remedy: "Cognitive load and server load are both reduced."

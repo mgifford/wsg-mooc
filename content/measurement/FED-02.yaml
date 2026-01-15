@@ -1,0 +1,28 @@
+# Measurement Tool Recommendations for Lesson FED-02
+# Context: Managing Dependencies
+
+id: FED-02-M
+lesson_id: FED-02
+
+recommendations:
+  primary_tool:
+    name: "Webpack Bundle Analyzer / Source Map Explorer"
+    type: "Visualization Tool"
+    applicability: "High"
+    valid_uses:
+      - "Visualizing the relative weight of node_modules vs source code."
+      - "Identifying duplicate packages."
+    limitations:
+      - "Requires a build step configuration."
+
+  secondary_tool:
+    name: "Chrome DevTools (Coverage Tab)"
+    type: "Browser Utility"
+    applicability: "Medium"
+    valid_uses:
+      - "Identifying percentage of loaded JS/CSS that is unused on the current page."
+    limitations:
+      - "Session-dependent; you must interact with the page to 'cover' code paths."
+
+  learner_warning: >
+    "⚠️ A package might look small in simple file size, but its parsing cost on a low-end mobile device can be 10x higher than on your laptop."

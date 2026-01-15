@@ -1,0 +1,10 @@
+id: VIS-04-M
+lesson_id: VIS-04
+metric: "Dark Mode Availability"
+unit: "Boolean"
+description: "Is a system-respecting dark mode available?"
+formula: "True if @media (prefers-color-scheme: dark) is implemented."
+success_threshold: "True"
+method: "Code Inspection"
+frequency: "Per Release"
+wsg_mapping: "WSG-3.12"

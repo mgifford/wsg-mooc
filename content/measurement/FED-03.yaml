@@ -1,0 +1,28 @@
+# Measurement Tool Recommendations for Lesson FED-03
+# Context: Optimizing Asset Loading
+
+id: FED-03-M
+lesson_id: FED-03
+
+recommendations:
+  primary_tool:
+    name: "Chrome DevTools (Network Tab)"
+    type: "Browser Utility"
+    applicability: "High"
+    valid_uses:
+      - "Identifying 'Waterfalls' (chains of blocking requests)."
+      - "Verifying specific loading priorities (High/Low/Auto)."
+    limitations:
+      - "Can be overwhelming with too much data."
+
+  secondary_tool:
+    name: "Core Web Vitals (LCP)"
+    type: "Performance Metric"
+    applicability: "High"
+    valid_uses:
+      - "Measuring the exact time the main content becomes visible."
+    limitations:
+      - "LCP is a proxy, not a direct measure of data sustainability."
+
+  learner_warning: >
+    "⚠️ Don't just look at the 'Load' event time. Look at the *order* in which bits arrive. The Hero Image needs to beat the Advert."
