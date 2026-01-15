@@ -179,6 +179,42 @@
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
     
+    .breadcrumb {
+      color: #666;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb-item {
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    .breadcrumb-separator {
+      color: #bbb;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: #eee;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transition: width 0.3s ease;
+    }
+
     .controls {
       display: flex;
       gap: 15px;
@@ -186,6 +222,7 @@
       justify-content: space-between;
       border-top: 1px solid #eee;
       padding-top: 20px;
+      align-items: center;
     }
     
     button {
@@ -255,6 +292,10 @@
     </div>
     
     <div class="page-container">
+      <div id="breadcrumb" class="breadcrumb" style="display: none;"></div>
+      <div id="progressBar" class="progress-bar" style="display: none;">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
       <div id="content" class="loading">Loading course content...</div>
       <div class="controls" id="controls" style="display: none;">
         <button class="btn-prev" id="prevBtn" onclick="prevPage()">← Previous</button>
@@ -267,6 +308,70 @@
   <script>
     let pages = [];
     let currentPage = 0;
+    let pageMetadata = []; // Store metadata for each page
+    let courseName = '';
+    
+    function extractMetadata(markdown) {
+      // Extract module ID (e.g., FED-01, UXD-02) from H1 header
+      const h1Match = markdown.match(/^# (.+?): (.+)$/m);
+      const moduleId = h1Match ? h1Match[1].trim() : '';
+      const moduleTitle = h1Match ? h1Match[2].trim() : '';
+      
+      // Extract section title from H2 header
+      const h2Match = markdown.match(/^## (.+)$/m);
+      const sectionTitle = h2Match ? h2Match[1].trim() : '';
+      
+      return { moduleId, moduleTitle, sectionTitle };
+    }
+    
+    function updateBreadcrumb() {
+      const meta = pageMetadata[currentPage] || {};
+      const breadcrumbEl = document.getElementById('breadcrumb');
+      
+      if (!meta.moduleId && !meta.sectionTitle) {
+        breadcrumbEl.style.display = 'none';
+        return;
+      }
+      
+      breadcrumbEl.style.display = 'flex';
+      
+      let html = `<span style="color: #999; font-size: 0.9em;">${courseName}</span>`;
+      
+      if (meta.moduleId) {
+        html += `<span class="breadcrumb-separator">/</span>`;
+        html += `<span class="breadcrumb-item">${meta.moduleId}: ${meta.moduleTitle}</span>`;
+      }
+      
+      if (meta.sectionTitle) {
+        html += `<span class="breadcrumb-separator">/</span>`;
+        html += `<span>${meta.sectionTitle}</span>`;
+      }
+      
+      breadcrumbEl.innerHTML = html;
+    }
+    
+    function updateProgressBar() {
+      const progress = ((currentPage + 1) / pages.length) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+    }
+    
+    function renderPage(pageNum) {
+      if (pageNum < 0 || pageNum >= pages.length) return;
+      
+      currentPage = pageNum;
+      const html = markdownToHtml(pages[pageNum]);
+      document.getElementById('content').innerHTML = html;
+      
+      // Update controls
+      document.getElementById('currentPage').textContent = currentPage + 1;
+      document.getElementById('totalPages').textContent = pages.length;
+      document.getElementById('prevBtn').disabled = currentPage === 0;
+      document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
+      
+      // Update breadcrumb and progress
+      updateBreadcrumb();
+      updateProgressBar();
+    }
     
     function markdownToHtml(markdown) {
       return markdown
@@ -361,6 +466,7 @@
     // Load course
     const params = new URLSearchParams(window.location.search);
     const course = params.get('course') || 'Home.md';
+    courseName = course.replace('.md', '').replace(/_/g, ' ');
     
     fetch(course)
       .then(response => {
@@ -375,7 +481,11 @@
           return;
         }
         
+        // Extract metadata for each page
+        pageMetadata = pages.map(page => extractMetadata(page));
+        
         document.getElementById('controls').style.display = 'flex';
+        document.getElementById('progressBar').style.display = 'block';
         renderPage(0);
       })
       .catch(error => {
