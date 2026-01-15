@@ -90,25 +90,30 @@ Reading requires energy—both biological (brain usage) and electrical (screen t
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** Who benefits from Grade 8 level writing?
+Who benefits from Grade 8 level writing?
 
 [ ] Only children.
 [x] Everyone, including experts.
 
-> **Explanation**: Experts prefer plain language because it saves them time.
+**Why?**
 
-**Question 2:** How does concise content help the environment?
+Experts prefer plain language because it saves them time.
+
+---
+
+### ✓ Question 2
+
+How does concise content help the environment?
 
 [ ] Less data to store and transfer.
 [ ] Less time spent reading (screen on time).
 [x] Both of the above.
 
-> **Explanation**: Cognitive load and server load are both reduced.
+**Why?**
 
+Cognitive load and server load are both reduced.
 
 ---
 
@@ -130,40 +135,59 @@ Before/After text with scores.
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Is the reading grade level of your content above grade 9?**
+Is the reading grade level of your content above grade 9?
 
 [[___]]
 
-**I have used plain language and avoided jargon.**
+---
+
+### 💭 Reflection 2
+
+I have used plain language and avoided jargon.
 
 [[___]]
 
-**I have broken long paragraphs into bulleted lists.**
+---
+
+### 💭 Reflection 3
+
+I have broken long paragraphs into bulleted lists.
 
 [[___]]
 
-**How does complex language waste energy?**
+---
+
+### 💭 Reflection 4
+
+How does complex language waste energy?
 
 [[___]]
 
-**Why is 'plain language' an accessibility requirement, not just a style choice?**
+---
+
+### 💭 Reflection 5
+
+Why is 'plain language' an accessibility requirement, not just a style choice?
 
 [[___]]
 
-**Does this content actually need to be 1,000 words long?**
+---
+
+### 💭 Reflection 6
+
+Does this content actually need to be 1,000 words long?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will write for the user's understanding, not to sound impressive, aiming for Grade 8 readability."
+### 💭 Your Commitment
+
+I will write for the user's understanding, not to sound impressive, aiming for Grade 8 readability.
 
 [[I Commit]]
-
 
 ---
 
@@ -239,24 +263,29 @@ A user clicking the "Back" button is a failure of sustainability. It means they 
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** What is the primary sustainability goal of good SEO?
+What is the primary sustainability goal of good SEO?
 
 [ ] Getting more traffic.
 [x] Helping users find the right answer immediately.
 
-> **Explanation**: Reducing 'pogo-sticking' saves energy and frustration.
+**Why?**
 
-**Question 2:** Which element is crucial for screen reader navigation?
+Reducing 'pogo-sticking' saves energy and frustration.
+
+---
+
+### ✓ Question 2
+
+Which element is crucial for screen reader navigation?
 
 [ ] Keywords tag.
 [x] Proper heading structure (H1, H2, H3).
 
-> **Explanation**: Headings provide the outline users skip through.
+**Why?**
 
+Headings provide the outline users skip through.
 
 ---
 
@@ -277,40 +306,59 @@ Spreadsheet of URLs and rewriting descriptions.
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Does the page title accurately describe the specific content of the page?**
+Does the page title accurately describe the specific content of the page?
 
 [[___]]
 
-**I have written a unique meta description that matches the user's need.**
+---
+
+### 💭 Reflection 2
+
+I have written a unique meta description that matches the user's need.
 
 [[___]]
 
-**I have used meaningful H1 and H2 headings.**
+---
+
+### 💭 Reflection 3
+
+I have used meaningful H1 and H2 headings.
 
 [[___]]
 
-**What is the carbon cost of 'pogo-sticking' (loading a page, finding it wrong, going back)?**
+---
+
+### 💭 Reflection 4
+
+What is the carbon cost of 'pogo-sticking' (loading a page, finding it wrong, going back)?
 
 [[___]]
 
-**How does clear structure help screen reader users jump to what they need?**
+---
+
+### 💭 Reflection 5
+
+How does clear structure help screen reader users jump to what they need?
 
 [[___]]
 
-**Is 'clickbait' sustainable?**
+---
+
+### 💭 Reflection 6
+
+Is 'clickbait' sustainable?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will optimize metadata to ensure users find exactly what they need on the first click."
+### 💭 Your Commitment
+
+I will optimize metadata to ensure users find exactly what they need on the first click.
 
 [[I Commit]]
-
 
 ---
 
@@ -387,25 +435,30 @@ Images and videos are often the primary storytelling elements, but for users wit
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** When an image is purely decorative, what should the alt text be?
+When an image is purely decorative, what should the alt text be?
 
 [ ] alt='decorative'
 [ ] Leave it out completely.
 [x] alt='' (empty string)
 
-> **Explanation**: An empty attribute tells screen readers to ignore it.
+**Why?**
 
-**Question 2:** Can auto-generated captions be used as-is?
+An empty attribute tells screen readers to ignore it.
+
+---
+
+### ✓ Question 2
+
+Can auto-generated captions be used as-is?
 
 [ ] Yes, AI is perfect.
 [x] No, they must be reviewed for accuracy.
 
-> **Explanation**: Inaccurate captions fail the WCAG requirement.
+**Why?**
 
+Inaccurate captions fail the WCAG requirement.
 
 ---
 
@@ -427,40 +480,59 @@ Review what you've learned. Multiple attempts encouraged!
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Does every image conveying meaning have a text alternative?**
+Does every image conveying meaning have a text alternative?
 
 [[___]]
 
-**I have provided captions (not just auto-generated) for all video.**
+---
+
+### 💭 Reflection 2
+
+I have provided captions (not just auto-generated) for all video.
 
 [[___]]
 
-**I have written alt text that describes the *function* of the image, not just the appearance.**
+---
+
+### 💭 Reflection 3
+
+I have written alt text that describes the *function* of the image, not just the appearance.
 
 [[___]]
 
-**If an image fails to load (low bandwidth), does the text alternative save the experience?**
+---
+
+### 💭 Reflection 4
+
+If an image fails to load (low bandwidth), does the text alternative save the experience?
 
 [[___]]
 
-**Why are text transcripts 'greener' than video?**
+---
+
+### 💭 Reflection 5
+
+Why are text transcripts 'greener' than video?
 
 [[___]]
 
-**How does searching video content depend on text alternatives?**
+---
+
+### 💭 Reflection 6
+
+How does searching video content depend on text alternatives?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will provide text alternatives for every piece of non-text content I publish."
+### 💭 Your Commitment
+
+I will provide text alternatives for every piece of non-text content I publish.
 
 [[I Commit]]
-
 
 ---
 
@@ -537,24 +609,29 @@ The web is littered with digital trash—outdated news, expired offers, and obso
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** What is 'ROT' in content strategy?
+What is 'ROT' in content strategy?
 
 [ ] Return on Time.
 [x] Redundant, Obsolete, Trivial.
 
-> **Explanation**: ROT is clutter that wastes hosting and user attention.
+**Why?**
 
-**Question 2:** Ideally, when should you decide when a page will be deleted?
+ROT is clutter that wastes hosting and user attention.
+
+---
+
+### ✓ Question 2
+
+Ideally, when should you decide when a page will be deleted?
 
 [ ] When you run out of server space.
 [x] Before you even publish it.
 
-> **Explanation**: The 'Sunset Date' should be part of the creation metadata.
+**Why?**
 
+The 'Sunset Date' should be part of the creation metadata.
 
 ---
 
@@ -576,37 +653,56 @@ List of 10 URLs and their fate.
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Is there a 'Sunset Date' or 'Review Date' attached to this content?**
+Is there a 'Sunset Date' or 'Review Date' attached to this content?
 
 [[___]]
 
-**I have identified related content that should be archived when this is published.**
+---
+
+### 💭 Reflection 2
+
+I have identified related content that should be archived when this is published.
 
 [[___]]
 
-**I have set a calendar reminder to review this content in 6 months.**
+---
+
+### 💭 Reflection 3
+
+I have set a calendar reminder to review this content in 6 months.
 
 [[___]]
 
-**What is the environmental cost of hosting 10,000 pages that nobody visits?**
+---
+
+### 💭 Reflection 4
+
+What is the environmental cost of hosting 10,000 pages that nobody visits?
 
 [[___]]
 
-**How does obsolete content harm user trust and findability?**
+---
+
+### 💭 Reflection 5
+
+How does obsolete content harm user trust and findability?
 
 [[___]]
 
-**Why is it harder to delete content than to create it?**
+---
+
+### 💭 Reflection 6
+
+Why is it harder to delete content than to create it?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will delete or archive content that no longer serves a user need, keeping the digital footprint light."
+### 💭 Your Commitment
+
+I will delete or archive content that no longer serves a user need, keeping the digital footprint light.
 
 [[I Commit]]
-

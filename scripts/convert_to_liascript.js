@@ -263,19 +263,17 @@ comment:  This course is auto-generated from the WSG MOOC repository.
             const quizPath = path.join(CONTENT_DIR, 'quizzes', `${id}.yaml`);
             const quizRaw = readFile(quizPath);
             if (quizRaw) {
-                body += `\n---\n\n`;
-                body += `### ✓ Knowledge Check\n\n`;
-                body += `Review what you've learned. Multiple attempts encouraged!\n\n`;
                 const questions = parseQuizYaml(quizRaw);
                 questions.forEach((q, idx) => {
-                    body += `**Question ${idx + 1}:** ${q.text}\n\n`;
+                    body += `\n---\n\n`;
+                    body += `### ✓ Question ${idx + 1}\n\n`;
+                    body += `${q.text}\n\n`;
                     q.options.forEach(opt => {
                         body += `[${opt.correct ? 'x' : ' '}] ${opt.text}\n`;
                     });
                     if (q.remedy) {
-                        body += `\n> **Explanation**: ${q.remedy}\n`;
+                        body += `\n**Why?**\n\n${q.remedy}\n`;
                     }
-                    body += `\n`;
                 });
             }
 
@@ -324,19 +322,21 @@ comment:  This course is auto-generated from the WSG MOOC repository.
             const reflectRaw = readFile(reflectPath);
             if (reflectRaw) {
                 const data = parseReflectionYaml(reflectRaw);
+                // Paginate each reflection prompt separately
                 if (data.prompts.length > 0) {
-                    body += `\n---\n\n`;
-                    body += `### 💭 Reflection\n\n`;
-                    body += `Take a moment to reflect on what you learned.\n\n`;
-                    data.prompts.forEach(p => {
-                        // LiaScript text input syntax
-                        body += `**${p}**\n\n[[___]]\n\n`;
+                    data.prompts.forEach((p, idx) => {
+                        body += `\n---\n\n`;
+                        body += `### 💭 Reflection ${idx + 1}\n\n`;
+                        body += `${p}\n\n`;
+                        body += `[[___]]\n`;
                     });
                 }
+                // Add commitment as final page if present
                 if (data.commitment) {
-                    body += `#### Your Commitment\n\n`;
-                    body += `"${data.commitment}"\n\n`;
-                    body += `[[I Commit]]\n\n`; // A button to click
+                    body += `\n---\n\n`;
+                    body += `### 💭 Your Commitment\n\n`;
+                    body += `${data.commitment}\n\n`;
+                    body += `[[I Commit]]\n`;
                 }
             }
         } // End ID loop

@@ -88,24 +88,29 @@ Visual assets (images, fonts, videos, Lottie files) account for the vast majorit
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** What is a 'Performance Budget'?
+What is a 'Performance Budget'?
 
 [ ] The money spent on hosting.
 [x] A limit on valid page size (e.g., < 1MB) defined before design begins.
 
-> **Explanation**: Budgets prevent 'bloat creep' during the project.
+**Why?**
 
-**Question 2:** Who is responsible for the weight budget?
+Budgets prevent 'bloat creep' during the project.
+
+---
+
+### ✓ Question 2
+
+Who is responsible for the weight budget?
 
 [ ] Only the developers.
 [x] Designers sets the constraints, developers implement them.
 
-> **Explanation**: Design decisions (like full-screen video) dictate the technical floor.
+**Why?**
 
+Design decisions (like full-screen video) dictate the technical floor.
 
 ---
 
@@ -127,40 +132,59 @@ A spreadsheet or table showing your performance budget breakdown by asset type (
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Do you personally check the total file size of your designs before handoff?**
+Do you personally check the total file size of your designs before handoff?
 
 [[___]]
 
-**I have established a maximum weight (e.g., 1.5MB) for this page.**
+---
+
+### 💭 Reflection 2
+
+I have established a maximum weight (e.g., 1.5MB) for this page.
 
 [[___]]
 
-**I removed visual elements that exceeded the budget.**
+---
+
+### 💭 Reflection 3
+
+I removed visual elements that exceeded the budget.
 
 [[___]]
 
-**Why is 'high resolution' often prioritized over 'fast loading' in design portfolios?**
+---
+
+### 💭 Reflection 4
+
+Why is 'high resolution' often prioritized over 'fast loading' in design portfolios?
 
 [[___]]
 
-**How does a heavy page affect a user on a metered connection in a rural area?**
+---
+
+### 💭 Reflection 5
+
+How does a heavy page affect a user on a metered connection in a rural area?
 
 [[___]]
 
-**Can a design be 'beautiful' if it is unusable due to slowness?**
+---
+
+### 💭 Reflection 6
+
+Can a design be 'beautiful' if it is unusable due to slowness?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will define a performance budget (KB limit) before adding the first pixel to the canvas."
+### 💭 Your Commitment
+
+I will define a performance budget (KB limit) before adding the first pixel to the canvas.
 
 [[I Commit]]
-
 
 ---
 
@@ -237,25 +261,30 @@ Custom web fonts are expensive assets. A single font file (e.g., Roboto-Bold-Ita
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** Which font format typically offers the best compression for modern browsers?
+Which font format typically offers the best compression for modern browsers?
 
 [ ] TTF
 [x] WOFF2
 [ ] EOT
 
-> **Explanation**: WOFF2 compresses ~30% better than WOFF.
+**Why?**
 
-**Question 2:** What is the primary benefit of Variable Fonts?
+WOFF2 compresses ~30% better than WOFF.
+
+---
+
+### ✓ Question 2
+
+What is the primary benefit of Variable Fonts?
 
 [ ] They look better.
 [x] They allow multiple weights/styles in a single file request.
 
-> **Explanation**: One file request reduces latency overhead.
+**Why?**
 
+One file request reduces latency overhead.
 
 ---
 
@@ -277,40 +306,59 @@ Before/After weight calculation.
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Can you list every font file and weight currently loading on your homepage?**
+Can you list every font file and weight currently loading on your homepage?
 
 [[___]]
 
-**I have removed unused weights (e.g., Bold Italic) from the load list.**
+---
+
+### 💭 Reflection 2
+
+I have removed unused weights (e.g., Bold Italic) from the load list.
 
 [[___]]
 
-**I have considered using system fonts for UI elements.**
+---
+
+### 💭 Reflection 3
+
+I have considered using system fonts for UI elements.
 
 [[___]]
 
-**Does the user really notice the difference between 'Lato' and 'Open Sans' in body text?**
+---
+
+### 💭 Reflection 4
+
+Does the user really notice the difference between 'Lato' and 'Open Sans' in body text?
 
 [[___]]
 
-**What is the environmental cost of loading 5 different font files on every page view?**
+---
+
+### 💭 Reflection 5
+
+What is the environmental cost of loading 5 different font files on every page view?
 
 [[___]]
 
-**How does variable font technology change the trade-off?**
+---
+
+### 💭 Reflection 6
+
+How does variable font technology change the trade-off?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will limit my design to 2 font families and maximum 3 weights per page."
+### 💭 Your Commitment
+
+I will limit my design to 2 font families and maximum 3 weights per page.
 
 [[I Commit]]
-
 
 ---
 
@@ -387,25 +435,30 @@ Images are often the heaviest single elements on a page. The wrong format choice
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** Which format is best for a flat icon or logo?
+Which format is best for a flat icon or logo?
 
 [ ] JPG
 [ ] PNG
 [x] SVG
 
-> **Explanation**: Vectors (SVG) are resolution-independent and usually tiny.
+**Why?**
 
-**Question 2:** True or False: You should upload the highest quality image possible and let the browser resize it.
+Vectors (SVG) are resolution-independent and usually tiny.
+
+---
+
+### ✓ Question 2
+
+True or False: You should upload the highest quality image possible and let the browser resize it.
 
 [ ] True
 [x] False
 
-> **Explanation**: Browsers still download the full file. Resize on the server or build time.
+**Why?**
 
+Browsers still download the full file. Resize on the server or build time.
 
 ---
 
@@ -427,40 +480,59 @@ Table showing % reduction achieved (aim for >60%).
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Do you export images at 2x/3x retina resolution by default?**
+Do you export images at 2x/3x retina resolution by default?
 
 [[___]]
 
-**I have chosen the correct format (SVG for vectors, JPG/WebP for photos).**
+---
+
+### 💭 Reflection 2
+
+I have chosen the correct format (SVG for vectors, JPG/WebP for photos).
 
 [[___]]
 
-**I have run all assets through a compression tool (tinypng, imageoptim) before handoff.**
+---
+
+### 💭 Reflection 3
+
+I have run all assets through a compression tool (tinypng, imageoptim) before handoff.
 
 [[___]]
 
-**Why do we keep full-resolution master files on the live web server?**
+---
+
+### 💭 Reflection 4
+
+Why do we keep full-resolution master files on the live web server?
 
 [[___]]
 
-**Is a transparent PNG always clearer than a JPG with a matching background color?**
+---
+
+### 💭 Reflection 5
+
+Is a transparent PNG always clearer than a JPG with a matching background color?
 
 [[___]]
 
-**How does image weight interact with CO2 emissions?**
+---
+
+### 💭 Reflection 6
+
+How does image weight interact with CO2 emissions?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will compress every single image asset and choose next-gen formats (WebP/AVIF) where possible."
+### 💭 Your Commitment
+
+I will compress every single image asset and choose next-gen formats (WebP/AVIF) where possible.
 
 [[I Commit]]
-
 
 ---
 
@@ -535,25 +607,30 @@ On OLED screens (most modern phones and high-end laptops), black pixels turn off
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** Which screen technology benefits most from Dark Mode energy savings?
+Which screen technology benefits most from Dark Mode energy savings?
 
 [ ] LCD
 [x] OLED
 [ ] CRT
 
-> **Explanation**: OLED pixels turn off completely for true black, saving energy.
+**Why?**
 
-**Question 2:** Why is pure blue (#0000FF) problematic for energy efficiency?
+OLED pixels turn off completely for true black, saving energy.
+
+---
+
+### ✓ Question 2
+
+Why is pure blue (#0000FF) problematic for energy efficiency?
 
 [x] Blue pixels consume significantly more power than red or green.
 [ ] It isn't.
 
-> **Explanation**: Blue light generation is less efficient in current display tech.
+**Why?**
 
+Blue light generation is less efficient in current display tech.
 
 ---
 
@@ -575,40 +652,59 @@ Side-by-side Light vs Dark comparison.
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Does your design include a true dark mode (not just inverted colors)?**
+Does your design include a true dark mode (not just inverted colors)?
 
 [[___]]
 
-**I have provided a 'Dark Mode' option that respects system preferences.**
+---
+
+### 💭 Reflection 2
+
+I have provided a 'Dark Mode' option that respects system preferences.
 
 [[___]]
 
-**I have avoided pure white (#FFFFFF) backgrounds on large areas where possible.**
+---
+
+### 💭 Reflection 3
+
+I have avoided pure white (#FFFFFF) backgrounds on large areas where possible.
 
 [[___]]
 
-**How much battery life can a dark theme save on an OLED screen?**
+---
+
+### 💭 Reflection 4
+
+How much battery life can a dark theme save on an OLED screen?
 
 [[___]]
 
-**Is 'Dark Mode' just an aesthetic trend or an accessibility/sustainability necessity?**
+---
+
+### 💭 Reflection 5
+
+Is 'Dark Mode' just an aesthetic trend or an accessibility/sustainability necessity?
 
 [[___]]
 
-**Does your color palette rely on brightness levels that force screens to max power?**
+---
+
+### 💭 Reflection 6
+
+Does your color palette rely on brightness levels that force screens to max power?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will design a dark mode variant for every interface to support energy saving and eye health."
+### 💭 Your Commitment
+
+I will design a dark mode variant for every interface to support energy saving and eye health.
 
 [[I Commit]]
-
 
 ---
 
@@ -684,24 +780,29 @@ Animation is computationally expensive. It triggers the CPU and GPU to repaint t
 
 ---
 
-### ✓ Knowledge Check
+### ✓ Question 1
 
-Review what you've learned. Multiple attempts encouraged!
-
-**Question 1:** What is the CPU impact of continuous Javascript-based animation?
+What is the CPU impact of continuous Javascript-based animation?
 
 [ ] Negligible.
 [x] High; it prevents the processor from idling.
 
-> **Explanation**: It keeps the CPU awake, draining battery.
+**Why?**
 
-**Question 2:** Who needs a 'Stop Animation' button?
+It keeps the CPU awake, draining battery.
+
+---
+
+### ✓ Question 2
+
+Who needs a 'Stop Animation' button?
 
 [x] People with vestibular disorders.
 [ ] People with slow internet.
 
-> **Explanation**: Motion triggers nausea for some users.
+**Why?**
 
+Motion triggers nausea for some users.
 
 ---
 
@@ -723,37 +824,56 @@ Motion audit list.
 
 ---
 
-### 💭 Reflection
+### 💭 Reflection 1
 
-Take a moment to reflect on what you learned.
-
-**Does the animation play automatically without user interaction?**
+Does the animation play automatically without user interaction?
 
 [[___]]
 
-**I have ensured all animation stops after 5 seconds or has a pause button.**
+---
+
+### 💭 Reflection 2
+
+I have ensured all animation stops after 5 seconds or has a pause button.
 
 [[___]]
 
-**I have designed a static state for 'prefers-reduced-motion'.**
+---
+
+### 💭 Reflection 3
+
+I have designed a static state for 'prefers-reduced-motion'.
 
 [[___]]
 
-**Is this animation conveying information, or just 'delight'?**
+---
+
+### 💭 Reflection 4
+
+Is this animation conveying information, or just 'delight'?
 
 [[___]]
 
-**How does continuous WebGL or CSS animation affect CPU usage and battery?**
+---
+
+### 💭 Reflection 5
+
+How does continuous WebGL or CSS animation affect CPU usage and battery?
 
 [[___]]
 
-**Who is excluded when we rely on motion to signal state changes?**
+---
+
+### 💭 Reflection 6
+
+Who is excluded when we rely on motion to signal state changes?
 
 [[___]]
 
-#### Your Commitment
+---
 
-"I will use motion only for user feedback, never for decoration, and always respect reduced-motion settings."
+### 💭 Your Commitment
+
+I will use motion only for user feedback, never for decoration, and always respect reduced-motion settings.
 
 [[I Commit]]
-
