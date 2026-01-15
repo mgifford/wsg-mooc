@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,14 +31,23 @@ jobs:
 
       - name: Prepare self-hosted viewer
         run: |
+          rm -rf viewer
           mkdir -p viewer
           curl -L https://codeload.github.com/LiaScript/LiaScript/tar.gz/gh-pages \
             | tar -xz --strip-components=1 -C viewer
+
+      - name: Assemble site bundle
+        run: |
+          rm -rf dist
+          mkdir -p dist
+          cp -r liascript_courses dist/
+          cp -r viewer dist/
+          cp index.html dist/
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: .
+          publish_dir: ./dist
           force_orphan: true
