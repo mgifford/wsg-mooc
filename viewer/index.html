@@ -9,6 +9,7 @@
   <noscript>This page requires JavaScript to render LiaScript courses.</noscript>
   <lia-script src=""></lia-script>
   <script>
+    // Allow direct linking: /viewer/?https://.../course.md
     const query = window.location.search.slice(1);
     const fallback = '../liascript_courses/Home.md';
     const target = query ? decodeURIComponent(query) : fallback;
@@ -16,6 +17,6 @@
     const el = document.querySelector('lia-script');
     el.setAttribute('src', courseUrl);
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/liascript/dist/lia.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/liascript/dist/lia.js"></script>
 </body>
 </html>
