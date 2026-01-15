@@ -116,8 +116,73 @@ function parseReflectionYaml(content) {
     return { prompts: reflections, commitment };
 }
 
+// Generate Home.md (landing page with track links)
+function generateHome() {
+    const modulesContent = fs.readFileSync(MODULES_PATH, 'utf8');
+    const trackRegex = /- track: "([^"]+)"/g;
+    
+    const tracks = [];
+    let match;
+    while ((match = trackRegex.exec(modulesContent)) !== null) {
+        tracks.push(match[1]);
+    }
+    
+    const trackColors = {
+        'Front-end Developer': '#2D74DA',
+        'UX Designer': '#7E2DDA',
+        'Visual Designer': '#DA2D85',
+        'Content Author': '#2DDA85'
+    };
+    
+    const trackDescriptions = {
+        'Front-end Developer': 'Reduce client-side compute and optimization.',
+        'UX Designer': 'Eliminate dark patterns and high-friction flows.',
+        'Visual Designer': 'Optimize assets, palettes, and typography.',
+        'Content Author': 'Improve clarity, findability, and content lifecycle.'
+    };
+    
+    let homeContent = `<!--
+author: Web Sustainability Guidelines MOOC
+email:  info@wsg-mooc.org
+version: 1.0.0
+language: en
+narrator: US English Female
+
+comment:  This course is auto-generated from the WSG MOOC repository.
+-->
+
+# Web Sustainability MOOC (WSG)
+
+Select a role-based track to begin. Each track teaches you how to apply the W3C Web Sustainability Guidelines (WSG) in your job.
+
+`;
+    
+    tracks.forEach(track => {
+        const safeTrackName = track.replace(/\s+/g, '_');
+        const color = trackColors[track] || '#666';
+        const desc = trackDescriptions[track] || 'Learn sustainable practices for this role.';
+        homeContent += `## ${track}\n\n`;
+        homeContent += `${desc}\n\n`;
+        homeContent += `👉 [Launch ${track} Track](${safeTrackName}.md)\n\n`;
+    });
+    
+    homeContent += `---\n\n## About This MOOC\n\n`;
+    homeContent += `This course teaches **role-based decision-making** grounded in the W3C Web Sustainability Guidelines (WSG). Each module includes:\n\n`;
+    homeContent += `- **A decision context** (job-relevant scenario)\n`;
+    homeContent += `- **A required action** (do something real)\n`;
+    homeContent += `- **A measurement hook** (tool or observation)\n`;
+    homeContent += `- **A reflection prompt** (short, written)\n\n`;
+    homeContent += `🔗 **Source**: [Web Sustainability Guidelines](https://w3c.github.io/sustyweb/)\n`;
+    homeContent += `📖 **Repository**: [GitHub](https://github.com/mgifford/wsg-mooc)\n`;
+    
+    fs.writeFileSync(path.join(OUTPUT_DIR, 'Home.md'), homeContent);
+    console.log('Generated: Home.md');
+}
+
 // Converter Logic
 try {
+    generateHome();
+    
     const modulesContent = fs.readFileSync(MODULES_PATH, 'utf8');
 
     // Regex to capture tracks and their content blocks

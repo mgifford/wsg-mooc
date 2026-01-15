@@ -7,16 +7,15 @@
 </head>
 <body>
   <noscript>This page requires JavaScript to render LiaScript courses.</noscript>
-  <lia-script src=""></lia-script>
+  <p id="loading">Loading course…</p>
   <script>
-    // Allow direct linking: /viewer/?https://.../course.md
+    // Redirect to official LiaScript viewer to avoid self-hosting assets
     const query = window.location.search.slice(1);
     const fallback = '../liascript_courses/Home.md';
     const target = query ? decodeURIComponent(query) : fallback;
     const courseUrl = target || fallback;
-    const el = document.querySelector('lia-script');
-    el.setAttribute('src', courseUrl);
+    const viewer = 'https://liascript.github.io/course/?' + encodeURIComponent(courseUrl);
+    window.location.replace(viewer);
   </script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/liascript/dist/lia.js"></script>
 </body>
 </html>

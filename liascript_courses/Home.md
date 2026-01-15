@@ -1,29 +1,51 @@
+<!--
+author: Web Sustainability Guidelines MOOC
+email:  info@wsg-mooc.org
+version: 1.0.0
+language: en
+narrator: US English Female
+
+comment:  This course is auto-generated from the WSG MOOC repository.
+-->
+
 # Web Sustainability MOOC (WSG)
 
-<div id="course-selector" style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:40px;">
+Select a role-based track to begin. Each track teaches you how to apply the W3C Web Sustainability Guidelines (WSG) in your job.
 
-  <div style="border:1px solid #ccc; padding:20px; border-radius:8px; width:300px;">
-    <h3>Front-end Developer</h3>
-    <p>Reduce client-side compute and optimization.</p>
-    <a href="?course=Front-end_Developer" style="background:#2D74DA; color:white; padding:10px 20px; text-decoration:none; display:block; text-align:center;">Launch Track</a>
-  </div>
+## Front-end Developer
 
-  <div style="border:1px solid #ccc; padding:20px; border-radius:8px; width:300px;">
-    <h3>UX Designer</h3>
-    <p>Eliminate dark patterns and high-friction flows.</p>
-    <a href="?course=UX_Designer" style="background:#7E2DDA; color:white; padding:10px 20px; text-decoration:none; display:block; text-align:center;">Launch Track</a>
-  </div>
+Reduce client-side compute and optimization.
 
-  <div style="border:1px solid #ccc; padding:20px; border-radius:8px; width:300px;">
-    <h3>Visual Designer</h3>
-    <p>Optimize assets, palettes, and typography.</p>
-    <a href="?course=Visual_Designer" style="background:#DA2D85; color:white; padding:10px 20px; text-decoration:none; display:block; text-align:center;">Launch Track</a>
-  </div>
+👉 [Launch Front-end Developer Track](Front-end_Developer.md)
 
-  <div style="border:1px solid #ccc; padding:20px; border-radius:8px; width:300px;">
-    <h3>Content Author</h3>
-    <p>Improve clarity, findability, and content lifecycle.</p>
-    <a href="?course=Content_Author" style="background:#2DDA85; color:white; padding:10px 20px; text-decoration:none; display:block; text-align:center;">Launch Track</a>
-  </div>
+## UX Designer
 
-</div>
+Eliminate dark patterns and high-friction flows.
+
+👉 [Launch UX Designer Track](UX_Designer.md)
+
+## Visual Designer
+
+Optimize assets, palettes, and typography.
+
+👉 [Launch Visual Designer Track](Visual_Designer.md)
+
+## Content Author
+
+Improve clarity, findability, and content lifecycle.
+
+👉 [Launch Content Author Track](Content_Author.md)
+
+---
+
+## About This MOOC
+
+This course teaches **role-based decision-making** grounded in the W3C Web Sustainability Guidelines (WSG). Each module includes:
+
+- **A decision context** (job-relevant scenario)
+- **A required action** (do something real)
+- **A measurement hook** (tool or observation)
+- **A reflection prompt** (short, written)
+
+🔗 **Source**: [Web Sustainability Guidelines](https://w3c.github.io/sustyweb/)
+📖 **Repository**: [GitHub](https://github.com/mgifford/wsg-mooc)

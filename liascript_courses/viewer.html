@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WSG MOOC Local Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+    h2 { color: #34495e; margin-top: 40px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+    h3 { color: #555; }
+    a { color: #3498db; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    pre { background: #f4f4f4; padding: 15px; border-left: 4px solid #3498db; overflow-x: auto; }
+    code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
+    blockquote { border-left: 4px solid #3498db; margin: 0; padding-left: 20px; color: #555; }
+    .loading { text-align: center; padding: 50px; color: #888; }
+    .nav { margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px; }
+    .nav a { margin-right: 15px; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="viewer.html">🏠 Home</a>
+    <a href="viewer.html?course=Front-end_Developer.md">💻 Front-end</a>
+    <a href="viewer.html?course=UX_Designer.md">🎨 UX</a>
+    <a href="viewer.html?course=Visual_Designer.md">👁️ Visual</a>
+    <a href="viewer.html?course=Content_Author.md">✍️ Content</a>
+  </div>
+  <div id="content" class="loading">Loading course content...</div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const course = params.get('course') || 'Home.md';
+    
+    fetch(course)
+      .then(response => response.text())
+      .then(markdown => {
+        // Very basic markdown to HTML conversion
+        let html = markdown
+          // Remove LiaScript frontmatter
+          .replace(/<!--[\s\S]*?-->/g, '')
+          // Convert headers
+          .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+          .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+          .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+          // Convert bold
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          // Convert italic
+          .replace(/\*(.+?)\*/g, '<em>$1</em>')
+          // Convert links
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="viewer.html?course=$2">$1</a>')
+          // Convert blockquotes
+          .replace(/^&gt; (.*$)/gim, '<blockquote>$1</blockquote>')
+          .replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>')
+          // Convert lists
+          .replace(/^\* (.+)$/gim, '<li>$1</li>')
+          .replace(/^- (.+)$/gim, '<li>$1</li>')
+          .replace(/^\d+\. (.+)$/gim, '<li>$1</li>')
+          // Wrap lists
+          .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+          // Convert line breaks
+          .replace(/\n\n/g, '</p><p>')
+          .replace(/\n/g, '<br>');
+        
+        document.getElementById('content').innerHTML = '<p>' + html + '</p>';
+      })
+      .catch(error => {
+        document.getElementById('content').innerHTML = 
+          '<p style="color: red;">Error loading course: ' + error.message + 
+          '</p><p>Make sure the HTTP server is running on port 8020.</p>';
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local LiaScript Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <noscript>This page requires JavaScript.</noscript>
+  <p id="loading">Redirecting to LiaScript viewer…</p>
+  <script>
+    const courseUrl = new URL('../liascript_courses/Home.md', window.location.href).toString();
+    const viewer = 'https://liascript.github.io/course/?' + encodeURIComponent(courseUrl);
+    window.location.replace(viewer);
+  </script>
+</body>
+</html>

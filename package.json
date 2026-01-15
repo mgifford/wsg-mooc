@@ -5,7 +5,8 @@
   "scripts": {
     "start": "liascript-devserver",
     "test": "jest",
-    "convert": "node scripts/convert_to_liascript.js"
+    "convert": "node scripts/convert_to_liascript.js",
+    "preview": "liascript-devserver --port 9000 --input liascript_courses/Home.md"
   },
   "keywords": [],
   "author": "",
