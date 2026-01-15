@@ -1,0 +1,41 @@
+name: Build and Deploy (LiaScript self-hosted viewer)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate LiaScript courses
+        run: node scripts/convert_to_liascript.js
+
+      - name: Run tests
+        run: npm test
+
+      - name: Prepare self-hosted viewer
+        run: |
+          mkdir -p viewer
+          curl -L https://codeload.github.com/LiaScript/LiaScript/tar.gz/gh-pages \
+            | tar -xz --strip-components=1 -C viewer
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .
+          force_orphan: true
