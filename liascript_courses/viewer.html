@@ -142,6 +142,7 @@
       border-radius: 4px;
       background: #f8f9fa;
       cursor: pointer;
+      transition: all 0.3s;
     }
     
     .quiz-option input {
@@ -151,8 +152,28 @@
       height: 18px;
     }
     
+    .quiz-option label {
+      cursor: pointer;
+      flex: 1;
+    }
+    
     .quiz-option:hover {
       background: #e8f0ff;
+    }
+    
+    .quiz-option.correct {
+      background: #d4edda;
+      border: 2px solid #28a745;
+    }
+    
+    .quiz-option.incorrect {
+      background: #f8d7da;
+      border: 2px solid #dc3545;
+    }
+    
+    .quiz-option.disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
     }
     
     .feedback {
@@ -357,6 +378,34 @@
       document.getElementById('progressFill').style.width = progress + '%';
     }
     
+    function checkAnswer(optionElement, isCorrect) {
+      // Get the input element
+      const input = optionElement.querySelector('input');
+      input.checked = true;
+      
+      // Get all options in this quiz
+      const allOptions = document.querySelectorAll(`input[name="${input.name}"]`);
+      
+      // Mark all options as disabled and show results
+      allOptions.forEach(opt => {
+        const parent = opt.closest('.quiz-option');
+        parent.classList.add('disabled');
+        
+        const optIsCorrect = opt.getAttribute('data-correct') === 'true';
+        if (opt.checked) {
+          if (optIsCorrect) {
+            parent.classList.add('correct');
+          } else {
+            parent.classList.add('incorrect');
+          }
+        } else if (optIsCorrect) {
+          // Show the correct answer even if not selected
+          parent.classList.add('correct');
+          parent.style.opacity = '0.9';
+        }
+      });
+    }
+    
     function renderPage(pageNum) {
       if (pageNum < 0 || pageNum >= pages.length) return;
       
@@ -376,6 +425,8 @@
     }
     
     function markdownToHtml(markdown) {
+      let quizCounter = 0; // Track multiple quizzes on a page
+      
       return markdown
         // Convert headers
         .replace(/^### (.*$)/gim, '<h3>$1</h3>')
@@ -383,10 +434,18 @@
         .replace(/^# (.*$)/gim, '<h1>$1</h1>')
         // Convert quiz checkboxes [[x] and [ ]]
         .replace(/\[x\] ([^\n]+)/g, (match, text) => {
-          return `<div class="quiz-option"><input type="radio" checked disabled> ${escapeHtml(text)}</div>`;
+          const id = `quiz-${currentPage}-${quizCounter++}`;
+          return `<div class="quiz-option" onclick="checkAnswer(this, true)">
+            <input type="radio" name="quiz-${currentPage}" id="${id}" data-correct="true"> 
+            <label for="${id}">${escapeHtml(text)}</label>
+          </div>`;
         })
         .replace(/\[ \] ([^\n]+)/g, (match, text) => {
-          return `<div class="quiz-option"><input type="radio" disabled> ${escapeHtml(text)}</div>`;
+          const id = `quiz-${currentPage}-${quizCounter++}`;
+          return `<div class="quiz-option" onclick="checkAnswer(this, false)">
+            <input type="radio" name="quiz-${currentPage}" id="${id}" data-correct="false"> 
+            <label for="${id}">${escapeHtml(text)}</label>
+          </div>`;
         })
         // Convert text inputs
         .replace(/\[\[___\]\]/g, '<textarea class="text-input" placeholder="Your response here..."></textarea>')
