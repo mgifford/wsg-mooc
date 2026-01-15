@@ -29,13 +29,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Prepare self-hosted viewer
-        run: |
-          rm -rf viewer
-          mkdir -p viewer
-          curl -L https://github.com/LiaScript/LiaScript/archive/refs/heads/gh-pages.tar.gz \
-            | tar -xz --strip-components=1 -C viewer
-
       - name: Assemble site bundle
         run: |
           rm -rf dist
