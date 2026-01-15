@@ -33,7 +33,7 @@ jobs:
         run: |
           rm -rf viewer
           mkdir -p viewer
-          curl -L https://codeload.github.com/LiaScript/LiaScript/tar.gz/gh-pages \
+          curl -L https://github.com/LiaScript/LiaScript/archive/refs/heads/gh-pages.tar.gz \
             | tar -xz --strip-components=1 -C viewer
 
       - name: Assemble site bundle
