@@ -7,4 +7,4 @@ steps:
   - "Set the total limit (e.g. 600KB)."
   - "Allocate slices to each asset type."
   - "Compare against your current portfolio site."
-deliverable: "Budget Breakdown Table."
+deliverable: "A spreadsheet or table showing your performance budget breakdown by asset type (HTML, CSS, JS, Images, Fonts) with specific byte limits for each category."
