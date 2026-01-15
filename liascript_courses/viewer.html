@@ -51,6 +51,7 @@
       min-height: 500px;
       max-height: 85vh;
       overflow-y: auto;
+      text-align: left; /* Body content is left-aligned */
     }
     
     @media (max-width: 768px) {
@@ -91,15 +92,15 @@
       to { opacity: 1; }
     }
     
-    h1 { color: #2c3e50; border-bottom: 3px solid #667eea; padding-bottom: 15px; margin-bottom: 25px; font-size: 2em; }
-    h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; }
-    h3 { color: #555; margin-top: 20px; margin-bottom: 10px; font-size: 1.2em; }
-    h4 { color: #666; margin-top: 15px; margin-bottom: 8px; font-size: 1.1em; }
+    h1 { color: #2c3e50; border-bottom: 3px solid #667eea; padding-bottom: 15px; margin-bottom: 25px; font-size: 2em; text-align: center; }
+    h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; text-align: center; }
+    h3 { color: #555; margin-top: 20px; margin-bottom: 10px; font-size: 1.2em; text-align: left; }
+    h4 { color: #666; margin-top: 15px; margin-bottom: 8px; font-size: 1.1em; text-align: left; }
     
-    p { margin-bottom: 15px; line-height: 1.8; }
+    p { margin-bottom: 15px; line-height: 1.8; text-align: left; }
     
-    ul, ol { margin-left: 25px; margin-bottom: 15px; }
-    li { margin-bottom: 8px; line-height: 1.7; }
+    ul, ol { margin-left: 25px; margin-bottom: 15px; text-align: left; }
+    li { margin-bottom: 8px; line-height: 1.7; text-align: left; }
     
     a { color: #667eea; text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -113,6 +114,7 @@
       padding: 15px 20px;
       border-radius: 4px;
       font-style: italic;
+      text-align: left;
     }
     
     code { 
