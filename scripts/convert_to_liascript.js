@@ -5,6 +5,57 @@ const OUTPUT_DIR = path.join(__dirname, '../liascript_courses');
 const CONTENT_DIR = path.join(__dirname, '../content');
 const MODULES_PATH = path.join(__dirname, '../MODULES.yaml');
 const TRACKS_PATH = path.join(__dirname, '../TRACKS.yaml');
+const WSG_REF_PATH = path.join(__dirname, '../WSG_REFERENCES.yaml');
+
+// Load WSG reference mappings
+let wsgReferences = { guidelines: {}, techniques: {} };
+try {
+    const refContent = fs.readFileSync(WSG_REF_PATH, 'utf8');
+    // Parse YAML manually (simple structure)
+    const lines = refContent.split('\n');
+    let currentSection = null;
+    let currentId = null;
+    
+    lines.forEach(line => {
+        if (line.trim() === 'guidelines:') currentSection = 'guidelines';
+        else if (line.trim() === 'techniques:') currentSection = 'techniques';
+        else if (line.match(/^  ([A-Z-]+[\d.-]+):$/)) { // Fixed: added .- to match periods and hyphens in IDs
+            currentId = line.trim().replace(':', '');
+            if (currentSection) {
+                wsgReferences[currentSection][currentId] = {};
+            }
+        } else if (currentId && currentSection) {
+            const nameMatch = line.match(/name: "(.+)"/);
+            const descMatch = line.match(/description: "(.+)"/);
+            const urlMatch = line.match(/url: "(.+)"/);
+            if (nameMatch) wsgReferences[currentSection][currentId].name = nameMatch[1];
+            if (descMatch) wsgReferences[currentSection][currentId].description = descMatch[1];
+            if (urlMatch) wsgReferences[currentSection][currentId].url = urlMatch[1];
+        }
+    });
+    console.log(`Loaded ${Object.keys(wsgReferences.guidelines).length} guidelines and ${Object.keys(wsgReferences.techniques).length} techniques`);
+} catch (e) {
+    console.warn('Warning: Could not load WSG_REFERENCES.yaml:', e.message);
+}
+
+// Helper: Expand WSG/STAR reference
+function expandReference(id) {
+    const ref = wsgReferences.guidelines[id] || wsgReferences.techniques[id];
+    if (ref) {
+        return `*   **[${id}: ${ref.name}](${ref.url})** - ${ref.description}`;
+    }
+    // Fallback if not found in mapping
+    return `*   [${id}](https://w3c.github.io/sustyweb/#${id})`;
+}
+
+// Helper: Expand all references in markdown content
+function expandReferencesInMarkdown(markdown) {
+    // Find reference sections and expand them
+    // Matches: *   [WSG-3.2](https://w3c.github.io/sustyweb/#WSG-3.2)
+    return markdown.replace(/\*\s+\[([A-Z-]+[\d.-]+)\]\(https:\/\/w3c\.github\.io\/sustyweb\/#\1\)/g, (match, id) => {
+        return expandReference(id);
+    });
+}
 
 // Helper: Safely read file
 function readFile(filePath) {
@@ -234,12 +285,15 @@ comment:  This course is auto-generated from the WSG MOOC repository.
             // Strip frontmatter
             const lessonBody = lessonRaw.replace(/---[\s\S]*?---/, '').trim();
             
+            // Expand WSG/STAR references
+            const expandedLesson = expandReferencesInMarkdown(lessonBody);
+            
             // Extract the Title (First H1) to use as the Section Header
-            const titleMatch = lessonBody.match(/^# (.*?)$/m);
+            const titleMatch = expandedLesson.match(/^# (.*?)$/m);
             const title = titleMatch ? titleMatch[1] : id;
             
             // Remove the H1 from body so it doesn't double print
-            let cleanBody = lessonBody.replace(/^# .*$/m, '').trim();
+            let cleanBody = expandedLesson.replace(/^# .*$/m, '').trim();
 
             // Break lesson into sections (by H2 headers)
             // This creates a page for: Decision, Why It Matters, Common Failures, Do This Now, Measurement, Reflection Prompt

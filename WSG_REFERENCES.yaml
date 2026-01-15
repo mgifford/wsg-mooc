@@ -1,0 +1,264 @@
+# Web Sustainability Guidelines (WSG) and STAR Technique Reference Mapping
+# Format: ID, Full Name, Description, URL
+
+guidelines:
+  WSG-2.2:
+    name: "Identify and Ideate Specific Improvements"
+    description: "Systematically identify opportunities to reduce environmental impact of products and services"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.2"
+  
+  WSG-2.4:
+    name: "Consider Sustainability in Early Ideation"
+    description: "Integrate environmental thinking from the earliest stages of design and planning"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.4"
+  
+  WSG-2.5:
+    name: "Account For Stakeholder Issues"
+    description: "Balance competing needs while prioritizing sustainability outcomes"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.5"
+  
+  WSG-2.6:
+    name: "Avoid Code Duplication"
+    description: "Eliminate redundant code to reduce file sizes and improve maintainability"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.6"
+  
+  WSG-2.7:
+    name: "Rigorously Assess Third-Party Services"
+    description: "Evaluate environmental and performance impacts of external dependencies"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.7"
+  
+  WSG-2.9:
+    name: "Document Sustainability Features, Assumptions, and Efforts"
+    description: "Maintain clear records of sustainability decisions and their rationale"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.9"
+  
+  WSG-2.10:
+    name: "Use a Design System To Prioritize Interface Consistency"
+    description: "Standardize UI components to reduce code duplication and improve efficiency"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.10"
+  
+  WSG-2.11:
+    name: "Avoid Unnecessary or an Overabundance of Assets"
+    description: "Only include images, fonts, and scripts that directly serve user needs"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.11"
+  
+  WSG-2.12:
+    name: "Ensure Navigation and Way-finding Is Clear"
+    description: "Help users find what they need quickly to reduce wasted page loads"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.12"
+  
+  WSG-2.13:
+    name: "Ensure Your Solutions Are Accessible"
+    description: "Design and build for accessibility to improve usability and efficiency for all users"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.13"
+  
+  WSG-2.14:
+    name: "Create a Lightweight Experience by Default"
+    description: "Design with performance budgets and minimal asset loading from the start"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.14"
+  
+  WSG-2.15:
+    name: "Avoid Distracting or Unnecessary Motion"
+    description: "Respect reduced motion preferences and minimize animations to save energy"
+    url: "https://w3c.github.io/sustyweb/#WSG-2.15"
+  
+  WSG-3.2:
+    name: "Minify Your HTML, CSS, and JavaScript"
+    description: "Reduce file sizes by removing unnecessary characters like whitespace and comments"
+    url: "https://w3c.github.io/sustyweb/#WSG-3.2"
+  
+  WSG-3.4:
+    name: "Use Code-Splitting Within Projects"
+    description: "Load only the code needed for each page to reduce initial payload"
+    url: "https://w3c.github.io/sustyweb/#WSG-3.4"
+  
+  WSG-3.7:
+    name: "Use HTML Elements Correctly"
+    description: "Employ semantic HTML tags to improve rendering efficiency and accessibility"
+    url: "https://w3c.github.io/sustyweb/#WSG-3.7"
+  
+  WSG-3.8:
+    name: "Use a Design System To Prioritize Interface Consistency"
+    description: "Standardize UI components to reduce code duplication and improve efficiency"
+    url: "https://w3c.github.io/sustyweb/#WSG-3.8"
+  
+  WSG-3.11:
+    name: "Use Beneficial 3rd-Party Hosted Tools"
+    description: "Choose third-party dependencies carefully to minimize performance impact"
+    url: "https://w3c.github.io/sustyweb/#WSG-3.11"
+  
+  WSG-3.12:
+    name: "Ensure Your Solutions Are Accessible"
+    description: "Design and build for accessibility to improve usability and efficiency for all users"
+    url: "https://w3c.github.io/sustyweb/#WSG-3.12"
+  
+  WSG-3.14:
+    name: "Develop a Mobile-First Layout"
+    description: "Start with mobile constraints to ensure lightweight experiences across all devices"
+    url: "https://w3c.github.io/sustyweb/#WSG-3.14"
+  
+  WSG-3.16:
+    name: "Ensure Navigation and Way-finding Is Clear"
+    description: "Help users find what they need quickly to reduce wasted page loads"
+    url: "https://w3c.github.io/sustyweb/#WSG-3.16"
+  
+  WSG-4.2:
+    name: "Define Clear Organizational Sustainability Goals and Metrics"
+    description: "Establish measurable targets for environmental performance"
+    url: "https://w3c.github.io/sustyweb/#WSG-4.2"
+  
+  WSG-4.3:
+    name: "Assign a Sustainability Representative"
+    description: "Designate someone responsible for driving and tracking sustainability efforts"
+    url: "https://w3c.github.io/sustyweb/#WSG-4.3"
+  
+  WSG-4.7:
+    name: "Raise Awareness and Inform"
+    description: "Educate team members and stakeholders about sustainability best practices"
+    url: "https://w3c.github.io/sustyweb/#WSG-4.7"
+  
+  WSG-4.12:
+    name: "Support Sustainability in Third-Party Services"
+    description: "Choose partners and vendors aligned with environmental goals"
+    url: "https://w3c.github.io/sustyweb/#WSG-4.12"
+
+techniques:
+  STAR-HIS02-1:
+    name: "Identify Sustainability Improvements"
+    description: "Systematically evaluate and prioritize environmental optimization opportunities"
+    url: "https://w3c.github.io/sustyweb/#STAR-HIS02-1"
+  
+  STAR-HIS03-1:
+    name: "Early Sustainability Integration"
+    description: "Incorporate environmental considerations from project inception"
+    url: "https://w3c.github.io/sustyweb/#STAR-HIS03-1"
+  
+  STAR-HIS12-2:
+    name: "Clear Navigation Design"
+    description: "Create intuitive user paths to minimize unnecessary interactions"
+    url: "https://w3c.github.io/sustyweb/#STAR-HIS12-2"
+  
+  STAR-UX02-1:
+    name: "User Need Validation"
+    description: "Verify that features solve real problems before building"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX02-1"
+  
+  STAR-UX04-1:
+    name: "Stakeholder Collaboration Methods"
+    description: "Techniques for balancing competing priorities with sustainability goals"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX04-1"
+  
+  STAR-UX04-5:
+    name: "Sustainability Documentation Standards"
+    description: "Best practices for recording environmental decisions and rationale"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX04-5"
+  
+  STAR-UX05-1:
+    name: "Design System Implementation"
+    description: "Build and maintain consistent, reusable interface components"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX05-1"
+  
+  STAR-UX05-2:
+    name: "Asset Minimization Strategy"
+    description: "Methods for eliminating unnecessary visual and media elements"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX05-2"
+  
+  STAR-UX07-1:
+    name: "Navigation Optimization Techniques"
+    description: "Design patterns that help users find content quickly"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX07-1"
+  
+  STAR-UX09-1:
+    name: "Accessibility Integration"
+    description: "Embed accessibility testing and validation throughout the design process"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX09-1"
+  
+  STAR-UX10-1:
+    name: "Lightweight Experience Design"
+    description: "Create minimal, fast-loading default interfaces"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX10-1"
+  
+  STAR-UX10-2:
+    name: "Performance Budget Setting"
+    description: "Define and enforce constraints on page weight and load time"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX10-2"
+  
+  STAR-UX11-1:
+    name: "Motion Reduction Best Practices"
+    description: "Respect user preferences and minimize unnecessary animations"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX11-1"
+  
+  STAR-UX13-1:
+    name: "Mobile-First Design Approach"
+    description: "Start with mobile constraints to ensure efficiency across devices"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX13-1"
+  
+  STAR-UX13-2:
+    name: "Progressive Enhancement Strategy"
+    description: "Build core functionality first, enhance for capable devices"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX13-2"
+  
+  STAR-UX14-3:
+    name: "Navigation Clarity Testing"
+    description: "Validate that users can find what they need efficiently"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX14-3"
+  
+  STAR-UX14-4:
+    name: "Information Architecture Optimization"
+    description: "Organize content to reduce cognitive load and page views"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX14-4"
+  
+  STAR-UX15-1:
+    name: "Sustainability Metrics Definition"
+    description: "Establish measurable environmental performance indicators"
+    url: "https://w3c.github.io/sustyweb/#STAR-UX15-1"
+  
+  STAR-WD01-1:
+    name: "Code Minification Techniques"
+    description: "Remove whitespace, comments, and unnecessary characters from code"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD01-1"
+  
+  STAR-WD02-1:
+    name: "Advanced Minification Strategy"
+    description: "Technical guidance for implementing effective code minification"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD02-1"
+  
+  STAR-WD04-1:
+    name: "Code Splitting Implementation"
+    description: "Divide code into chunks that load only when needed"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD04-1"
+  
+  STAR-WD07-1:
+    name: "Semantic HTML Best Practices"
+    description: "Use appropriate HTML elements to improve efficiency and accessibility"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD07-1"
+  
+  STAR-WD08-1:
+    name: "Design System Architecture"
+    description: "Build reusable component libraries for consistency and efficiency"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD08-1"
+  
+  STAR-WD08-2:
+    name: "Component Reusability Patterns"
+    description: "Maximize code reuse through shared UI components"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD08-2"
+  
+  STAR-WD11-2:
+    name: "Third-Party Service Evaluation"
+    description: "Assess environmental and performance impact of external dependencies"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD11-2"
+  
+  STAR-WD12-1:
+    name: "Accessibility Testing Integration"
+    description: "Embed accessibility validation throughout development"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD12-1"
+  
+  STAR-WD14-2:
+    name: "Mobile-First Development"
+    description: "Build for mobile constraints first, enhance for larger screens"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD14-2"
+  
+  STAR-WD16-3:
+    name: "Navigation Implementation Best Practices"
+    description: "Code efficient, clear navigation systems"
+    url: "https://w3c.github.io/sustyweb/#STAR-WD16-3"

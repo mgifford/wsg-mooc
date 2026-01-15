@@ -76,10 +76,10 @@ Every extra byte costs electricity to transmit, parse, and render. "Cruft" doesn
 ---
 
 ### References
-*   [WSG-3.2](https://w3c.github.io/sustyweb/#WSG-3.2)
-*   [WSG-3.7](https://w3c.github.io/sustyweb/#WSG-3.7)
-*   [STAR-WD02-1](https://w3c.github.io/sustyweb/#STAR-WD02-1)
-*   [STAR-WD07-1](https://w3c.github.io/sustyweb/#STAR-WD07-1)
+*   **[WSG-3.2: Minify Your HTML, CSS, and JavaScript](https://w3c.github.io/sustyweb/#WSG-3.2)** - Reduce file sizes by removing unnecessary characters like whitespace and comments
+*   **[WSG-3.7: Use HTML Elements Correctly](https://w3c.github.io/sustyweb/#WSG-3.7)** - Employ semantic HTML tags to improve rendering efficiency and accessibility
+*   **[STAR-WD02-1: Advanced Minification Strategy](https://w3c.github.io/sustyweb/#STAR-WD02-1)** - Technical guidance for implementing effective code minification
+*   **[STAR-WD07-1: Semantic HTML Best Practices](https://w3c.github.io/sustyweb/#STAR-WD07-1)** - Use appropriate HTML elements to improve efficiency and accessibility
 
 
 
@@ -246,12 +246,12 @@ Modern web development often feels like assembling LEGO bricks, but each brick (
 ---
 
 ### References
-*   [WSG-3.4](https://w3c.github.io/sustyweb/#WSG-3.4)
-*   [WSG-3.14](https://w3c.github.io/sustyweb/#WSG-3.14)
-*   [WSG-3.16](https://w3c.github.io/sustyweb/#WSG-3.16)
-*   [STAR-WD04-1](https://w3c.github.io/sustyweb/#STAR-WD04-1)
-*   [STAR-WD16-3](https://w3c.github.io/sustyweb/#STAR-WD16-3)
-*   [STAR-WD14-2](https://w3c.github.io/sustyweb/#STAR-WD14-2)
+*   **[WSG-3.4: Use Code-Splitting Within Projects](https://w3c.github.io/sustyweb/#WSG-3.4)** - Load only the code needed for each page to reduce initial payload
+*   **[WSG-3.14: Develop a Mobile-First Layout](https://w3c.github.io/sustyweb/#WSG-3.14)** - Start with mobile constraints to ensure lightweight experiences across all devices
+*   **[WSG-3.16: Ensure Navigation and Way-finding Is Clear](https://w3c.github.io/sustyweb/#WSG-3.16)** - Help users find what they need quickly to reduce wasted page loads
+*   **[STAR-WD04-1: Code Splitting Implementation](https://w3c.github.io/sustyweb/#STAR-WD04-1)** - Divide code into chunks that load only when needed
+*   **[STAR-WD16-3: Navigation Implementation Best Practices](https://w3c.github.io/sustyweb/#STAR-WD16-3)** - Code efficient, clear navigation systems
+*   **[STAR-WD14-2: Mobile-First Development](https://w3c.github.io/sustyweb/#STAR-WD14-2)** - Build for mobile constraints first, enhance for larger screens
 
 
 
@@ -400,9 +400,9 @@ The most sustainable data is data that is never transferred. Browsers are aggres
 ---
 
 ### References
-*   [WSG-3.8](https://w3c.github.io/sustyweb/#WSG-3.8)
-*   [STAR-WD08-1](https://w3c.github.io/sustyweb/#STAR-WD08-1)
-*   [STAR-WD08-2](https://w3c.github.io/sustyweb/#STAR-WD08-2)
+*   **[WSG-3.8: Use a Design System To Prioritize Interface Consistency](https://w3c.github.io/sustyweb/#WSG-3.8)** - Standardize UI components to reduce code duplication and improve efficiency
+*   **[STAR-WD08-1: Design System Architecture](https://w3c.github.io/sustyweb/#STAR-WD08-1)** - Build reusable component libraries for consistency and efficiency
+*   **[STAR-WD08-2: Component Reusability Patterns](https://w3c.github.io/sustyweb/#STAR-WD08-2)** - Maximize code reuse through shared UI components
 
 
 
@@ -551,8 +551,8 @@ Users configure their devices to suit their health, environment, and battery nee
 ---
 
 ### References
-*   [WSG-3.12](https://w3c.github.io/sustyweb/#WSG-3.12)
-*   [STAR-WD12-1](https://w3c.github.io/sustyweb/#STAR-WD12-1)
+*   **[WSG-3.12: Ensure Your Solutions Are Accessible](https://w3c.github.io/sustyweb/#WSG-3.12)** - Design and build for accessibility to improve usability and efficiency for all users
+*   **[STAR-WD12-1: Accessibility Testing Integration](https://w3c.github.io/sustyweb/#STAR-WD12-1)** - Embed accessibility validation throughout development
 
 
 
@@ -702,10 +702,10 @@ The journey of a byte from a server to a user's device involves routers, switche
 ---
 
 ### References
-*   [WSG-4.2](https://w3c.github.io/sustyweb/#WSG-4.2)
-*   [WSG-4.3](https://w3c.github.io/sustyweb/#WSG-4.3)
-*   [STAR-HIS02-1](https://w3c.github.io/sustyweb/#STAR-HIS02-1)
-*   [STAR-HIS03-1](https://w3c.github.io/sustyweb/#STAR-HIS03-1)
+*   **[WSG-4.2: Define Clear Organizational Sustainability Goals and Metrics](https://w3c.github.io/sustyweb/#WSG-4.2)** - Establish measurable targets for environmental performance
+*   **[WSG-4.3: Assign a Sustainability Representative](https://w3c.github.io/sustyweb/#WSG-4.3)** - Designate someone responsible for driving and tracking sustainability efforts
+*   **[STAR-HIS02-1: Identify Sustainability Improvements](https://w3c.github.io/sustyweb/#STAR-HIS02-1)** - Systematically evaluate and prioritize environmental optimization opportunities
+*   **[STAR-HIS03-1: Early Sustainability Integration](https://w3c.github.io/sustyweb/#STAR-HIS03-1)** - Incorporate environmental considerations from project inception
 
 
 

@@ -427,7 +427,25 @@
     function markdownToHtml(markdown) {
       let quizCounter = 0; // Track multiple quizzes on a page
       
-      return markdown
+      // First, protect and convert inline code (before anything else that might interfere)
+      const codeBlocks = [];
+      markdown = markdown.replace(/`([^`]+)`/g, (match, code) => {
+        const placeholder = `___CODE_BLOCK_${codeBlocks.length}___`;
+        codeBlocks.push(`<code>${escapeHtml(code)}</code>`);
+        return placeholder;
+      });
+      
+      // Then protect multi-line code blocks
+      const preBlocks = [];
+      markdown = markdown.replace(/```[\s\S]*?```/g, (match) => {
+        const code = match.replace(/```/g, '').trim();
+        const placeholder = `___PRE_BLOCK_${preBlocks.length}___`;
+        preBlocks.push(`<pre><code>${escapeHtml(code)}</code></pre>`);
+        return placeholder;
+      });
+      
+      // Now process everything else
+      let html = markdown
         // Convert headers
         .replace(/^### (.*$)/gim, '<h3>$1</h3>')
         .replace(/^## (.*$)/gim, '<h2>$1</h2>')
@@ -460,13 +478,6 @@
           }
           return `<a href="${escapeHtml(url)}" target="_blank">${escapeHtml(text)}</a>`;
         })
-        // Convert code blocks
-        .replace(/```[\s\S]*?```/g, (match) => {
-          const code = match.replace(/```/g, '').trim();
-          return `<pre><code>${escapeHtml(code)}</code></pre>`;
-        })
-        // Convert inline code
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
         // Convert blockquotes
         .replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>')
         // Convert bullet lists
@@ -481,6 +492,18 @@
         // Convert line breaks
         .replace(/\n\n+/g, '</p><p>')
         .replace(/\n/g, '<br>');
+      
+      // Restore code blocks
+      preBlocks.forEach((block, i) => {
+        html = html.replace(`___PRE_BLOCK_${i}___`, block);
+      });
+      
+      // Restore inline code
+      codeBlocks.forEach((block, i) => {
+        html = html.replace(`___CODE_BLOCK_${i}___`, block);
+      });
+      
+      return html;
     }
     
     function escapeHtml(text) {

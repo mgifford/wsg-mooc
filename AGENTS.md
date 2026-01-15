@@ -28,6 +28,9 @@ This document is intentionally high-level. It is the shared mental model for con
 6. **Static-first, auditable, privacy-preserving**
    GitHub Pages, no backend, no accounts. Credentials are verifiable but minimal.
 
+7. **LiaScript as the delivery platform**
+   The MOOC leverages LiaScript's built-in features and defaults wherever possible. Where LiaScript capabilities are insufficient (e.g., section pagination, progress tracking, local storage for evidence packs), custom enhancements are built as minimal, standards-compliant additions. Accessibility improvements beyond LiaScript's baseline are implemented when needed to meet WCAG 2.2 AA.
+
 ---
 
 ## Agent Overview
@@ -183,6 +186,14 @@ The MOOC itself must:
 * Respect reduced motion and cognitive load
 * Minimize page weight and third-party dependencies
 * Be resilient and readable on low-end devices
+
+LiaScript provides baseline accessibility support, but additional enhancements may be required:
+
+* **Keyboard navigation** - LiaScript supports keyboard navigation by default; custom components must maintain parity
+* **Screen reader compatibility** - Quiz interactions, progress indicators, and navigation breadcrumbs require explicit ARIA labels and role attributes
+* **Section pagination** - Custom enhancement to enable sequential navigation through lesson sections (not a LiaScript default)
+* **Progress tracking** - Visual progress indicators and completion state stored in browser local storage (built as a LiaScript extension)
+* **Reduced motion** - Animations and transitions must respect `prefers-reduced-motion` media queries
 
 Failure to meet these obligations blocks release.
 

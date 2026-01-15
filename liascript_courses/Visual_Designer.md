@@ -74,7 +74,7 @@ Visual assets (images, fonts, videos, Lottie files) account for the vast majorit
 ---
 
 ### References
-*   [STAR-WD01-1](https://w3c.github.io/sustyweb/#STAR-WD01-1)
+*   **[STAR-WD01-1: Code Minification Techniques](https://w3c.github.io/sustyweb/#STAR-WD01-1)** - Remove whitespace, comments, and unnecessary characters from code
 
 
 
@@ -245,9 +245,9 @@ Custom web fonts are expensive assets. A single font file (e.g., Roboto-Bold-Ita
 ---
 
 ### References
-*   [WSG-2.13](https://w3c.github.io/sustyweb/#WSG-2.13)
-*   [STAR-UX13-1](https://w3c.github.io/sustyweb/#STAR-UX13-1)
-*   [STAR-UX13-2](https://w3c.github.io/sustyweb/#STAR-UX13-2)
+*   **[WSG-2.13: Ensure Your Solutions Are Accessible](https://w3c.github.io/sustyweb/#WSG-2.13)** - Design and build for accessibility to improve usability and efficiency for all users
+*   **[STAR-UX13-1: Mobile-First Design Approach](https://w3c.github.io/sustyweb/#STAR-UX13-1)** - Start with mobile constraints to ensure efficiency across devices
+*   **[STAR-UX13-2: Progressive Enhancement Strategy](https://w3c.github.io/sustyweb/#STAR-UX13-2)** - Build core functionality first, enhance for capable devices
 
 
 
@@ -419,9 +419,9 @@ Images are often the heaviest single elements on a page. The wrong format choice
 ---
 
 ### References
-*   [WSG-2.11](https://w3c.github.io/sustyweb/#WSG-2.11)
-*   [WSG-2.14](https://w3c.github.io/sustyweb/#WSG-2.14)
-*   [STAR-UX14-3](https://w3c.github.io/sustyweb/#STAR-UX14-3)
+*   **[WSG-2.11: Avoid Unnecessary or an Overabundance of Assets](https://w3c.github.io/sustyweb/#WSG-2.11)** - Only include images, fonts, and scripts that directly serve user needs
+*   **[WSG-2.14: Create a Lightweight Experience by Default](https://w3c.github.io/sustyweb/#WSG-2.14)** - Design with performance budgets and minimal asset loading from the start
+*   **[STAR-UX14-3: Navigation Clarity Testing](https://w3c.github.io/sustyweb/#STAR-UX14-3)** - Validate that users can find what they need efficiently
 
 
 
@@ -592,8 +592,8 @@ On OLED screens (most modern phones and high-end laptops), black pixels turn off
 ---
 
 ### References
-*   [WSG-3.12](https://w3c.github.io/sustyweb/#WSG-3.12)
-*   [STAR-WD12-1](https://w3c.github.io/sustyweb/#STAR-WD12-1)
+*   **[WSG-3.12: Ensure Your Solutions Are Accessible](https://w3c.github.io/sustyweb/#WSG-3.12)** - Design and build for accessibility to improve usability and efficiency for all users
+*   **[STAR-WD12-1: Accessibility Testing Integration](https://w3c.github.io/sustyweb/#STAR-WD12-1)** - Embed accessibility validation throughout development
 
 
 
@@ -765,8 +765,8 @@ Animation is computationally expensive. It triggers the CPU and GPU to repaint t
 ---
 
 ### References
-*   [WSG-2.12](https://w3c.github.io/sustyweb/#WSG-2.12)
-*   [STAR-UX11-1](https://w3c.github.io/sustyweb/#STAR-UX11-1)
+*   **[WSG-2.12: Ensure Navigation and Way-finding Is Clear](https://w3c.github.io/sustyweb/#WSG-2.12)** - Help users find what they need quickly to reduce wasted page loads
+*   **[STAR-UX11-1: Motion Reduction Best Practices](https://w3c.github.io/sustyweb/#STAR-UX11-1)** - Respect user preferences and minimize unnecessary animations
 
 
 

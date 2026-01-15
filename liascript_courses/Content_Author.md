@@ -74,9 +74,9 @@ Reading requires energy—both biological (brain usage) and electrical (screen t
 ---
 
 ### References
-*   [WSG-2.10](https://w3c.github.io/sustyweb/#WSG-2.10)
-*   [STAR-UX10-1](https://w3c.github.io/sustyweb/#STAR-UX10-1)
-*   [STAR-UX10-2](https://w3c.github.io/sustyweb/#STAR-UX10-2)
+*   **[WSG-2.10: Use a Design System To Prioritize Interface Consistency](https://w3c.github.io/sustyweb/#WSG-2.10)** - Standardize UI components to reduce code duplication and improve efficiency
+*   **[STAR-UX10-1: Lightweight Experience Design](https://w3c.github.io/sustyweb/#STAR-UX10-1)** - Create minimal, fast-loading default interfaces
+*   **[STAR-UX10-2: Performance Budget Setting](https://w3c.github.io/sustyweb/#STAR-UX10-2)** - Define and enforce constraints on page weight and load time
 
 
 
@@ -248,8 +248,8 @@ A user clicking the "Back" button is a failure of sustainability. It means they 
 ---
 
 ### References
-*   [WSG-3.11](https://w3c.github.io/sustyweb/#WSG-3.11)
-*   [STAR-WD11-2](https://w3c.github.io/sustyweb/#STAR-WD11-2)
+*   **[WSG-3.11: Use Beneficial 3rd-Party Hosted Tools](https://w3c.github.io/sustyweb/#WSG-3.11)** - Choose third-party dependencies carefully to minimize performance impact
+*   **[STAR-WD11-2: Third-Party Service Evaluation](https://w3c.github.io/sustyweb/#STAR-WD11-2)** - Assess environmental and performance impact of external dependencies
 
 
 
@@ -419,9 +419,9 @@ Images and videos are often the primary storytelling elements, but for users wit
 ---
 
 ### References
-*   [WSG-2.14](https://w3c.github.io/sustyweb/#WSG-2.14)
-*   [STAR-UX14-3](https://w3c.github.io/sustyweb/#STAR-UX14-3)
-*   [STAR-UX14-4](https://w3c.github.io/sustyweb/#STAR-UX14-4)
+*   **[WSG-2.14: Create a Lightweight Experience by Default](https://w3c.github.io/sustyweb/#WSG-2.14)** - Design with performance budgets and minimal asset loading from the start
+*   **[STAR-UX14-3: Navigation Clarity Testing](https://w3c.github.io/sustyweb/#STAR-UX14-3)** - Validate that users can find what they need efficiently
+*   **[STAR-UX14-4: Information Architecture Optimization](https://w3c.github.io/sustyweb/#STAR-UX14-4)** - Organize content to reduce cognitive load and page views
 
 
 
@@ -593,9 +593,9 @@ The web is littered with digital trash—outdated news, expired offers, and obso
 ---
 
 ### References
-*   [WSG-4.7](https://w3c.github.io/sustyweb/#WSG-4.7)
-*   [WSG-4.12](https://w3c.github.io/sustyweb/#WSG-4.12)
-*   [STAR-HIS12-2](https://w3c.github.io/sustyweb/#STAR-HIS12-2)
+*   **[WSG-4.7: Raise Awareness and Inform](https://w3c.github.io/sustyweb/#WSG-4.7)** - Educate team members and stakeholders about sustainability best practices
+*   **[WSG-4.12: Support Sustainability in Third-Party Services](https://w3c.github.io/sustyweb/#WSG-4.12)** - Choose partners and vendors aligned with environmental goals
+*   **[STAR-HIS12-2: Clear Navigation Design](https://w3c.github.io/sustyweb/#STAR-HIS12-2)** - Create intuitive user paths to minimize unnecessary interactions
 
 
 

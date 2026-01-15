@@ -74,8 +74,8 @@ The most sustainable product is the one you don't build. Countless development h
 ---
 
 ### References
-*   [WSG-2.2](https://w3c.github.io/sustyweb/#WSG-2.2)
-*   [STAR-UX02-1](https://w3c.github.io/sustyweb/#STAR-UX02-1)
+*   **[WSG-2.2: Identify and Ideate Specific Improvements](https://w3c.github.io/sustyweb/#WSG-2.2)** - Systematically identify opportunities to reduce environmental impact of products and services
+*   **[STAR-UX02-1: User Need Validation](https://w3c.github.io/sustyweb/#STAR-UX02-1)** - Verify that features solve real problems before building
 
 
 
@@ -249,11 +249,11 @@ A user spending 10 minutes confusedly clicking through menus isn't "high engagem
 ---
 
 ### References
-*   [WSG-2.4](https://w3c.github.io/sustyweb/#WSG-2.4)
-*   [WSG-2.5](https://w3c.github.io/sustyweb/#WSG-2.5)
-*   [STAR-UX04-1](https://w3c.github.io/sustyweb/#STAR-UX04-1)
-*   [STAR-UX05-1](https://w3c.github.io/sustyweb/#STAR-UX05-1)
-*   [STAR-UX05-2](https://w3c.github.io/sustyweb/#STAR-UX05-2)
+*   **[WSG-2.4: Consider Sustainability in Early Ideation](https://w3c.github.io/sustyweb/#WSG-2.4)** - Integrate environmental thinking from the earliest stages of design and planning
+*   **[WSG-2.5: Account For Stakeholder Issues](https://w3c.github.io/sustyweb/#WSG-2.5)** - Balance competing needs while prioritizing sustainability outcomes
+*   **[STAR-UX04-1: Stakeholder Collaboration Methods](https://w3c.github.io/sustyweb/#STAR-UX04-1)** - Techniques for balancing competing priorities with sustainability goals
+*   **[STAR-UX05-1: Design System Implementation](https://w3c.github.io/sustyweb/#STAR-UX05-1)** - Build and maintain consistent, reusable interface components
+*   **[STAR-UX05-2: Asset Minimization Strategy](https://w3c.github.io/sustyweb/#STAR-UX05-2)** - Methods for eliminating unnecessary visual and media elements
 
 
 
@@ -426,10 +426,10 @@ I will perform a card-sorting test once a year to verify our IA matches mental m
 ---
 
 ### References
-*   [WSG-2.6](https://w3c.github.io/sustyweb/#WSG-2.6)
-*   [WSG-2.7](https://w3c.github.io/sustyweb/#WSG-2.7)
-*   [STAR-UX07-1](https://w3c.github.io/sustyweb/#STAR-UX07-1)
-*   [STAR-UX04-5](https://w3c.github.io/sustyweb/#STAR-UX04-5)
+*   **[WSG-2.6: Avoid Code Duplication](https://w3c.github.io/sustyweb/#WSG-2.6)** - Eliminate redundant code to reduce file sizes and improve maintainability
+*   **[WSG-2.7: Rigorously Assess Third-Party Services](https://w3c.github.io/sustyweb/#WSG-2.7)** - Evaluate environmental and performance impacts of external dependencies
+*   **[STAR-UX07-1: Navigation Optimization Techniques](https://w3c.github.io/sustyweb/#STAR-UX07-1)** - Design patterns that help users find content quickly
+*   **[STAR-UX04-5: Sustainability Documentation Standards](https://w3c.github.io/sustyweb/#STAR-UX04-5)** - Best practices for recording environmental decisions and rationale
 
 
 
@@ -666,8 +666,8 @@ Forms are friction. Every extra field increases the cognitive load on the user a
 ---
 
 ### References
-*   [WSG-2.15](https://w3c.github.io/sustyweb/#WSG-2.15)
-*   [STAR-UX15-1](https://w3c.github.io/sustyweb/#STAR-UX15-1)
+*   **[WSG-2.15: Avoid Distracting or Unnecessary Motion](https://w3c.github.io/sustyweb/#WSG-2.15)** - Respect reduced motion preferences and minimize animations to save energy
+*   **[STAR-UX15-1: Sustainability Metrics Definition](https://w3c.github.io/sustyweb/#STAR-UX15-1)** - Establish measurable environmental performance indicators
 
 
 
@@ -839,8 +839,8 @@ Inconsistency breeds bloat. If every landing page has slightly different button 
 ---
 
 ### References
-*   [WSG-2.9](https://w3c.github.io/sustyweb/#WSG-2.9)
-*   [STAR-UX09-1](https://w3c.github.io/sustyweb/#STAR-UX09-1)
+*   **[WSG-2.9: Document Sustainability Features, Assumptions, and Efforts](https://w3c.github.io/sustyweb/#WSG-2.9)** - Maintain clear records of sustainability decisions and their rationale
+*   **[STAR-UX09-1: Accessibility Integration](https://w3c.github.io/sustyweb/#STAR-UX09-1)** - Embed accessibility testing and validation throughout the design process
 
 
 
