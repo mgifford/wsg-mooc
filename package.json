@@ -6,7 +6,10 @@
     "start": "liascript-devserver",
     "test": "jest",
     "convert": "node scripts/convert_to_liascript.js",
-    "preview": "liascript-devserver --port 9000 --input liascript_courses/Home.md"
+    "preview": "liascript-devserver --port 9000 --input liascript_courses/Home.md",
+    "monitor": "node scripts/monitor-wsg.js",
+    "fetch-snapshot": "node scripts/fetch-wsg-snapshot.js",
+    "update-baseline": "cp snapshots/latest.json snapshots/baseline.json && echo 'Baseline updated'"
   },
   "keywords": [],
   "author": "",

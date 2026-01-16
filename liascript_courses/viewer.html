@@ -301,6 +301,10 @@
       <a href="#" onclick="showGlossary(); return false;">📖 Glossary</a>
     </div>
     
+    <div id="pageStatus" style="display:none; margin-bottom:10px; color:#555; font-weight:600;">
+      Page <span id="pageStatusCurrent">1</span> of <span id="pageStatusTotal">1</span>
+    </div>
+
     <div id="glossaryModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000;">
       <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
@@ -333,6 +337,52 @@
     let currentPage = 0;
     let pageMetadata = []; // Store metadata for each page
     let courseName = '';
+    let courseState = null; // Persisted state (quiz + reflections)
+    const STORAGE_PREFIX = 'wsg-viewer-v1';
+    const REFLECTION_PLACEHOLDER = 'Your response here...';
+
+    function storageKey() {
+      return `${STORAGE_PREFIX}:${course}`;
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(storageKey());
+        courseState = raw ? JSON.parse(raw) : { pages: {}, lastPage: 0 };
+      } catch (e) {
+        console.warn('WSG Viewer: Failed to load state', e);
+        courseState = { pages: {}, lastPage: 0 };
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(storageKey(), JSON.stringify(courseState));
+      } catch (e) {
+        console.warn('WSG Viewer: Failed to save state', e);
+      }
+    }
+
+    function ensurePageState(pageIdx) {
+      if (!courseState.pages[pageIdx]) {
+        courseState.pages[pageIdx] = { quiz: {}, textareas: {} };
+      }
+      return courseState.pages[pageIdx];
+    }
+
+    function saveQuizState(pageIdx, groupName, selectedId, isCorrect) {
+      const state = ensurePageState(pageIdx);
+      state.quiz[groupName] = { selectedId, isCorrect };
+      courseState.lastPage = pageIdx;
+      saveState();
+    }
+
+    function saveTextareaState(pageIdx, idx, value) {
+      const state = ensurePageState(pageIdx);
+      state.textareas[idx] = value;
+      courseState.lastPage = pageIdx;
+      saveState();
+    }
     
     function extractMetadata(markdown) {
       // Extract module ID (e.g., FED-01, UXD-02) from H1 header
@@ -404,6 +454,9 @@
           parent.style.opacity = '0.9';
         }
       });
+
+      // Persist selection
+      saveQuizState(currentPage, input.name, input.id, isCorrect);
     }
     
     function renderPage(pageNum) {
@@ -412,12 +465,17 @@
       currentPage = pageNum;
       const html = markdownToHtml(pages[pageNum]);
       document.getElementById('content').innerHTML = html;
+      restorePageState(pageNum);
+      attachInputHandlers(pageNum);
       
       // Update controls
       document.getElementById('currentPage').textContent = currentPage + 1;
       document.getElementById('totalPages').textContent = pages.length;
       document.getElementById('prevBtn').disabled = currentPage === 0;
       document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
+      document.getElementById('pageStatusCurrent').textContent = currentPage + 1;
+      document.getElementById('pageStatusTotal').textContent = pages.length;
+      document.getElementById('pageStatus').style.display = 'block';
       
       // Update breadcrumb and progress
       updateBreadcrumb();
@@ -426,6 +484,7 @@
     
     function markdownToHtml(markdown) {
       let quizCounter = 0; // Track multiple quizzes on a page
+      let reflectionCounter = 0;
       
       // First, protect and convert inline code (before anything else that might interfere)
       const codeBlocks = [];
@@ -466,7 +525,10 @@
           </div>`;
         })
         // Convert text inputs
-        .replace(/\[\[___\]\]/g, '<textarea class="text-input" placeholder="Your response here..."></textarea>')
+        .replace(/\[\[___\]\]/g, () => {
+          const idx = reflectionCounter++;
+          return `<textarea class="text-input" data-reflection-idx="${idx}" placeholder="${REFLECTION_PLACEHOLDER}"></textarea>`;
+        })
         // Convert bold
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         // Convert italic
@@ -518,19 +580,47 @@
       // Split on page breaks (---)
       return markdown.split(/\n---\n/).map(page => page.trim()).filter(p => p.length > 0);
     }
-    
-    function renderPage(pageNum) {
-      if (pageNum < 0 || pageNum >= pages.length) return;
-      
-      currentPage = pageNum;
-      const html = markdownToHtml(pages[pageNum]);
-      document.getElementById('content').innerHTML = html;
-      
-      // Update controls
-      document.getElementById('currentPage').textContent = currentPage + 1;
-      document.getElementById('totalPages').textContent = pages.length;
-      document.getElementById('prevBtn').disabled = currentPage === 0;
-      document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
+
+    function restorePageState(pageIdx) {
+      const state = courseState?.pages?.[pageIdx];
+      if (!state) return;
+
+      // Restore quizzes
+      Object.keys(state.quiz || {}).forEach(group => {
+        const saved = state.quiz[group];
+        if (!saved) return;
+        const input = document.getElementById(saved.selectedId);
+        if (input) {
+          input.checked = true;
+          const option = input.closest('.quiz-option');
+          if (option) {
+            checkAnswer(option, saved.isCorrect);
+          }
+        }
+      });
+
+      // Restore reflections
+      const textareas = document.querySelectorAll('textarea.text-input');
+      textareas.forEach(el => {
+        const idx = el.getAttribute('data-reflection-idx');
+        if (idx && state.textareas && state.textareas[idx] !== undefined) {
+          el.value = state.textareas[idx];
+        }
+      });
+    }
+
+    function attachInputHandlers(pageIdx) {
+      // Text inputs
+      const textareas = document.querySelectorAll('textarea.text-input');
+      textareas.forEach(el => {
+        const idx = el.getAttribute('data-reflection-idx');
+        el.addEventListener('blur', () => {
+          saveTextareaState(pageIdx, idx, el.value);
+        });
+        el.addEventListener('input', () => {
+          saveTextareaState(pageIdx, idx, el.value);
+        });
+      });
     }
     
     function nextPage() {
@@ -552,6 +642,8 @@
     const course = params.get('course') || 'Home.md';
     courseName = course.replace('.md', '').replace(/_/g, ' ');
     
+    loadState();
+
     fetch(course)
       .then(response => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -570,7 +662,7 @@
         
         document.getElementById('controls').style.display = 'flex';
         document.getElementById('progressBar').style.display = 'block';
-        renderPage(0);
+        renderPage(courseState.lastPage && courseState.lastPage < pages.length ? courseState.lastPage : 0);
       })
       .catch(error => {
         document.getElementById('content').innerHTML = 

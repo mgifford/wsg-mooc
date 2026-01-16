@@ -1,0 +1,111 @@
+name: WSG Drift Detection
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+  
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Run WSG Monitor
+        id: monitor
+        run: |
+          npm run monitor
+        continue-on-error: true
+      
+      - name: Check if drift report exists
+        id: check_drift
+        if: always()
+        run: |
+          if [ -f drift-report.json ]; then
+            echo "drift_detected=true" >> $GITHUB_OUTPUT
+            cat drift-report.json
+          else
+            echo "drift_detected=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Upload drift report
+        if: steps.check_drift.outputs.drift_detected == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: drift-report-${{ github.run_number }}
+          path: |
+            drift-report.json
+            snapshots/latest.json
+            snapshots/baseline.json
+      
+      - name: Create issue on changes
+        if: steps.check_drift.outputs.drift_detected == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('drift-report.json', 'utf8'));
+            
+            // Format the body
+            const body = `## WSG Content Changes Detected
+            
+            **Severity:** \`${report.severity}\`
+            **Analysis Date:** ${report.analysis_date}
+            **Run:** [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            
+            ### Recommended Actions
+            
+            ${report.recommended_actions.map(a => `- ${a}`).join('\n')}
+            
+            ### Drift Analysis
+            
+            \`\`\`
+            ${report.raw_analysis}
+            \`\`\`
+            
+            ### Next Steps
+            
+            1. Download the drift report artifact from the workflow run
+            2. Review the changes in \`snapshots/latest.json\` vs \`snapshots/baseline.json\`
+            3. Update affected content files
+            4. Regenerate LiaScript courses: \`npm run convert\`
+            5. Test changes: \`npm test\`
+            6. Update baseline: \`npm run update-baseline\`
+            7. Commit and push changes
+            
+            ### Reference Documents
+            
+            - [MONITORING.md](../blob/main/MONITORING.md)
+            - [AGENTS.md](../blob/main/AGENTS.md)
+            - [DATA_CONTRACT.md](../blob/main/DATA_CONTRACT.md)
+            
+            ---
+            *Automatically created by WSG monitoring workflow*`;
+            
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔍 WSG Drift Detected - ${report.severity} Severity`,
+              body: body,
+              labels: ['wsg-drift', report.severity.toLowerCase(), 'automated']
+            });
+            
+            console.log(`Created issue #${issue.data.number}`);
+      
+      - name: Post success comment
+        if: steps.monitor.outcome == 'success' && steps.check_drift.outputs.drift_detected == 'false'
+        run: |
+          echo "✅ WSG monitoring complete - no changes detected"
+          echo "Baseline is current as of $(date -u)"
