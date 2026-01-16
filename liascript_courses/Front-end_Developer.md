@@ -6,13 +6,20 @@ language: en
 narrator: US English Female
 
 comment:  This course is auto-generated from the WSG MOOC repository.
+script:   https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js
+style:    ./liascript-overrides.css
 -->
+
+<script src="./wsg-learning-journal.js"></script>
+<script src="./wsg-liascript-integration.js"></script>
 
 # Front-end Developer Curriculum
 
-> **Role Focus**: Front-end Developer
->
-> Learn to apply the W3C Web Sustainability Guidelines (WSG) in your daily work. 
+**Role Focus**: Front-end Developer
+
+Learn to apply the W3C Web Sustainability Guidelines (WSG) in your daily work.
+
+---
 
 
 ---
