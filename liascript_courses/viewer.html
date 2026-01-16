@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WSG MOOC Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .nav { 
+      margin-bottom: 20px; 
+      padding: 15px 20px; 
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .nav a { 
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    
+    .nav a:hover { 
+      background: #f0f4ff;
+    }
+    
+    .page-container {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      padding: 40px;
+      min-height: 500px;
+      max-height: 85vh;
+      overflow-y: auto;
+      text-align: left; /* Body content is left-aligned */
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0;
+      }
+      .page-container {
+        padding: 20px;
+        margin: 0 -20px;
+        border-radius: 0;
+        max-height: 80vh;
+      }
+      body {
+        padding: 10px;
+      }
+      .nav {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .nav a {
+        flex: 1;
+        text-align: center;
+      }
+      .controls {
+        flex-direction: column;
+        gap: 10px;
+      }
+      button {
+        flex: 1;
+      }
+    }
+    
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.3s; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    h1 { color: #2c3e50; border-bottom: 3px solid #667eea; padding-bottom: 15px; margin-bottom: 25px; font-size: 2em; text-align: center; }
+    h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; text-align: center; }
+    h3 { color: #555; margin-top: 20px; margin-bottom: 10px; font-size: 1.2em; text-align: left; }
+    h4 { color: #666; margin-top: 15px; margin-bottom: 8px; font-size: 1.1em; text-align: left; }
+    
+    p { margin-bottom: 15px; line-height: 1.8; text-align: left; }
+    
+    ul, ol { margin-left: 25px; margin-bottom: 15px; text-align: left; }
+    li { margin-bottom: 8px; line-height: 1.7; text-align: left; }
+    
+    a { color: #667eea; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    blockquote { 
+      border-left: 4px solid #667eea; 
+      margin: 15px 0; 
+      padding-left: 20px; 
+      color: #666;
+      background: #f8f9fa;
+      padding: 15px 20px;
+      border-radius: 4px;
+      font-style: italic;
+      text-align: left;
+    }
+    
+    code { 
+      background: #f4f4f4; 
+      padding: 2px 6px; 
+      border-radius: 3px; 
+      font-family: 'Courier New', monospace;
+    }
+    
+    pre { 
+      background: #2c3e50; 
+      color: #ecf0f1;
+      padding: 15px; 
+      border-radius: 4px;
+      overflow-x: auto;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+    
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      margin: 12px 0;
+      padding: 10px;
+      border-radius: 4px;
+      background: #f8f9fa;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .quiz-option input {
+      margin-right: 12px;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+    
+    .quiz-option label {
+      cursor: pointer;
+      flex: 1;
+    }
+    
+    .quiz-option:hover {
+      background: #e8f0ff;
+    }
+    
+    .quiz-option.correct {
+      background: #d4edda;
+      border: 2px solid #28a745;
+    }
+    
+    .quiz-option.incorrect {
+      background: #f8d7da;
+      border: 2px solid #dc3545;
+    }
+    
+    .quiz-option.disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    
+    .feedback {
+      margin-top: 10px;
+      padding: 10px;
+      border-left: 4px solid #27ae60;
+      background: #f0fff4;
+      color: #27ae60;
+      display: none;
+    }
+    
+    .text-input {
+      width: 100%;
+      min-height: 60px;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1em;
+      margin: 10px 0;
+    }
+    
+    .text-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .breadcrumb {
+      color: #666;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb-item {
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    .breadcrumb-separator {
+      color: #bbb;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: #eee;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transition: width 0.3s ease;
+    }
+
+    .controls {
+      display: flex;
+      gap: 15px;
+      margin-top: 40px;
+      justify-content: space-between;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+      align-items: center;
+    }
+    
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1em;
+    }
+    
+    .btn-prev {
+      background: #ecf0f1;
+      color: #34495e;
+    }
+    
+    .btn-prev:hover {
+      background: #bdc3c7;
+    }
+    
+    .btn-next {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .btn-next:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+    
+    .btn-prev:disabled, .btn-next:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .page-counter {
+      color: #999;
+      font-size: 0.9em;
+    }
+    
+    .loading { text-align: center; padding: 50px; color: #888; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <a href="viewer.html">🏠 Home</a>
+      <a href="viewer.html?course=Front-end_Developer.md">💻 Front-end</a>
+      <a href="viewer.html?course=UX_Designer.md">🎨 UX</a>
+      <a href="viewer.html?course=Visual_Designer.md">👁️ Visual</a>
+      <a href="viewer.html?course=Content_Author.md">✍️ Content</a>
+      <a href="#" onclick="showGlossary(); return false;">📖 Glossary</a>
+    </div>
+    
+    <div id="pageStatus" style="display:none; margin-bottom:10px; color:#555; font-weight:600;">
+      Page <span id="pageStatusCurrent">1</span> of <span id="pageStatusTotal">1</span>
+    </div>
+
+    <div id="glossaryModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000;">
+      <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2>📖 Glossary</h2>
+          <button onclick="hideGlossary()" style="background: none; border: none; font-size: 1.5em; cursor: pointer;">✕</button>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <input type="text" id="glossarySearch" placeholder="Search glossary..." style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 4px; font-size: 1em;">
+        </div>
+        <div id="glossaryContent"></div>
+      </div>
+    </div>
+    
+    <div class="page-container">
+      <div id="breadcrumb" class="breadcrumb" style="display: none;"></div>
+      <div id="progressBar" class="progress-bar" style="display: none;">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div id="content" class="loading">Loading course content...</div>
+      <div class="controls" id="controls" style="display: none;">
+        <button class="btn-prev" id="prevBtn" onclick="prevPage()">← Previous</button>
+        <span class="page-counter"><span id="currentPage">1</span> / <span id="totalPages">1</span></span>
+        <button class="btn-next" id="nextBtn" onclick="nextPage()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let pages = [];
+    let currentPage = 0;
+    let pageMetadata = []; // Store metadata for each page
+    let courseName = '';
+    let courseState = null; // Persisted state (quiz + reflections)
+    const STORAGE_PREFIX = 'wsg-viewer-v1';
+    const REFLECTION_PLACEHOLDER = 'Your response here...';
+
+    function storageKey() {
+      return `${STORAGE_PREFIX}:${course}`;
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(storageKey());
+        courseState = raw ? JSON.parse(raw) : { pages: {}, lastPage: 0 };
+      } catch (e) {
+        console.warn('WSG Viewer: Failed to load state', e);
+        courseState = { pages: {}, lastPage: 0 };
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(storageKey(), JSON.stringify(courseState));
+      } catch (e) {
+        console.warn('WSG Viewer: Failed to save state', e);
+      }
+    }
+
+    function ensurePageState(pageIdx) {
+      if (!courseState.pages[pageIdx]) {
+        courseState.pages[pageIdx] = { quiz: {}, textareas: {} };
+      }
+      return courseState.pages[pageIdx];
+    }
+
+    function saveQuizState(pageIdx, groupName, selectedId, isCorrect) {
+      const state = ensurePageState(pageIdx);
+      state.quiz[groupName] = { selectedId, isCorrect };
+      courseState.lastPage = pageIdx;
+      saveState();
+    }
+
+    function saveTextareaState(pageIdx, idx, value) {
+      const state = ensurePageState(pageIdx);
+      state.textareas[idx] = value;
+      courseState.lastPage = pageIdx;
+      saveState();
+    }
+    
+    function extractMetadata(markdown) {
+      // Extract module ID (e.g., FED-01, UXD-02) from H1 header
+      const h1Match = markdown.match(/^# (.+?): (.+)$/m);
+      const moduleId = h1Match ? h1Match[1].trim() : '';
+      const moduleTitle = h1Match ? h1Match[2].trim() : '';
+      
+      // Extract section title from H2 header
+      const h2Match = markdown.match(/^## (.+)$/m);
+      const sectionTitle = h2Match ? h2Match[1].trim() : '';
+      
+      return { moduleId, moduleTitle, sectionTitle };
+    }
+    
+    function updateBreadcrumb() {
+      const meta = pageMetadata[currentPage] || {};
+      const breadcrumbEl = document.getElementById('breadcrumb');
+      
+      if (!meta.moduleId && !meta.sectionTitle) {
+        breadcrumbEl.style.display = 'none';
+        return;
+      }
+      
+      breadcrumbEl.style.display = 'flex';
+      
+      let html = `<span style="color: #999; font-size: 0.9em;">${courseName}</span>`;
+      
+      if (meta.moduleId) {
+        html += `<span class="breadcrumb-separator">/</span>`;
+        html += `<span class="breadcrumb-item">${meta.moduleId}: ${meta.moduleTitle}</span>`;
+      }
+      
+      if (meta.sectionTitle) {
+        html += `<span class="breadcrumb-separator">/</span>`;
+        html += `<span>${meta.sectionTitle}</span>`;
+      }
+      
+      breadcrumbEl.innerHTML = html;
+    }
+    
+    function updateProgressBar() {
+      const progress = ((currentPage + 1) / pages.length) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+    }
+    
+    function checkAnswer(optionElement, isCorrect) {
+      // Get the input element
+      const input = optionElement.querySelector('input');
+      input.checked = true;
+      
+      // Get all options in this quiz
+      const allOptions = document.querySelectorAll(`input[name="${input.name}"]`);
+      
+      // Mark all options as disabled and show results
+      allOptions.forEach(opt => {
+        const parent = opt.closest('.quiz-option');
+        parent.classList.add('disabled');
+        
+        const optIsCorrect = opt.getAttribute('data-correct') === 'true';
+        if (opt.checked) {
+          if (optIsCorrect) {
+            parent.classList.add('correct');
+          } else {
+            parent.classList.add('incorrect');
+          }
+        } else if (optIsCorrect) {
+          // Show the correct answer even if not selected
+          parent.classList.add('correct');
+          parent.style.opacity = '0.9';
+        }
+      });
+
+      // Persist selection
+      saveQuizState(currentPage, input.name, input.id, isCorrect);
+    }
+    
+    function renderPage(pageNum) {
+      if (pageNum < 0 || pageNum >= pages.length) return;
+      
+      currentPage = pageNum;
+      const html = markdownToHtml(pages[pageNum]);
+      document.getElementById('content').innerHTML = html;
+      restorePageState(pageNum);
+      attachInputHandlers(pageNum);
+      
+      // Update controls
+      document.getElementById('currentPage').textContent = currentPage + 1;
+      document.getElementById('totalPages').textContent = pages.length;
+      document.getElementById('prevBtn').disabled = currentPage === 0;
+      document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
+      document.getElementById('pageStatusCurrent').textContent = currentPage + 1;
+      document.getElementById('pageStatusTotal').textContent = pages.length;
+      document.getElementById('pageStatus').style.display = 'block';
+      
+      // Update breadcrumb and progress
+      updateBreadcrumb();
+      updateProgressBar();
+    }
+    
+    function markdownToHtml(markdown) {
+      let quizCounter = 0; // Track multiple quizzes on a page
+      let reflectionCounter = 0;
+      
+      // First, protect and convert inline code (before anything else that might interfere)
+      const codeBlocks = [];
+      markdown = markdown.replace(/`([^`]+)`/g, (match, code) => {
+        const placeholder = `___CODE_BLOCK_${codeBlocks.length}___`;
+        codeBlocks.push(`<code>${escapeHtml(code)}</code>`);
+        return placeholder;
+      });
+      
+      // Then protect multi-line code blocks
+      const preBlocks = [];
+      markdown = markdown.replace(/```[\s\S]*?```/g, (match) => {
+        const code = match.replace(/```/g, '').trim();
+        const placeholder = `___PRE_BLOCK_${preBlocks.length}___`;
+        preBlocks.push(`<pre><code>${escapeHtml(code)}</code></pre>`);
+        return placeholder;
+      });
+      
+      // Now process everything else
+      let html = markdown
+        // Convert headers
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        // Convert quiz checkboxes [[x] and [ ]]
+        .replace(/\[x\] ([^\n]+)/g, (match, text) => {
+          const id = `quiz-${currentPage}-${quizCounter++}`;
+          return `<div class="quiz-option" onclick="checkAnswer(this, true)">
+            <input type="radio" name="quiz-${currentPage}" id="${id}" data-correct="true"> 
+            <label for="${id}">${escapeHtml(text)}</label>
+          </div>`;
+        })
+        .replace(/\[ \] ([^\n]+)/g, (match, text) => {
+          const id = `quiz-${currentPage}-${quizCounter++}`;
+          return `<div class="quiz-option" onclick="checkAnswer(this, false)">
+            <input type="radio" name="quiz-${currentPage}" id="${id}" data-correct="false"> 
+            <label for="${id}">${escapeHtml(text)}</label>
+          </div>`;
+        })
+        // Convert text inputs
+        .replace(/\[\[___\]\]/g, () => {
+          const idx = reflectionCounter++;
+          return `<textarea class="text-input" data-reflection-idx="${idx}" placeholder="${REFLECTION_PLACEHOLDER}"></textarea>`;
+        })
+        // Convert bold
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        // Convert italic
+        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+        // Convert links
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+          if (url.endsWith('.md')) {
+            return `<a href="viewer.html?course=${encodeURIComponent(url)}">${escapeHtml(text)}</a>`;
+          }
+          return `<a href="${escapeHtml(url)}" target="_blank">${escapeHtml(text)}</a>`;
+        })
+        // Convert blockquotes
+        .replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>')
+        // Convert bullet lists
+        .replace(/^\* (.*$)/gim, '<li>$1</li>')
+        .replace(/^- (.*$)/gim, '<li>$1</li>')
+        // Convert numbered lists
+        .replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
+        // Wrap lists
+        .replace(/(<li>[\s\S]*?<\/li>)/s, '<ul>$1</ul>')
+        // Remove multiple list wrappers
+        .replace(/<\/ul>\s*<ul>/g, '')
+        // Convert line breaks
+        .replace(/\n\n+/g, '</p><p>')
+        .replace(/\n/g, '<br>');
+      
+      // Restore code blocks
+      preBlocks.forEach((block, i) => {
+        html = html.replace(`___PRE_BLOCK_${i}___`, block);
+      });
+      
+      // Restore inline code
+      codeBlocks.forEach((block, i) => {
+        html = html.replace(`___CODE_BLOCK_${i}___`, block);
+      });
+      
+      return html;
+    }
+    
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+    
+    function splitPages(markdown) {
+      // Remove LiaScript frontmatter
+      markdown = markdown.replace(/<!--[\s\S]*?-->/g, '').trim();
+      
+      // Split on page breaks (---)
+      return markdown.split(/\n---\n/).map(page => page.trim()).filter(p => p.length > 0);
+    }
+
+    function restorePageState(pageIdx) {
+      const state = courseState?.pages?.[pageIdx];
+      if (!state) return;
+
+      // Restore quizzes
+      Object.keys(state.quiz || {}).forEach(group => {
+        const saved = state.quiz[group];
+        if (!saved) return;
+        const input = document.getElementById(saved.selectedId);
+        if (input) {
+          input.checked = true;
+          const option = input.closest('.quiz-option');
+          if (option) {
+            checkAnswer(option, saved.isCorrect);
+          }
+        }
+      });
+
+      // Restore reflections
+      const textareas = document.querySelectorAll('textarea.text-input');
+      textareas.forEach(el => {
+        const idx = el.getAttribute('data-reflection-idx');
+        if (idx && state.textareas && state.textareas[idx] !== undefined) {
+          el.value = state.textareas[idx];
+        }
+      });
+    }
+
+    function attachInputHandlers(pageIdx) {
+      // Text inputs
+      const textareas = document.querySelectorAll('textarea.text-input');
+      textareas.forEach(el => {
+        const idx = el.getAttribute('data-reflection-idx');
+        el.addEventListener('blur', () => {
+          saveTextareaState(pageIdx, idx, el.value);
+        });
+        el.addEventListener('input', () => {
+          saveTextareaState(pageIdx, idx, el.value);
+        });
+      });
+    }
+    
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        renderPage(currentPage + 1);
+        window.scrollTo(0, 0);
+      }
+    }
+    
+    function prevPage() {
+      if (currentPage > 0) {
+        renderPage(currentPage - 1);
+        window.scrollTo(0, 0);
+      }
+    }
+    
+    // Load course
+    const params = new URLSearchParams(window.location.search);
+    const course = params.get('course') || 'Home.md';
+    courseName = course.replace('.md', '').replace(/_/g, ' ');
+    
+    loadState();
+
+    fetch(course)
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.text();
+      })
+      .then(markdown => {
+        pages = splitPages(markdown);
+        
+        if (pages.length === 0) {
+          document.getElementById('content').innerHTML = '<p>No content found.</p>';
+          return;
+        }
+        
+        // Extract metadata for each page
+        pageMetadata = pages.map(page => extractMetadata(page));
+        
+        document.getElementById('controls').style.display = 'flex';
+        document.getElementById('progressBar').style.display = 'block';
+        renderPage(courseState.lastPage && courseState.lastPage < pages.length ? courseState.lastPage : 0);
+      })
+      .catch(error => {
+        document.getElementById('content').innerHTML = 
+          '<p style="color: red;"><strong>Error loading course:</strong> ' + escapeHtml(error.message) + 
+          '</p><p>Make sure you are running: <code>python3 -m http.server 8020 --directory liascript_courses</code></p>';
+      });
+    
+    // Glossary functionality
+    const glossary = {
+      "Minification": "Removing unnecessary characters (whitespace, comments) from code to reduce file size by 20-40%. Saves bandwidth and energy.",
+      "Tree-shaking": "A build optimization that removes unused code exports. Only the code you import is included in the final output.",
+      "Lazy Loading": "Deferring the loading of images and resources until they are needed (e.g., when visible in viewport). Saves bandwidth on first load.",
+      "Semantic HTML": "Using HTML elements that describe their purpose (<article>, <nav>, <button>) instead of generic <div> tags. Improves accessibility and rendering efficiency.",
+      "Performance Budget": "A set of limits for asset size and speed (e.g., 'JS must not exceed 200KB'). Prevents performance regressions.",
+      "Accessibility": "Designing applications so they can be used by everyone, including people with disabilities. Improves usability and efficiency.",
+      "Carbon Cost": "The greenhouse gas emissions produced by transmitting and processing data. Smaller files and fewer requests = lower carbon.",
+      "Dark Mode": "A user preference that reduces eye strain and saves energy on OLED screens. Respect with CSS media queries.",
+      "Reduced Motion": "A user preference for minimal animations. Improves both accessibility and battery life.",
+      "Bundle Analysis": "Examining what code is in your build artifact. Tools show which dependencies take up the most space.",
+      "LCP": "Largest Contentful Paint—a Core Web Vital metric measuring how quickly the largest visible element appears.",
+      "Gzip": "Server-side compression that reduces text asset size by 60-80%. All modern servers should support it.",
+      "Cache Control": "HTTP headers telling browsers how long to store assets locally. Proper caching saves massive bandwidth.",
+      "DOM Depth": "The nesting level of HTML elements. Shallower DOM = faster rendering.",
+      "Progressive Enhancement": "Providing basic functionality to all browsers, then adding enhancements for capable ones. Ensures resilience.",
+      "WCAG": "Web Content Accessibility Guidelines—international standards for web accessibility (A, AA, AAA levels).",
+      "WSG": "Web Sustainability Guidelines—W3C standards for creating low-impact web applications.",
+      "Lighthouse": "Free Google tool that audits pages for performance, accessibility, SEO, and best practices."
+    };
+    
+    function showGlossary() {
+      document.getElementById('glossaryModal').style.display = 'block';
+      renderGlossary();
+    }
+    
+    function hideGlossary() {
+      document.getElementById('glossaryModal').style.display = 'none';
+    }
+    
+    function renderGlossary() {
+      const searchTerm = document.getElementById('glossarySearch').value.toLowerCase();
+      const terms = Object.keys(glossary).sort();
+      const filtered = searchTerm ? terms.filter(t => t.toLowerCase().includes(searchTerm)) : terms;
+      
+      let html = '';
+      filtered.forEach(term => {
+        html += `<div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+          <h4 style="color: #667eea; margin-bottom: 5px;">${escapeHtml(term)}</h4>
+          <p>${escapeHtml(glossary[term])}</p>
+        </div>`;
+      });
+      
+      document.getElementById('glossaryContent').innerHTML = html || '<p>No matching terms found.</p>';
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('glossarySearch').addEventListener('input', renderGlossary);
+      document.getElementById('glossaryModal').addEventListener('click', function(e) {
+        if (e.target === this) hideGlossary();
+      });
+    });
+  </script>
+</body>
+</html>
