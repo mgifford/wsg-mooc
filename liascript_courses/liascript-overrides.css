@@ -1,0 +1,178 @@
+/* 
+  LiaScript Visual Overrides for WSG MOOC
+  Fixes centering, list formatting, color-blind accessibility
+*/
+
+/* ========== BLOCKQUOTE REMOVAL ========== */
+/* Remove centered blockquote styling from role focus intro */
+blockquote {
+  background: transparent !important;
+  border-left: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  font-style: normal !important;
+  color: inherit !important;
+}
+
+/* ========== TEXT ALIGNMENT ========== */
+/* Ensure paragraphs and body text are left-aligned */
+p, li, span, div:not(.lia-) {
+  text-align: left !important;
+}
+
+/* Override any centered class */
+.lia-slide p {
+  text-align: left !important;
+}
+
+/* ========== LIST FORMATTING ========== */
+/* Ensure bullets and numbered lists are left-justified */
+ul, ol {
+  text-align: left !important;
+  margin-left: 2em !important;
+  margin-bottom: 1em !important;
+}
+
+li {
+  text-align: left !important;
+  margin-bottom: 0.5em !important;
+  line-height: 1.6 !important;
+}
+
+/* Fix reference lists specifically */
+ul li a {
+  word-break: break-word;
+}
+
+/* ========== QUIZ ANSWER FEEDBACK (WCAG 2.2 AA) ========== */
+/* Replace color-only feedback with text and icon indicators */
+
+/* LiaScript uses .incorrect and .correct classes */
+/* Add clear text labels and symbols for color-blind users */
+
+.lia-quiz-option,
+.lia-answer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* Correct answer styling */
+.lia-quiz-option.lia-correct::after,
+.lia-answer.correct::after {
+  content: "✓ CORRECT" !important;
+  font-weight: bold;
+  color: #28a745;
+  display: inline;
+}
+
+/* Incorrect answer styling */
+.lia-quiz-option.lia-incorrect::after,
+.lia-answer.incorrect::after {
+  content: "✗ INCORRECT" !important;
+  font-weight: bold;
+  color: #dc3545;
+  display: inline;
+}
+
+/* Ensure visible feedback boxes for color-blind accessibility */
+.lia-quiz-option.lia-correct,
+.lia-answer.correct {
+  background: #d4edda !important;
+  border: 2px solid #28a745 !important;
+  border-left: 5px solid #28a745 !important;
+}
+
+.lia-quiz-option.lia-incorrect,
+.lia-answer.incorrect {
+  background: #f8d7da !important;
+  border: 2px solid #dc3545 !important;
+  border-left: 5px solid #dc3545 !important;
+}
+
+/* High contrast indicator for color-blind users */
+@media (prefers-contrast: more) {
+  .lia-quiz-option.lia-correct,
+  .lia-answer.correct {
+    border-left: 8px solid #0d5c0d !important;
+  }
+
+  .lia-quiz-option.lia-incorrect,
+  .lia-answer.incorrect {
+    border-left: 8px solid #7c0000 !important;
+  }
+}
+
+/* ========== TEXT INPUT FOR REFLECTIONS ========== */
+/* Style the reflection textarea inputs */
+input[type="text"],
+textarea {
+  width: 100% !important;
+  padding: 0.75em !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+  font-size: 1em !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  background: #fafafa !important;
+  color: #333 !important;
+}
+
+textarea {
+  min-height: 120px !important;
+  resize: vertical !important;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #667eea !important;
+  background: white !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* ========== SECTION HEADERS ========== */
+/* Ensure H2 and H3 headers are properly formatted */
+h2, h3 {
+  text-align: left !important;
+  margin-top: 1.5em !important;
+  margin-bottom: 0.75em !important;
+}
+
+/* ========== SPACING FIXES ========== */
+/* Fix indentation issues in checklists and code blocks */
+.lia-slide {
+  padding: 2rem !important;
+}
+
+/* Ensure consistent list indentation */
+ol {
+  padding-left: 2em !important;
+}
+
+ul {
+  padding-left: 2em !important;
+}
+
+/* ========== REDUCED MOTION ========== */
+/* Respect user motion preferences for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  .lia-quiz-option.lia-correct,
+  .lia-answer.correct {
+    border-left: 5px solid #28a745 !important;
+  }
+
+  .lia-quiz-option.lia-incorrect,
+  .lia-answer.incorrect {
+    border-left: 5px solid #dc3545 !important;
+  }
+}
