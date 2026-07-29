@@ -1,0 +1,1363 @@
+ChatGPT
+
+
+
+
+
+Invite team members
+Worked for 4m 45s
+Web and W3C relationships across the SDGs
+Sdg Web W3C Relationships
+
+
+Give feedback
+The sheet marks 43 of 169 targets: 29 as W3C-specific and 14 as Web-related. Relationships concentrate around education, infrastructure, economic development, responsible consumption, governance and partnerships.
+
+Select any target to inspect its description and associated W3C area.
+
+Caveats:
+
+I interpret “no” as “not marked,” not evidence that no relationship exists.
+
+I preserved two apparent source errors: the second 8.1 appears to be 8.10, while the public-access target labelled 16.1 appears to be 16.10.
+
+No additional relationships were inferred beyond the source sheet.
+
+
+What is the best way to express this?  Labels might be needed.
+
+I can see this as an interactive HTML document. We'd need hover/focus to highlight some of the relationships.
+
+I don't undestand the blue/green colors.
+
+Worked for 4m 26s
+You are right. The blue and green had no defensible meaning. They were generic theme colours representing “W3C-specific” and “Web generally,” but the labels already carried that distinction. I removed that encoding.
+
+A labelled relationship matrix is better than a network diagram. A node-link diagram would become a 49-edge hairball.
+
+W3C and Web relationships to the SDGs
+Sdg W3C Relationship Matrix
+
+
+Give feedback
+The revised structure:
+
+Rows identify Web and W3C areas explicitly.
+
+Columns identify the 17 SDGs.
+
+Each cell gives the number of related SDG targets.
+
+Hover or keyboard focus highlights the corresponding row, column and related cells.
+
+Selecting a cell retains the relationship and lists its targets and descriptions.
+
+Colour now indicates only the current interaction state. It does not classify the data.
+
+Targets marked no are omitted because they do not express a mapped relationship.
+
+Overlapping relationships are preserved. For example, a target can relate to both WAI and Internationalization.
+
+For a published HTML document, I would add a title, short methodology, abbreviation definitions, source and date, plus explicit notes about the apparent 8.1/8.10 and 16.1/16.10 source errors.
+
+
+Can you give me this as both numbers and colors but give me something I can download as a stand alone html document
+
+Worked for 3m 36s
+The standalone document includes:
+
+Exact numeric counts in every relationship cell.
+
+One labelled hue for “Web generally” and another for specific W3C areas.
+
+Increasing colour intensity for higher counts.
+
+Hover, focus and persistent click selection.
+
+Target descriptions and data-source notes.
+
+No external dependencies, so it works offline.
+
+Targets marked no remain omitted. Apparent source errors are documented but not silently corrected.
+
+sdg-web-w3c-relationships-standalone.html
+
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Web and W3C relationships to the Sustainable Development Goals</title>
+<style>:root {
+  color-scheme: light dark;
+  background-color: transparent !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --main-surface-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --red: light-dark(rgb(186 38 35), rgb(250 66 62));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 10px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E");
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-visualize-standalone] {
+  background-color: var(--background) !important;
+}
+
+/* Generic mobile code-block hosts provide light/dark mode but no series palette.
+   AppBlock hosts set all six variables themselves. */
+:root:not([data-app-block-surface]) {
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(#f3883b, #f59a56);
+  --viz-series-3: light-dark(#5dc977, #74d58b);
+  --viz-series-4: light-dark(#eb77b1, #f08fc0);
+  --viz-series-5: light-dark(#9b79ec, #aa91ef);
+  --viz-series-6: light-dark(#3ab9b1, #5acbc2);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html > body {
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+:root:not([data-app-block-surface]) > body {
+  padding: 12px;
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive > .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align="right"]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align="center"]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget > :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* The bundled tooltip runtime owns [data-tooltip]. AppBlock's CSS-only
+   pseudo-tooltip can widen dense grids even while hidden. */
+main [data-tooltip]::after {
+  content: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls > .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls > .form-label > :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--interactive-label-primary-default, var(--primary-foreground));
+  background: var(--interactive-bg-primary-default, var(--foreground));
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(
+    in srgb,
+    var(--interactive-label-primary-default, var(--primary-foreground)) 50%,
+    transparent
+  );
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type="file"] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type="file"]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type="file"]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type="color"] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: "";
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type="radio"]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: "";
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed="true"],
+    [aria-selected="true"],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed="true"], [aria-selected="true"], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget > svg {
+  width: 100%;
+}
+
+.document-header,
+.document-footer,
+#sdg-w3c-matrix {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.document-header,
+.document-footer {
+  display: grid;
+  gap: 0.65rem;
+  padding-block: 0.8rem;
+}
+
+.document-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 1.2rem;
+}
+
+.document-footer ul {
+  margin-block: 0;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+</style>
+</head>
+<body>
+<header class="document-header">
+  <h1>Web and W3C relationships to the Sustainable Development Goals</h1>
+  <p>
+    This matrix maps Web-related and W3C-specific work areas to the 17 UN Sustainable Development Goals.
+    Each non-zero cell shows the exact number of mapped SDG targets.
+  </p>
+  <p>
+    Hue distinguishes the broad Web category from specific W3C areas. Greater colour intensity means more
+    mapped targets. The number remains the authoritative value, so the document does not depend on colour.
+  </p>
+</header>
+<div id="sdg-w3c-matrix">
+  <style>
+    #sdg-w3c-matrix {
+      color: var(--foreground);
+      display: grid;
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    #sdg-w3c-matrix .matrix-summary {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    #sdg-w3c-matrix .summary-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.75rem;
+    }
+
+    #sdg-w3c-matrix .summary-heading strong {
+      font-weight: 500;
+    }
+
+    #sdg-w3c-matrix .summary-count {
+      color: var(--muted-foreground);
+    }
+
+    #sdg-w3c-matrix .target-list {
+      display: grid;
+      gap: 0.35rem;
+      margin: 0;
+      padding-inline-start: 1.2rem;
+    }
+
+    #sdg-w3c-matrix .target-list strong {
+      font-weight: 500;
+    }
+
+    #sdg-w3c-matrix .matrix-key {
+      color: var(--muted-foreground);
+      margin: 0;
+    }
+
+    #sdg-w3c-matrix .colour-key {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem 1rem;
+      color: var(--muted-foreground);
+    }
+
+    #sdg-w3c-matrix .key-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    #sdg-w3c-matrix .key-swatch {
+      border-radius: 0.2rem;
+      display: inline-block;
+      height: 1rem;
+      width: 1rem;
+    }
+
+    #sdg-w3c-matrix .key-web,
+    #sdg-w3c-matrix .colour-web {
+      background: color-mix(in srgb, var(--viz-series-2) var(--count-strength, 34%), var(--card));
+    }
+
+    #sdg-w3c-matrix .key-w3c,
+    #sdg-w3c-matrix .colour-w3c {
+      background: color-mix(in srgb, var(--viz-series-1) var(--count-strength, 34%), var(--card));
+    }
+
+    #sdg-w3c-matrix .relationship-table {
+      border-collapse: separate;
+      border-spacing: 0.22rem;
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    #sdg-w3c-matrix .relationship-table th,
+    #sdg-w3c-matrix .relationship-table td {
+      padding: 0;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    #sdg-w3c-matrix .relationship-table .area-heading {
+      min-width: 12rem;
+      text-align: left;
+      width: 12rem;
+    }
+
+    #sdg-w3c-matrix .relationship-table .goal-heading {
+      min-width: 1.8rem;
+      width: 1.8rem;
+    }
+
+    #sdg-w3c-matrix .area-label {
+      display: block;
+      padding: 0.4rem 0.35rem;
+      text-align: left;
+    }
+
+    #sdg-w3c-matrix .area-type {
+      color: var(--muted-foreground);
+      display: block;
+    }
+
+    #sdg-w3c-matrix .goal-label {
+      display: block;
+      padding: 0.35rem 0;
+    }
+
+    #sdg-w3c-matrix .matrix-button {
+      min-width: 1.8rem;
+      width: 100%;
+    }
+
+    #sdg-w3c-matrix .empty-cell {
+      color: var(--muted-foreground);
+      display: block;
+      padding: 0.45rem 0;
+    }
+
+    #sdg-w3c-matrix .is-axis {
+      background: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    #sdg-w3c-matrix .matrix-button.is-related:not(:focus):not([aria-pressed="true"]) {
+      outline: 2px solid var(--ring);
+      outline-offset: -2px;
+    }
+
+    #sdg-w3c-matrix .is-axis .area-type {
+      color: inherit;
+    }
+
+    @media (max-width: 560px) {
+      #sdg-w3c-matrix .relationship-table .area-heading {
+        min-width: 9rem;
+        width: 9rem;
+      }
+    }
+  </style>
+
+  <section class="card matrix-summary" aria-live="polite" aria-atomic="true">
+    <div class="summary-heading">
+      <strong id="sdg-matrix-heading"></strong>
+      <span class="summary-count" id="sdg-matrix-count"></span>
+    </div>
+    <ul class="target-list" id="sdg-matrix-targets"></ul>
+  </section>
+
+  <p class="matrix-key text-small">
+    Each numbered cell is the count of mapped SDG targets. Focus or point to a cell to highlight its Web or W3C area and SDG.
+  </p>
+
+  <div class="colour-key text-small" aria-label="Colour key">
+    <span class="key-item">
+      <span class="key-swatch key-web" aria-hidden="true"></span>
+      <span>Web generally</span>
+    </span>
+    <span class="key-item">
+      <span class="key-swatch key-w3c" aria-hidden="true"></span>
+      <span>Specific W3C area</span>
+    </span>
+    <span>Darker fill means more mapped targets; the number is the exact count.</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-sm relationship-table">
+      <caption class="sr-only">Mapped SDG targets by Web or W3C area and Sustainable Development Goal</caption>
+      <thead>
+        <tr id="sdg-matrix-goals">
+          <th class="area-heading" scope="col">Web or W3C area</th>
+        </tr>
+      </thead>
+      <tbody id="sdg-matrix-body"></tbody>
+    </table>
+  </div>
+
+  <script type="application/json" id="sdg-matrix-data">[{"Goal":"1","Target":"1.1","Description":"By 2030, eradicate extreme poverty for all people everywhere, currently measured as people living on less than $1.25 a day","Relationship":"no","Notes":""},{"Goal":"1","Target":"1.2","Description":"By 2030, reduce at least by half the proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions","Relationship":"no","Notes":""},{"Goal":"1","Target":"1.3","Description":"Implement nationally appropriate social protection systems and measures for all, including floors, and by 2030 achieve substantial coverage of the poor and the vulnerable","Relationship":"no","Notes":""},{"Goal":"1","Target":"1.4","Description":"By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance","Relationship":"no","Notes":""},{"Goal":"1","Target":"1.5","Description":"By 2030, build the resilience of the poor and those in vulnerable situations and reduce their exposure and vulnerability to climate-related extreme events and other economic, social and environmental shocks and disasters","Relationship":"no","Notes":""},{"Goal":"1","Target":"1.a","Description":"Ensure significant mobilization of resources from a variety of sources, including through enhanced development cooperation, in order to provide adequate and predictable means for developing countries, in particular least developed countries, to implement programmes and policies to end poverty in all its dimensions","Relationship":"no","Notes":""},{"Goal":"1","Target":"1.b","Description":"Create sound policy frameworks at the national, regional and international levels, based on pro-poor and gender-sensitive development strategies, to support accelerated investment in poverty eradication actions","Relationship":"no","Notes":""},{"Goal":"2","Target":"2.1","Description":"By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round","Relationship":"no","Notes":""},{"Goal":"2","Target":"2.2","Description":"By 2030, end all forms of malnutrition, including achieving, by 2025, the internationally agreed targets on stunting and wasting in children under 5 years of age, and address the nutritional needs of adolescent girls, pregnant and lactating women and older persons","Relationship":"no","Notes":""},{"Goal":"2","Target":"2.3","Description":"By 2030, double the agricultural productivity and incomes of small-scale food producers, in particular women, indigenous peoples, family farmers, pastoralists and fishers, including through secure and equal access to land, other productive resources and inputs, knowledge, financial services, markets and opportunities for value addition and non-farm employment","Relationship":"no","Notes":""},{"Goal":"2","Target":"2.4","Description":"By 2030, ensure sustainable food production systems and implement resilient agricultural practices that increase productivity and production, that help maintain ecosystems, that strengthen capacity for adaptation to climate change, extreme weather, drought, flooding and other disasters and that progressively improve land and soil quality","Relationship":"no","Notes":""},{"Goal":"2","Target":"2.5","Description":"By 2020, maintain the genetic diversity of seeds, cultivated plants and farmed and domesticated animals and their related wild species, including through soundly managed and diversified seed and plant banks at the national, regional and international levels, and promote access to and fair and equitable sharing of benefits arising from the utilization of genetic resources and associated traditional knowledge, as internationally agreed","Relationship":"no","Notes":""},{"Goal":"2","Target":"2.a","Description":"Increase investment, including through enhanced international cooperation, in rural infrastructure, agricultural research and extension services, technology development and plant and livestock gene banks in order to enhance agricultural productive capacity in developing countries, in particular least developed countries","Relationship":"no","Notes":""},{"Goal":"2","Target":"2.b","Description":"Correct and prevent trade restrictions and distortions in world agricultural markets, including through the parallel elimination of all forms of agricultural export subsidies and all export measures with equivalent effect, in accordance with the mandate of the Doha Development Round","Relationship":"no","Notes":""},{"Goal":"2","Target":"2.c","Description":"Adopt measures to ensure the proper functioning of food commodity markets and their derivatives and facilitate timely access to market information, including on food reserves, in order to help limit extreme food price volatility","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.1","Description":"By 2030, reduce the global maternal mortality ratio to less than 70 per 100,000 live births","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.2","Description":"By 2030, end preventable deaths of newborns and children under 5 years of age, with all countries aiming to reduce neonatal mortality to at least as low as 12 per 1,000 live births and under-5 mortality to at least as low as 25 per 1,000 live births","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.3","Description":"By 2030, end the epidemics of AIDS, tuberculosis, malaria and neglected tropical diseases and combat hepatitis, water-borne diseases and other communicable diseases","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.4","Description":"By 2030, reduce by one third premature mortality from non-communicable diseases through prevention and treatment and promote mental health and well-being","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.5","Description":"Strengthen the prevention and treatment of substance abuse, including narcotic drug abuse and harmful use of alcohol","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.6","Description":"By 2020, halve the number of global deaths and injuries from road traffic accidents","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.7","Description":"By 2030, ensure universal access to sexual and reproductive health-care services, including for family planning, information and education, and the integration of reproductive health into national strategies and programmes","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.8","Description":"Achieve universal health coverage, including financial risk protection, access to quality essential health-care services and access to safe, effective, quality and affordable essential medicines and vaccines for all","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.9","Description":"By 2030, substantially reduce the number of deaths and illnesses from hazardous chemicals and air, water and soil pollution and contamination","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.a","Description":"Strengthen the implementation of the World Health Organization Framework Convention on Tobacco Control in all countries, as appropriate","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.b","Description":"Support the research and development of vaccines and medicines for the communicable and non-communicable diseases that primarily affect developing countries, provide access to affordable essential medicines and vaccines, in accordance with the Doha Declaration on the TRIPS Agreement and Public Health, which affirms the right of developing countries to use to the full the provisions in the Agreement on Trade-Related Aspects of Intellectual Property Rights regarding flexibilities to protect public health, and, in particular, provide access to medicines for all","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.c","Description":"Substantially increase health financing and the recruitment, development, training and retention of the health workforce in developing countries, especially in least developed countries and small island developing States","Relationship":"no","Notes":""},{"Goal":"3","Target":"3.d","Description":"Strengthen the capacity of all countries, in particular developing countries, for early warning, risk reduction and management of national and global health risks","Relationship":"no","Notes":""},{"Goal":"4","Target":"4.1","Description":"By 2030, ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes","Relationship":"web","Notes":""},{"Goal":"4","Target":"4.2","Description":"By 2030, ensure that all girls and boys have access to quality early childhood development, care and pre-primary education so that they are ready for primary education","Relationship":"web","Notes":""},{"Goal":"4","Target":"4.3","Description":"By 2030, ensure equal access for all women and men to affordable and quality technical, vocational and tertiary education, including university","Relationship":"web","Notes":""},{"Goal":"4","Target":"4.4","Description":"By 2030, substantially increase the number of youth and adults who have relevant skills, including technical and vocational skills, for employment, decent jobs and entrepreneurship","Relationship":"web","Notes":""},{"Goal":"4","Target":"4.5","Description":"By 2030, eliminate gender disparities in education and ensure equal access to all levels of education and vocational training for the vulnerable, including persons with disabilities, indigenous peoples and children in vulnerable situations","Relationship":"w3c","Notes":"WAI/I18N"},{"Goal":"4","Target":"4.6","Description":"By 2030, ensure that all youth and a substantial proportion of adults, both men and women, achieve literacy and numeracy","Relationship":"web","Notes":""},{"Goal":"4","Target":"4.7","Description":"By 2030, ensure that all learners acquire the knowledge and skills needed to promote sustainable development, including, among others, through education for sustainable development and sustainable lifestyles, human rights, gender equality, promotion of a culture of peace and non-violence, global citizenship and appreciation of cultural diversity and of culture’s contribution to sustainable development","Relationship":"web","Notes":""},{"Goal":"4","Target":"4.a","Description":"Build and upgrade education facilities that are child, disability and gender sensitive and provide safe, non-violent, inclusive and effective learning environments for all","Relationship":"w3c","Notes":"WAI"},{"Goal":"4","Target":"4.b","Description":"By 2020, substantially expand globally the number of scholarships available to developing countries, in particular least developed countries, small island developing States and African countries, for enrolment in higher education, including vocational training and information and communications technology, technical, engineering and scientific programmes, in developed countries and other developing countries","Relationship":"no","Notes":""},{"Goal":"4","Target":"4.c","Description":"By 2030, substantially increase the supply of qualified teachers, including through international cooperation for teacher training in developing countries, especially least developed countries and small island developing States","Relationship":"web","Notes":""},{"Goal":"5","Target":"5.1","Description":"End all forms of discrimination against all women and girls everywhere","Relationship":"no","Notes":""},{"Goal":"5","Target":"5.2","Description":"Eliminate all forms of violence against all women and girls in the public and private spheres, including trafficking and sexual and other types of exploitation","Relationship":"no","Notes":""},{"Goal":"5","Target":"5.3","Description":"Eliminate all harmful practices, such as child, early and forced marriage and female genital mutilation","Relationship":"no","Notes":""},{"Goal":"5","Target":"5.4","Description":"Recognize and value unpaid care and domestic work through the provision of public services, infrastructure and social protection policies and the promotion of shared responsibility within the household and the family as nationally appropriate","Relationship":"no","Notes":""},{"Goal":"5","Target":"5.5","Description":"Ensure women’s full and effective participation and equal opportunities for leadership at all levels of decision-making in political, economic and public life","Relationship":"no","Notes":""},{"Goal":"5","Target":"5.6","Description":"Ensure universal access to sexual and reproductive health and reproductive rights as agreed in accordance with the Programme of Action of the International Conference on Population and Development and the Beijing Platform for Action and the outcome documents of their review conferences","Relationship":"no","Notes":""},{"Goal":"5","Target":"5.a","Description":"Undertake reforms to give women equal rights to economic resources, as well as access to ownership and control over land and other forms of property, financial services, inheritance and natural resources, in accordance with national laws","Relationship":"no","Notes":""},{"Goal":"5","Target":"5.b","Description":"Enhance the use of enabling technology, in particular information and communications technology, to promote the empowerment of women","Relationship":"web","Notes":""},{"Goal":"5","Target":"5.c","Description":"Adopt and strengthen sound policies and enforceable legislation for the promotion of gender equality and the empowerment of all women and girls at all levels","Relationship":"no","Notes":""},{"Goal":"6","Target":"6.1","Description":"By 2030, achieve universal and equitable access to safe and affordable drinking water for all","Relationship":"no","Notes":""},{"Goal":"6","Target":"6.2","Description":"By 2030, achieve access to adequate and equitable sanitation and hygiene for all and end open defecation, paying special attention to the needs of women and girls and those in vulnerable situations","Relationship":"no","Notes":""},{"Goal":"6","Target":"6.3","Description":"By 2030, improve water quality by reducing pollution, eliminating dumping and minimizing release of hazardous chemicals and materials, halving the proportion of untreated wastewater and substantially increasing recycling and safe reuse globally","Relationship":"no","Notes":""},{"Goal":"6","Target":"6.4","Description":"By 2030, substantially increase water-use efficiency across all sectors and ensure sustainable withdrawals and supply of freshwater to address water scarcity and substantially reduce the number of people suffering from water scarcity","Relationship":"no","Notes":""},{"Goal":"6","Target":"6.5","Description":"By 2030, implement integrated water resources management at all levels, including through transboundary cooperation as appropriate","Relationship":"no","Notes":""},{"Goal":"6","Target":"6.6","Description":"By 2020, protect and restore water-related ecosystems, including mountains, forests, wetlands, rivers, aquifers and lakes","Relationship":"no","Notes":""},{"Goal":"6","Target":"6.a","Description":"By 2030, expand international cooperation and capacity-building support to developing countries in water- and sanitation-related activities and programmes, including water harvesting, desalination, water efficiency, wastewater treatment, recycling and reuse technologies","Relationship":"no","Notes":""},{"Goal":"6","Target":"6.b","Description":"Support and strengthen the participation of local communities in improving water and sanitation management","Relationship":"no","Notes":""},{"Goal":"7","Target":"7.1","Description":"By 2030, ensure universal access to affordable, reliable and modern energy services","Relationship":"no","Notes":""},{"Goal":"7","Target":"7.2","Description":"By 2030, increase substantially the share of renewable energy in the global energy mix","Relationship":"no","Notes":""},{"Goal":"7","Target":"7.3","Description":"By 2030, double the global rate of improvement in energy efficiency","Relationship":"w3c","Notes":"WSG"},{"Goal":"7","Target":"7.a","Description":"By 2030, enhance international cooperation to facilitate access to clean energy research and technology, including renewable energy, energy efficiency and advanced and cleaner fossil-fuel technology, and promote investment in energy infrastructure and clean energy technology","Relationship":"w3c","Notes":"WoT"},{"Goal":"7","Target":"7.b","Description":"By 2030, expand infrastructure and upgrade technology for supplying modern and sustainable energy services for all in developing countries, in particular least developed countries, small island developing States, and land-locked developing countries, in accordance with their respective programmes of support","Relationship":"no","Notes":""},{"Goal":"8","Target":"8.1","Description":"Sustain per capita economic growth in accordance with national circumstances and, in particular, at least 7 per cent gross domestic product growth per annum in the least developed countries","Relationship":"web","Notes":""},{"Goal":"8","Target":"8.2","Description":"Achieve higher levels of economic productivity through diversification, technological upgrading and innovation, including through a focus on high-value added and labour-intensive sectors","Relationship":"w3c","Notes":"WoT"},{"Goal":"8","Target":"8.3","Description":"Promote development-oriented policies that support productive activities, decent job creation, entrepreneurship, creativity and innovation, and encourage the formalization and growth of micro-, small- and medium-sized enterprises, including through access to financial services","Relationship":"w3c","Notes":"VC"},{"Goal":"8","Target":"8.4","Description":"Improve progressively, through 2030, global resource efficiency in consumption and production and endeavour to decouple economic growth from environmental degradation, in accordance with the 10-year framework of programmes on sustainable consumption and production, with developed countries taking the lead","Relationship":"w3c","Notes":"WSG"},{"Goal":"8","Target":"8.5","Description":"By 2030, achieve full and productive employment and decent work for all women and men, including for young people and persons with disabilities, and equal pay for work of equal value","Relationship":"w3c","Notes":"WAI"},{"Goal":"8","Target":"8.6","Description":"By 2020, substantially reduce the proportion of youth not in employment, education or training","Relationship":"no","Notes":""},{"Goal":"8","Target":"8.7","Description":"Take immediate and effective measures to eradicate forced labour, end modern slavery and human trafficking and secure the prohibition and elimination of the worst forms of child labour, including recruitment and use of child soldiers, and by 2025 end child labour in all its forms","Relationship":"no","Notes":""},{"Goal":"8","Target":"8.8","Description":"Protect labour rights and promote safe and secure working environments for all workers, including migrant workers, in particular women migrants, and those in precarious employment","Relationship":"no","Notes":""},{"Goal":"8","Target":"8.9","Description":"By 2030, devise and implement policies to promote sustainable tourism that creates jobs and promotes local culture and products","Relationship":"no","Notes":""},{"Goal":"8","Target":"8.1","Description":"Strengthen the capacity of domestic financial institutions to encourage and expand access to banking, insurance and financial services for all","Relationship":"w3c","Notes":"VC"},{"Goal":"8","Target":"8.a","Description":"Increase Aid for Trade support for developing countries, in particular least developed countries, including through the Enhanced Integrated Framework for Trade-Related Technical Assistance to Least Developed Countries","Relationship":"no","Notes":"LD"},{"Goal":"8","Target":"8.b","Description":"By 2020, develop and operationalize a global strategy for youth employment and implement the Global Jobs Pact of the International Labour Organization","Relationship":"no","Notes":""},{"Goal":"9","Target":"9.1","Description":"Develop quality, reliable, sustainable and resilient infrastructure, including regional and transborder infrastructure, to support economic development and human well-being, with a focus on affordable and equitable access for all","Relationship":"w3c","Notes":"WAI/I18N"},{"Goal":"9","Target":"9.2","Description":"Promote inclusive and sustainable industrialization and, by 2030, significantly raise industry’s share of employment and gross domestic product, in line with national circumstances, and double its share in least developed countries","Relationship":"w3c","Notes":"WSG"},{"Goal":"9","Target":"9.3","Description":"Increase the access of small-scale industrial and other enterprises, in particular in developing countries, to financial services, including affordable credit, and their integration into value chains and markets","Relationship":"w3c","Notes":"VC"},{"Goal":"9","Target":"9.4","Description":"By 2030, upgrade infrastructure and retrofit industries to make them sustainable, with increased resource-use efficiency and greater adoption of clean and environmentally sound technologies and industrial processes, with all countries taking action in accordance with their respective capabilities","Relationship":"w3c","Notes":"WSG"},{"Goal":"9","Target":"9.5","Description":"Enhance scientific research, upgrade the technological capabilities of industrial sectors in all countries, in particular developing countries, including, by 2030, encouraging innovation and substantially increasing the number of research and development workers per 1 million people and public and private research and development spending","Relationship":"no","Notes":""},{"Goal":"9","Target":"9.a","Description":"Facilitate sustainable and resilient infrastructure development in developing countries through enhanced financial, technological and technical support to African countries, least developed countries, landlocked developing countries and small island developing States","Relationship":"w3c","Notes":"WSG"},{"Goal":"9","Target":"9.b","Description":"Support domestic technology development, research and innovation in developing countries, including by ensuring a conducive policy environment for, inter alia, industrial diversification and value addition to commodities","Relationship":"web","Notes":""},{"Goal":"9","Target":"9.c","Description":"Significantly increase access to information and communications technology and strive to provide universal and affordable access to the Internet in least developed countries by 2020","Relationship":"web","Notes":"I18N"},{"Goal":"10","Target":"10.1","Description":"By 2030, progressively achieve and sustain income growth of the bottom 40 per cent of the population at a rate higher than the national average","Relationship":"no","Notes":""},{"Goal":"10","Target":"10.2","Description":"By 2030, empower and promote the social, economic and political inclusion of all, irrespective of age, sex, disability, race, ethnicity, origin, religion or economic or other status","Relationship":"w3c","Notes":"WAI, I18N"},{"Goal":"10","Target":"10.3","Description":"Ensure equal opportunity and reduce inequalities of outcome, including by eliminating discriminatory laws, policies and practices and promoting appropriate legislation, policies and action in this regard","Relationship":"no","Notes":""},{"Goal":"10","Target":"10.4","Description":"Adopt policies, especially fiscal, wage and social protection policies, and progressively achieve greater equality","Relationship":"no","Notes":""},{"Goal":"10","Target":"10.5","Description":"Improve the regulation and monitoring of global financial markets and institutions and strengthen the implementation of such regulations","Relationship":"no","Notes":""},{"Goal":"10","Target":"10.6","Description":"Ensure enhanced representation and voice for developing countries in decision-making in global international economic and financial institutions in order to deliver more effective, credible, accountable and legitimate institutions","Relationship":"no","Notes":"?"},{"Goal":"10","Target":"10.7","Description":"Facilitate orderly, safe, regular and responsible migration and mobility of people, including through the implementation of planned and well-managed migration policies","Relationship":"no","Notes":""},{"Goal":"10","Target":"10.a","Description":"Implement the principle of special and differential treatment for developing countries, in particular least developed countries, in accordance with World Trade Organization agreements","Relationship":"no","Notes":""},{"Goal":"10","Target":"10.b","Description":"Encourage official development assistance and financial flows, including foreign direct investment, to States where the need is greatest, in particular least developed countries, African countries, small island developing States and landlocked developing countries, in accordance with their national plans and programmes","Relationship":"w3c","Notes":"fee structure"},{"Goal":"10","Target":"10.c","Description":"By 2030, reduce to less than 3 per cent the transaction costs of migrant remittances and eliminate remittance corridors with costs higher than 5 per cent","Relationship":"no","Notes":""},{"Goal":"11","Target":"11.1","Description":"By 2030, ensure access for all to adequate, safe and affordable housing and basic services and upgrade slums","Relationship":"no","Notes":""},{"Goal":"11","Target":"11.2","Description":"By 2030, provide access to safe, affordable, accessible and sustainable transport systems for all, improving road safety, notably by expanding public transport, with special attention to the needs of those in vulnerable situations, women, children, persons with disabilities and older persons","Relationship":"no","Notes":""},{"Goal":"11","Target":"11.3","Description":"By 2030, enhance inclusive and sustainable urbanization and capacity for participatory, integrated and sustainable human settlement planning and management in all countries","Relationship":"no","Notes":""},{"Goal":"11","Target":"11.4","Description":"Strengthen efforts to protect and safeguard the world’s cultural and natural heritage","Relationship":"web","Notes":""},{"Goal":"11","Target":"11.5","Description":"By 2030, significantly reduce the number of deaths and the number of people affected and substantially decrease the direct economic losses relative to global gross domestic product caused by disasters, including water-related disasters, with a focus on protecting the poor and people in vulnerable situations","Relationship":"no","Notes":""},{"Goal":"11","Target":"11.6","Description":"By 2030, reduce the adverse per capita environmental impact of cities, including by paying special attention to air quality and municipal and other waste management","Relationship":"no","Notes":""},{"Goal":"11","Target":"11.7","Description":"By 2030, provide universal access to safe, inclusive and accessible, green and public spaces, in particular for women and children, older persons and persons with disabilities","Relationship":"no","Notes":""},{"Goal":"11","Target":"11.a","Description":"Support positive economic, social and environmental links between urban, per-urban and rural areas by strengthening national and regional development planning","Relationship":"no","Notes":""},{"Goal":"11","Target":"11.b","Description":"By 2020, substantially increase the number of cities and human settlements adopting and implementing integrated policies and plans towards inclusion, resource efficiency, mitigation and adaptation to climate change, resilience to disasters, and develop and implement, in line with the Sendai Framework for Disaster Risk Reduction 2015-2030, holistic disaster risk management at all levels","Relationship":"no","Notes":"future"},{"Goal":"11","Target":"11.c","Description":"Support least developed countries, including through financial and technical assistance, in building sustainable and resilient buildings utilizing local materials","Relationship":"no","Notes":""},{"Goal":"12","Target":"12.1","Description":"Implement the 10-year framework of programmes on sustainable consumption and production, all countries taking action, with developed countries taking the lead, taking into account the development and capabilities of developing countries","Relationship":"w3c","Notes":"WSG"},{"Goal":"12","Target":"12.2","Description":"By 2030, achieve the sustainable management and efficient use of natural resources","Relationship":"w3c","Notes":"WSG"},{"Goal":"12","Target":"12.3","Description":"By 2030, halve per capita global food waste at the retail and consumer levels and reduce food losses along production and supply chains, including post-harvest losses","Relationship":"no","Notes":""},{"Goal":"12","Target":"12.4","Description":"By 2020, achieve the environmentally sound management of chemicals and all wastes throughout their life cycle, in accordance with agreed international frameworks, and significantly reduce their release to air, water and soil in order to minimize their adverse impacts on human health and the environment","Relationship":"no","Notes":""},{"Goal":"12","Target":"12.5","Description":"By 2030, substantially reduce waste generation through prevention, reduction, recycling and reuse","Relationship":"w3c","Notes":"WSG"},{"Goal":"12","Target":"12.6","Description":"Encourage companies, especially large and transnational companies, to adopt sustainable practices and to integrate sustainability information into their reporting cycle","Relationship":"no","Notes":""},{"Goal":"12","Target":"12.7","Description":"Promote public procurement practices that are sustainable, in accordance with national policies and priorities","Relationship":"no","Notes":""},{"Goal":"12","Target":"12.8","Description":"By 2030, ensure that people everywhere have the relevant information and awareness for sustainable development and lifestyles in harmony with nature","Relationship":"w3c","Notes":"WSG"},{"Goal":"12","Target":"12.a","Description":"Support developing countries to strengthen their scientific and technological capacity to move towards more sustainable patterns of consumption and production","Relationship":"w3c","Notes":"WSG"},{"Goal":"12","Target":"12.b","Description":"Develop and implement tools to monitor sustainable development impacts for sustainable tourism that creates jobs and promotes local culture and products","Relationship":"web","Notes":""},{"Goal":"12","Target":"12.c","Description":"Rationalize inefficient fossil-fuel subsidies that encourage wasteful consumption by removing market distortions, in accordance with national circumstances, including by restructuring taxation and phasing out those harmful subsidies, where they exist, to reflect their environmental impacts, taking fully into account the specific needs and conditions of developing countries and minimizing the possible adverse impacts on their development in a manner that protects the poor and the affected communities","Relationship":"no","Notes":""},{"Goal":"13","Target":"13.1","Description":"Strengthen resilience and adaptive capacity to climate-related hazards and natural disasters in all countries","Relationship":"no","Notes":""},{"Goal":"13","Target":"13.2","Description":"Integrate climate change measures into national policies, strategies and planning","Relationship":"no","Notes":""},{"Goal":"13","Target":"13.3","Description":"Improve education, awareness-raising and human and institutional capacity on climate change mitigation, adaptation, impact reduction and early warning","Relationship":"no","Notes":""},{"Goal":"13","Target":"13.a","Description":"Implement the commitment undertaken by developed-country parties to the United Nations Framework Convention on Climate Change to a goal of mobilizing jointly $100 billion annually by 2020 from all sources to address the needs of developing countries in the context of meaningful mitigation actions and transparency on implementation and fully operationalize the Green Climate Fund through its capitalization as soon as possible","Relationship":"no","Notes":""},{"Goal":"13","Target":"13.b","Description":"Promote mechanisms for raising capacity for effective climate change-related planning and management in least developed countries and small island developing States, including focusing on women, youth and local and marginalized communities","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.1","Description":"By 2025, prevent and significantly reduce marine pollution of all kinds, in particular from land-based activities, including marine debris and nutrient pollution","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.2","Description":"By 2020, sustainably manage and protect marine and coastal ecosystems to avoid significant adverse impacts, including by strengthening their resilience, and take action for their restoration in order to achieve healthy and productive oceans","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.3","Description":"Minimize and address the impacts of ocean acidification, including through enhanced scientific cooperation at all levels","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.4","Description":"By 2020, effectively regulate harvesting and end overfishing, illegal, unreported and unregulated fishing and destructive fishing practices and implement science-based management plans, in order to restore fish stocks in the shortest time feasible, at least to levels that can produce maximum sustainable yield as determined by their biological characteristics","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.5","Description":"By 2020, conserve at least 10 per cent of coastal and marine areas, consistent with national and international law and based on the best available scientific information","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.6","Description":"By 2020, prohibit certain forms of fisheries subsidies which contribute to overcapacity and overfishing, eliminate subsidies that contribute to illegal, unreported and unregulated fishing and refrain from introducing new such subsidies, recognizing that appropriate and effective special and differential treatment for developing and least developed countries should be an integral part of the World Trade Organization fisheries subsidies negotiation","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.7","Description":"By 2030, increase the economic benefits to Small Island developing States and least developed countries from the sustainable use of marine resources, including through sustainable management of fisheries, aquaculture and tourism","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.a","Description":"Increase scientific knowledge, develop research capacity and transfer marine technology, taking into account the Intergovernmental Oceanographic Commission Criteria and Guidelines on the Transfer of Marine Technology, in order to improve ocean health and to enhance the contribution of marine biodiversity to the development of developing countries, in particular small island developing States and least developed countries","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.b","Description":"Provide access for small-scale artisanal fishers to marine resources and markets","Relationship":"no","Notes":""},{"Goal":"14","Target":"14.c","Description":"Enhance the conservation and sustainable use of oceans and their resources by implementing international law as reflected in UNCLOS, which provides the legal framework for the conservation and sustainable use of oceans and their resources, as recalled in paragraph 158 of The Future We Want","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.1","Description":"By 2020, ensure the conservation, restoration and sustainable use of terrestrial and inland freshwater ecosystems and their services, in particular forests, wetlands, mountains and drylands, in line with obligations under international agreements","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.2","Description":"By 2020, promote the implementation of sustainable management of all types of forests, halt deforestation, restore degraded forests and substantially increase afforestation and reforestation globally","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.3","Description":"By 2030, combat desertification, restore degraded land and soil, including land affected by desertification, drought and floods, and strive to achieve a land degradation-neutral world","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.4","Description":"By 2030, ensure the conservation of mountain ecosystems, including their biodiversity, in order to enhance their capacity to provide benefits that are essential for sustainable development","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.5","Description":"Take urgent and significant action to reduce the degradation of natural habitats, halt the loss of biodiversity and, by 2020, protect and prevent the extinction of threatened species","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.6","Description":"Promote fair and equitable sharing of the benefits arising from the utilization of genetic resources and promote appropriate access to such resources, as internationally agreed","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.7","Description":"Take urgent action to end poaching and trafficking of protected species of flora and fauna and address both demand and supply of illegal wildlife products","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.8","Description":"By 2020, introduce measures to prevent the introduction and significantly reduce the impact of invasive alien species on land and water ecosystems and control or eradicate the priority species","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.9","Description":"By 2020, integrate ecosystem and biodiversity values into national and local planning, development processes, poverty reduction strategies and accounts","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.a","Description":"Mobilize and significantly increase financial resources from all sources to conserve and sustainably use biodiversity and ecosystems","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.b","Description":"Mobilize significant resources from all sources and at all levels to finance sustainable forest management and provide adequate incentives to developing countries to advance such management, including for conservation and reforestation","Relationship":"no","Notes":""},{"Goal":"15","Target":"15.c","Description":"Enhance global support for efforts to combat poaching and trafficking of protected species, including by increasing the capacity of local communities to pursue sustainable livelihood opportunities","Relationship":"no","Notes":""},{"Goal":"16","Target":"16.1","Description":"Significantly reduce all forms of violence and related death rates everywhere","Relationship":"no","Notes":""},{"Goal":"16","Target":"16.2","Description":"End abuse, exploitation, trafficking and all forms of violence against and torture of children","Relationship":"no","Notes":""},{"Goal":"16","Target":"16.3","Description":"Promote the rule of law at the national and international levels and ensure equal access to justice for all","Relationship":"no","Notes":""},{"Goal":"16","Target":"16.4","Description":"By 2030, significantly reduce illicit financial and arms flows, strengthen the recovery and return of stolen assets and combat all forms of organized crime","Relationship":"no","Notes":""},{"Goal":"16","Target":"16.5","Description":"Substantially reduce corruption and bribery in all their forms","Relationship":"no","Notes":""},{"Goal":"16","Target":"16.6","Description":"Develop effective, accountable and transparent institutions at all levels","Relationship":"w3c","Notes":"orga"},{"Goal":"16","Target":"16.7","Description":"Ensure responsive, inclusive, participatory and representative decision-making at all levels","Relationship":"w3c","Notes":"orga"},{"Goal":"16","Target":"16.8","Description":"Broaden and strengthen the participation of developing countries in the institutions of global governance","Relationship":"w3c","Notes":"orga"},{"Goal":"16","Target":"16.9","Description":"By 2030, provide legal identity for all, including birth registration","Relationship":"w3c","Notes":"VC, DID"},{"Goal":"16","Target":"16.1","Description":"Ensure public access to information and protect fundamental freedoms, in accordance with national legislation and international agreements","Relationship":"web","Notes":""},{"Goal":"16","Target":"16.a","Description":"Strengthen relevant national institutions, including through international cooperation, for building capacity at all levels, in particular in developing countries, to prevent violence and combat terrorism and crime","Relationship":"no","Notes":""},{"Goal":"16","Target":"16.b","Description":"Promote and enforce non-discriminatory laws and policies for sustainable development","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.1","Description":"Strengthen domestic resource mobilization, including through international support to developing countries, to improve domestic capacity for tax and other revenue collection","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.2","Description":"Developed countries to implement fully their official development assistance commitments, including the commitment by many developed countries to achieve the target of 0.7 per cent of ODA/GNI to developing countries and 0.15 to 0.20 per cent of ODA/GNI to least developed countries; ODA providers are encouraged to consider setting a target to provide at least 0.20 per cent of ODA/GNI to least developed countries","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.3","Description":"Mobilize additional financial resources for developing countries from multiple sources","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.4","Description":"Assist developing countries in attaining long-term debt sustainability through coordinated policies aimed at fostering debt financing, debt relief and debt restructuring, as appropriate, and address the external debt of highly indebted poor countries to reduce debt distress","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.5","Description":"Adopt and implement investment promotion regimes for least developed countries","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.6","Description":"Enhance North-South, South-South and triangular regional and international cooperation on and access to science, technology and innovation and enhance knowledge sharing on mutually agreed terms, including through improved coordination among existing mechanisms, in particular at the United Nations level, and through a global technology facilitation mechanism","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.7","Description":"Promote the development, transfer, dissemination and diffusion of environmentally sound technologies to developing countries on favourable terms, including on concessional and preferential terms, as mutually agreed","Relationship":"w3c","Notes":"orga"},{"Goal":"17","Target":"17.8","Description":"Fully operationalize the technology bank and science, technology and innovation capacity-building mechanism for least developed countries by 2017 and enhance the use of enabling technology, in particular information and communications technology","Relationship":"w3c","Notes":"orga"},{"Goal":"17","Target":"17.9","Description":"Enhance international support for implementing effective and targeted capacity-building in developing countries to support national plans to implement all the sustainable development goals, including through North-South, South-South and triangular cooperation","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.1","Description":"Promote a universal, rules-based, open, non-discriminatory and equitable multilateral trading system under the World Trade Organization, including through the conclusion of negotiations under its Doha Development Agenda","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.11","Description":"Significantly increase the exports of developing countries, in particular with a view to doubling the least developed countries’ share of global exports by 2020","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.12","Description":"Realize timely implementation of duty-free and quota-free market access on a lasting basis for all least developed countries, consistent with World Trade Organization decisions, including by ensuring that preferential rules of origin applicable to imports from least developed countries are transparent and simple, and contribute to facilitating market access","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.13","Description":"Enhance global macroeconomic stability, including through policy coordination and policy coherence","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.14","Description":"Enhance policy coherence for sustainable development","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.15","Description":"Respect each country’s policy space and leadership to establish and implement policies for poverty eradication and sustainable development","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.16","Description":"Enhance the global partnership for sustainable development, complemented by multi-stakeholder partnerships that mobilize and share knowledge, expertise, technology and financial resources, to support the achievement of the sustainable development goals in all countries, in particular developing countries","Relationship":"w3c","Notes":"orga, WSG"},{"Goal":"17","Target":"17.17","Description":"Encourage and promote effective public, public-private and civil society partnerships, building on the experience and resourcing strategies of partnerships","Relationship":"w3c","Notes":"Orga"},{"Goal":"17","Target":"17.18","Description":"By 2020, enhance capacity-building support to developing countries, including for least developed countries and small island developing States, to increase significantly the availability of high-quality, timely and reliable data disaggregated by income, gender, age, race, ethnicity, migratory status, disability, geographic location and other characteristics relevant in national contexts","Relationship":"no","Notes":""},{"Goal":"17","Target":"17.19","Description":"By 2030, build on existing initiatives to develop measurements of progress on sustainable development that complement gross domestic product, and support statistical capacity-building in developing countries","Relationship":"no","Notes":""}]</script>
+  <script>
+    (() => {
+      const root = document.getElementById("sdg-w3c-matrix");
+      const data = JSON.parse(root.querySelector("#sdg-matrix-data").textContent);
+      const goalsRow = root.querySelector("#sdg-matrix-goals");
+      const body = root.querySelector("#sdg-matrix-body");
+      const detailHeading = root.querySelector("#sdg-matrix-heading");
+      const detailCount = root.querySelector("#sdg-matrix-count");
+      const detailTargets = root.querySelector("#sdg-matrix-targets");
+
+      const goals = {
+        "1": "No poverty",
+        "2": "Zero hunger",
+        "3": "Good health and well-being",
+        "4": "Quality education",
+        "5": "Gender equality",
+        "6": "Clean water and sanitation",
+        "7": "Affordable and clean energy",
+        "8": "Decent work and economic growth",
+        "9": "Industry, innovation and infrastructure",
+        "10": "Reduced inequalities",
+        "11": "Sustainable cities and communities",
+        "12": "Responsible consumption and production",
+        "13": "Climate action",
+        "14": "Life below water",
+        "15": "Life on land",
+        "16": "Peace, justice and strong institutions",
+        "17": "Partnerships for the goals"
+      };
+
+      const areas = [
+        { id: "web", label: "Web generally", type: "Web" },
+        { id: "wai", label: "Accessibility (WAI)", type: "W3C" },
+        { id: "i18n", label: "Internationalization (I18N)", type: "W3C" },
+        { id: "wsg", label: "Sustainability (WSG)", type: "W3C" },
+        { id: "wot", label: "Web of Things (WoT)", type: "W3C" },
+        { id: "vc", label: "Verifiable Credentials (VC)", type: "W3C" },
+        { id: "did", label: "Decentralized Identifiers (DID)", type: "W3C" },
+        { id: "orga", label: "Institutional governance", type: "W3C" },
+        { id: "fees", label: "Membership fee structure", type: "W3C" }
+      ];
+
+      const noteMap = {
+        wai: "wai",
+        i18n: "i18n",
+        wsg: "wsg",
+        wot: "wot",
+        vc: "vc",
+        did: "did",
+        orga: "orga",
+        "fee structure": "fees"
+      };
+
+      const areaIdsFor = (row) => {
+        const ids = row.Relationship === "web" ? ["web"] : [];
+        if (row.Relationship === "no") return ids;
+        const notedAreas = row.Notes
+          .split(/[/,]/)
+          .map((note) => note.trim().toLowerCase())
+          .filter(Boolean)
+          .map((note) => noteMap[note])
+          .filter(Boolean);
+        return Array.from(new Set(ids.concat(notedAreas)));
+      };
+
+      const relationships = [];
+      areas.forEach((area) => {
+        Object.keys(goals).forEach((goal) => {
+          const targets = data.filter(
+            (row) => row.Goal === goal && areaIdsFor(row).includes(area.id)
+          );
+          if (targets.length) relationships.push({ area, goal, targets });
+        });
+      });
+
+      Object.entries(goals).forEach(([goal, name]) => {
+        const header = document.createElement("th");
+        header.className = "goal-heading";
+        header.id = "sdg-matrix-goal-" + goal;
+        header.scope = "col";
+        const label = document.createElement("span");
+        label.className = "goal-label";
+        label.textContent = goal;
+        const fullName = document.createElement("span");
+        fullName.className = "sr-only";
+        fullName.textContent = ": " + name;
+        label.append(fullName);
+        header.append(label);
+        goalsRow.append(header);
+      });
+
+      const clearHighlight = () => {
+        root.querySelectorAll(".is-axis").forEach((element) => {
+          element.classList.remove("is-axis");
+        });
+        root.querySelectorAll(".is-related").forEach((element) => {
+          element.classList.remove("is-related");
+        });
+      };
+
+      const highlight = (relationship) => {
+        clearHighlight();
+        root.querySelector("#sdg-matrix-area-" + relationship.area.id).classList.add("is-axis");
+        root.querySelector("#sdg-matrix-goal-" + relationship.goal).classList.add("is-axis");
+        root.querySelectorAll("[data-area='" + relationship.area.id + "'], [data-goal='" + relationship.goal + "']").forEach((button) => {
+          button.classList.add("is-related");
+        });
+      };
+
+      const showDetails = (relationship) => {
+        const count = relationship.targets.length;
+        detailHeading.textContent = relationship.area.label + " and SDG " + relationship.goal + ": " + goals[relationship.goal];
+        detailCount.textContent = count + (count === 1 ? " mapped target" : " mapped targets");
+        detailTargets.replaceChildren();
+        relationship.targets.forEach((target) => {
+          const item = document.createElement("li");
+          const identifier = document.createElement("strong");
+          identifier.textContent = target.Target + ": ";
+          item.append(identifier, target.Description);
+          detailTargets.append(item);
+        });
+      };
+
+      let selectedRelationship = relationships.find(
+        (relationship) => relationship.area.id === "wsg" && relationship.goal === "12"
+      );
+
+      const restoreSelection = () => {
+        if (!selectedRelationship) return;
+        const selected = root.querySelector(
+          "[data-area='" + selectedRelationship.area.id + "'][data-goal='" + selectedRelationship.goal + "']"
+        );
+        root.querySelectorAll(".matrix-button[aria-pressed='true']").forEach((button) => {
+          button.setAttribute("aria-pressed", "false");
+        });
+        if (selected) selected.setAttribute("aria-pressed", "true");
+        highlight(selectedRelationship);
+        showDetails(selectedRelationship);
+      };
+
+      areas.forEach((area) => {
+        const row = document.createElement("tr");
+        const heading = document.createElement("th");
+        heading.className = "area-heading";
+        heading.id = "sdg-matrix-area-" + area.id;
+        heading.scope = "row";
+
+        const label = document.createElement("span");
+        label.className = "area-label";
+        label.textContent = area.label;
+
+        const type = document.createElement("span");
+        type.className = "area-type text-small";
+        type.textContent = area.type;
+        label.append(type);
+        heading.append(label);
+        row.append(heading);
+
+        Object.keys(goals).forEach((goal) => {
+          const cell = document.createElement("td");
+          const relationship = relationships.find(
+            (item) => item.area.id === area.id && item.goal === goal
+          );
+
+          if (!relationship) {
+            const zero = document.createElement("span");
+            zero.className = "empty-cell";
+            zero.textContent = "0";
+            zero.setAttribute("aria-label", "No mapped targets");
+            cell.append(zero);
+          } else {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "btn viz-tile matrix-button " +
+              (area.type === "Web" ? "colour-web" : "colour-w3c");
+            button.textContent = String(relationship.targets.length);
+            button.style.setProperty(
+              "--count-strength",
+              String(14 + Math.min(relationship.targets.length, 5) * 8) + "%"
+            );
+            button.dataset.area = area.id;
+            button.dataset.goal = goal;
+            button.setAttribute("aria-pressed", "false");
+            button.setAttribute(
+              "aria-label",
+              area.label + " and SDG " + goal + ", " + goals[goal] + ": " +
+                relationship.targets.length + " mapped " +
+                (relationship.targets.length === 1 ? "target" : "targets") +
+                ", " + relationship.targets.map((target) => target.Target).join(", ")
+            );
+            button.addEventListener("mouseenter", () => {
+              highlight(relationship);
+              showDetails(relationship);
+            });
+            button.addEventListener("mouseleave", () => {
+              if (document.activeElement !== button) restoreSelection();
+            });
+            button.addEventListener("focus", () => {
+              highlight(relationship);
+              showDetails(relationship);
+            });
+            button.addEventListener("blur", restoreSelection);
+            button.addEventListener("click", () => {
+              selectedRelationship = relationship;
+              restoreSelection();
+            });
+            cell.append(button);
+          }
+          row.append(cell);
+        });
+        body.append(row);
+      });
+
+      restoreSelection();
+    })();
+  </script>
+</div>
+
+<footer class="document-footer">
+  <h2>Method and data notes</h2>
+  <ul>
+    <li>Targets marked <code>no</code> in the source are omitted because they do not express a mapped relationship.</li>
+    <li>Overlapping relationships are preserved, so one SDG target can appear under more than one W3C area.</li>
+    <li>The source appears to label target 8.10 as a second 8.1, and target 16.10 as 16.1. The source labels are preserved rather than silently corrected.</li>
+  </ul>
+  <p>
+    Source:
+    <a href="https://docs.google.com/spreadsheets/d/1d1PVECnJ9XghQy8ZDICrbb2giP7a3UDNEzAifCp5O88/edit?gid=757901880#gid=757901880">
+      SDG relationship spreadsheet
+    </a>.
+  </p>
+</footer>
+
+</body>
+</html>
+
