@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W3C & UN SDGs Interactive Network</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- D3.js for interactive network layout -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* SVG Network Canvas Styles */
+        #network-svg {
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+        #network-svg:active {
+            cursor: grabbing;
+        }
+
+        .link {
+            stroke-opacity: 0.4;
+            transition: stroke-opacity 0.3s, stroke-width 0.3s;
+        }
+
+        .link.active {
+            stroke-opacity: 0.9;
+            stroke-width: 2.5px !important;
+        }
+
+        .link.dimmed {
+            stroke-opacity: 0.05;
+        }
+
+        .node {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .node circle {
+            transition: r 0.3s, stroke 0.3s, stroke-width 0.3s, filter 0.3s;
+        }
+
+        .node:hover circle {
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.6));
+        }
+
+        .node.dimmed {
+            opacity: 0.15;
+        }
+
+        .node-label {
+            font-size: 11px;
+            font-weight: 600;
+            fill: #e2e8f0;
+            pointer-events: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Glassmorphism sidebar & overlays */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col relative">
+
+    <!-- Top Navigation Header -->
+    <header class="glass-panel z-20 px-6 py-4 flex flex-wrap items-center justify-between gap-4 border-b border-slate-800">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-sky-500 to-emerald-500 flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-sky-500/20">
+                <i class="fa-solid fa-diagram-project"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-sky-400">
+                    W3C & UN SDGs Knowledge Web
+                </h1>
+                <p class="text-xs text-slate-400">Interactive Mapping of Web Standards to Sustainable Development Goals</p>
+            </div>
+        </div>
+
+        <!-- Global Quick Search & Controls -->
+        <div class="flex items-center gap-3">
+            <div class="relative w-64">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input type="text" id="search-input" placeholder="Search SDG, W3C group or target..." 
+                       class="w-full bg-slate-900/80 text-xs text-slate-200 placeholder-slate-500 pl-9 pr-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:border-sky-500 transition-colors">
+            </div>
+
+            <button id="reset-btn" class="px-3 py-2 text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 rounded-lg transition-all flex items-center gap-2">
+                <i class="fa-solid fa-arrow-rotate-left"></i> Reset View
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container: Graph Canvas + Left Filter Sidebar + Right Detail Panel -->
+    <div class="flex-1 relative flex overflow-hidden">
+
+        <!-- Left Filter Panel -->
+        <aside class="glass-panel w-80 h-full z-10 flex flex-col p-5 border-r border-slate-800/80 overflow-y-auto">
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Filter Web Nodes</h2>
+            
+            <!-- Group Filters -->
+            <div class="space-y-2 mb-6">
+                <button class="filter-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 transition" data-category="all">
+                    <i class="fa-solid fa-globe mr-2"></i> Show Entire Web (All Nodes)
+                </button>
+                <button class="filter-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-slate-800/80 text-slate-300 border border-slate-700 hover:bg-slate-700 transition" data-category="w3c">
+                    <i class="fa-solid fa-cubes text-cyan-400 mr-2"></i> W3C Technical Groups Only
+                </button>
+                <button class="filter-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-slate-800/80 text-slate-300 border border-slate-700 hover:bg-slate-700 transition" data-category="sdg">
+                    <i class="fa-solid fa-bullseye text-emerald-400 mr-2"></i> UN SDGs Goals Only
+                </button>
+            </div>
+
+            <!-- Legend Section -->
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">W3C Initiatives</h2>
+            <div class="space-y-2 mb-6" id="w3c-legend-list">
+                <!-- Dynamically populated -->
+            </div>
+
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">UN SDG Clusters</h2>
+            <div class="space-y-2" id="sdg-legend-list">
+                <!-- Dynamically populated -->
+            </div>
+        </aside>
+
+        <!-- Central SVG Graph Canvas -->
+        <main class="flex-1 relative bg-slate-950/60" id="canvas-container">
+            <svg id="network-svg"></svg>
+
+            <!-- Floating Controls Overlay (Zoom / Pan instructions) -->
+            <div class="absolute bottom-6 left-6 glass-panel px-4 py-2.5 rounded-lg text-[11px] text-slate-400 border border-slate-800 flex items-center gap-4 pointer-events-none">
+                <span><i class="fa-solid fa-mouse text-sky-400 mr-1"></i> Drag node to move</span>
+                <span><i class="fa-solid fa-hand text-emerald-400 mr-1"></i> Pan background</span>
+                <span><i class="fa-solid fa-magnifying-glass-plus text-amber-400 mr-1"></i> Scroll to zoom</span>
+            </div>
+        </main>
+
+        <!-- Right Node Inspector / Detail Drawer -->
+        <aside id="detail-drawer" class="glass-panel w-96 h-full z-10 flex flex-col p-6 border-l border-slate-800/80 translate-x-full transition-transform duration-300 ease-in-out absolute right-0 top-0 bottom-0 shadow-2xl overflow-y-auto">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <span id="drawer-badge" class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                    W3C Initiative
+                </span>
+                <button id="close-drawer" class="text-slate-400 hover:text-white p-1 rounded-md transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="mt-4">
+                <h2 id="drawer-title" class="text-2xl font-bold text-white mb-2">WAI (Web Accessibility)</h2>
+                <p id="drawer-subtitle" class="text-xs text-sky-400 font-medium mb-4">Web Accessibility Initiative</p>
+
+                <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 mb-5">
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Scope & Overview</h3>
+                    <p id="drawer-description" class="text-xs text-slate-300 leading-relaxed">
+                        Ensures that the Web is accessible to people with disabilities worldwide.
+                    </p>
+                </div>
+
+                <!-- Direct Connections List -->
+                <div class="mb-5">
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+                        <span>Connected Target Goals</span>
+                        <span id="drawer-conn-count" class="text-sky-400 font-bold">5</span>
+                    </h3>
+                    <div id="drawer-connections" class="space-y-2">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Technical Notes -->
+                <div id="drawer-notes-container" class="bg-slate-900/50 border border-slate-800/80 rounded-xl p-4">
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Impact Notes</h3>
+                    <p id="drawer-notes" class="text-xs text-slate-400 leading-relaxed">
+                        Direct alignment with UN SDG targets promoting inclusive education and infrastructure.
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- DATA & NETWORK SIMULATION SCRIPT -->
+    <script>
+        // Graph Dataset derived from W3C - SDG Targets Matrix
+        const rawData = {
+            w3cGroups: [
+                { id: "WAI", name: "WAI", full: "Web Accessibility Initiative", color: "#0072C6", icon: "fa-universal-access", desc: "Develops standards and materials to make the Web accessible to people with disabilities across device types.", notes: "Directly impacts SDG 4 (Education), SDG 8 (Employment), SDG 9 (Inclusive Infra), SDG 10 (Inequalities)." },
+                { id: "I18N", name: "I18N", full: "Internationalization WG", color: "#0284C7", icon: "fa-language", desc: "Ensures Web technology works seamlessly across all languages, scripts, writing systems, and local cultural norms.", notes: "Critical for localized education (SDG 4), equitable infrastructure (SDG 9), and global digital inclusion (SDG 10)." },
+                { id: "WSG", name: "WSG / SWIG", full: "Web Sustainability Guidelines", color: "#059669", icon: "fa-leaf", desc: "Defines actionable guidelines to reduce digital energy waste, data bloat, and environmental footprint of web services.", notes: "Maps extensively to SDG 7 (Energy efficiency), SDG 8 (Resource efficiency), SDG 9 (Green industry), and SDG 12 (Consumption)." },
+                { id: "VC", name: "VC", full: "Verifiable Credentials WG", color: "#7C3AED", icon: "fa-id-card", desc: "Standardizes tamper-evident, privacy-preserving digital credentials for identity, qualification, and financial access.", notes: "Key driver for legal identity for all (SDG 16.9) and micro-enterprise financial inclusion (SDG 8.3 & 9.3)." },
+                { id: "DID", name: "DID", full: "Decentralized Identifiers WG", color: "#9333EA", icon: "fa-key", desc: "Cryptographic decentralized identifier standard for verifiable, self-sovereign digital identity without central authorities.", notes: "Directly supports SDG 16.9 by providing verifiable identity to unregistered and vulnerable populations." },
+                { id: "WoT", name: "WoT", full: "Web of Things WG", color: "#D97706", icon: "fa-network-wired", desc: "Enables interoperability across Internet of Things (IoT) platforms, smart grids, and industrial automation networks.", notes: "Drives industrial efficiency (SDG 8.2) and clean energy technological cooperation (SDG 7.a)." },
+                { id: "Orga", name: "W3C Governance", full: "W3C Organizational Policies & Fees", color: "#2563EB", icon: "fa-building-columns", desc: "Participatory standards governance and membership fee structures designed for global institutional inclusion.", notes: "Supports transparent, representative decision-making (SDG 16.6-16.8) and developing nation inclusion (SDG 10.b)." }
+            ],
+            sdgs: [
+                { id: "SDG4", name: "SDG 4", full: "Quality Education", color: "#C5192D", icon: "fa-graduation-cap", desc: "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all." },
+                { id: "SDG7", name: "SDG 7", full: "Affordable & Clean Energy", color: "#FDB713", icon: "fa-bolt", desc: "Ensure access to affordable, reliable, sustainable and modern energy for all." },
+                { id: "SDG8", name: "SDG 8", full: "Decent Work & Economic Growth", color: "#8F1838", icon: "fa-chart-line", desc: "Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all." },
+                { id: "SDG9", name: "SDG 9", full: "Industry, Innovation & Infrastructure", color: "#F36D25", icon: "fa-industry", desc: "Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation." },
+                { id: "SDG10", name: "SDG 10", full: "Reduced Inequalities", color: "#E11484", icon: "fa-scale-balanced", desc: "Reduce inequality within and among countries." },
+                { id: "SDG12", name: "SDG 12", full: "Responsible Consumption", color: "#CF8D2A", icon: "fa-recycle", desc: "Ensure sustainable consumption and production patterns." },
+                { id: "SDG16", name: "SDG 16", full: "Peace, Justice & Institutions", color: "#00689D", icon: "fa-handshake-angle", desc: "Promote peaceful and inclusive societies, provide access to justice for all and build effective, accountable institutions." }
+            ],
+            targets: [
+                { id: "T4.5", sdg: "SDG4", label: "Target 4.5", desc: "Eliminate gender and disability disparities in education." },
+                { id: "T4.a", sdg: "SDG4", label: "Target 4.a", desc: "Build and upgrade inclusive and safe education facilities." },
+                { id: "T7.3", sdg: "SDG7", label: "Target 7.3", desc: "Double the global rate of improvement in energy efficiency." },
+                { id: "T7.a", sdg: "SDG7", label: "Target 7.a", desc: "Enhance international cooperation for clean energy tech." },
+                { id: "T8.2", sdg: "SDG8", label: "Target 8.2", desc: "Achieve higher economic productivity through tech upgrading." },
+                { id: "T8.3", sdg: "SDG8", label: "Target 8.3", desc: "Encourage growth and formalization of micro/small enterprise via finance access." },
+                { id: "T8.4", sdg: "SDG8", label: "Target 8.4", desc: "Improve global resource efficiency in consumption & production." },
+                { id: "T8.5", sdg: "SDG8", label: "Target 8.5", desc: "Achieve full productive employment for persons with disabilities." },
+                { id: "T8.10", sdg: "SDG8", label: "Target 8.10", desc: "Expand access to banking, insurance and financial services for all." },
+                { id: "T9.1", sdg: "SDG9", label: "Target 9.1", desc: "Develop resilient, equitable, and accessible infrastructure." },
+                { id: "T9.2", sdg: "SDG9", label: "Target 9.2", desc: "Promote inclusive and sustainable industrialization." },
+                { id: "T9.3", sdg: "SDG9", label: "Target 9.3", desc: "Integrate small-scale enterprises into value chains and markets." },
+                { id: "T9.4", sdg: "SDG9", label: "Target 9.4", desc: "Upgrade infrastructure & retrofits for resource-use efficiency." },
+                { id: "T9.a", sdg: "SDG9", label: "Target 9.a", desc: "Facilitate sustainable infrastructure in developing countries." },
+                { id: "T10.2", sdg: "SDG10", label: "Target 10.2", desc: "Empower social, economic, political inclusion of all regardless of status." },
+                { id: "T10.b", sdg: "SDG10", label: "Target 10.b", desc: "Encourage financial flows & assistance to areas with greatest need." },
+                { id: "T12.1", sdg: "SDG12", label: "Target 12.1", desc: "Implement 10-year framework on sustainable consumption." },
+                { id: "T12.2", sdg: "SDG12", label: "Target 12.2", desc: "Achieve sustainable management & efficient use of resources." },
+                { id: "T12.5", sdg: "SDG12", label: "Target 12.5", desc: "Substantially reduce waste generation through prevention & reuse." },
+                { id: "T12.8", sdg: "SDG12", label: "Target 12.8", desc: "Ensure universal awareness for sustainable development & lifestyles." },
+                { id: "T12.a", sdg: "SDG12", label: "Target 12.a", desc: "Strengthen scientific and tech capacity for sustainable consumption." },
+                { id: "T16.6", sdg: "SDG16", label: "Target 16.6", desc: "Develop effective, accountable and transparent institutions." },
+                { id: "T16.7", sdg: "SDG16", label: "Target 16.7", desc: "Ensure responsive, inclusive and representative decision-making." },
+                { id: "T16.8", sdg: "SDG16", label: "Target 16.8", desc: "Broaden participation of developing countries in global governance." },
+                { id: "T16.9", sdg: "SDG16", label: "Target 16.9", desc: "Provide legal identity for all, including birth registration." }
+            ],
+            associations: [
+                // WAI
+                { source: "WAI", target: "T4.5" },
+                { source: "WAI", target: "T4.a" },
+                { source: "WAI", target: "T8.5" },
+                { source: "WAI", target: "T9.1" },
+                { source: "WAI", target: "T10.2" },
+
+                // I18N
+                { source: "I18N", target: "T4.5" },
+                { source: "I18N", target: "T9.1" },
+                { source: "I18N", target: "T10.2" },
+
+                // WSG
+                { source: "WSG", target: "T7.3" },
+                { source: "WSG", target: "T8.4" },
+                { source: "WSG", target: "T9.2" },
+                { source: "WSG", target: "T9.4" },
+                { source: "WSG", target: "T9.a" },
+                { source: "WSG", target: "T12.1" },
+                { source: "WSG", target: "T12.2" },
+                { source: "WSG", target: "T12.5" },
+                { source: "WSG", target: "T12.8" },
+                { source: "WSG", target: "T12.a" },
+
+                // VC
+                { source: "VC", target: "T8.3" },
+                { source: "VC", target: "T8.10" },
+                { source: "VC", target: "T9.3" },
+                { source: "VC", target: "T16.9" },
+
+                // DID
+                { source: "DID", target: "T16.9" },
+
+                // WoT
+                { source: "WoT", target: "T7.a" },
+                { source: "WoT", target: "T8.2" },
+
+                // Governance
+                { source: "Orga", target: "T10.b" },
+                { source: "Orga", target: "T16.6" },
+                { source: "Orga", target: "T16.7" },
+                { source: "Orga", target: "T16.8" }
+            ]
+        };
+
+        // Construct D3 Nodes & Links Arrays
+        let nodes = [];
+        let links = [];
+
+        // Add W3C Groups
+        rawData.w3cGroups.forEach(g => {
+            nodes.push({
+                id: g.id,
+                name: g.name,
+                full: g.full,
+                type: "w3c",
+                color: g.color,
+                icon: g.icon,
+                desc: g.desc,
+                notes: g.notes,
+                radius: 28
+            });
+        });
+
+        // Add SDGs
+        rawData.sdgs.forEach(s => {
+            nodes.push({
+                id: s.id,
+                name: s.name,
+                full: s.full,
+                type: "sdg",
+                color: s.color,
+                icon: s.icon,
+                desc: s.desc,
+                radius: 34
+            });
+        });
+
+        // Add Target Nodes & Parent Links
+        rawData.targets.forEach(t => {
+            nodes.push({
+                id: t.id,
+                name: t.label,
+                full: t.label + ": " + t.desc,
+                type: "target",
+                sdg: t.sdg,
+                color: rawData.sdgs.find(s => s.id === t.sdg).color,
+                icon: "fa-bullseye",
+                desc: t.desc,
+                radius: 16
+            });
+
+            // Link target to parent SDG
+            links.push({
+                source: t.sdg,
+                target: t.id,
+                type: "hierarchy",
+                color: rawData.sdgs.find(s => s.id === t.sdg).color
+            });
+        });
+
+        // Add Association Links (W3C -> Target)
+        rawData.associations.forEach(a => {
+            let w3cNode = rawData.w3cGroups.find(g => g.id === a.source);
+            links.push({
+                source: a.source,
+                target: a.target,
+                type: "association",
+                color: w3cNode ? w3cNode.color : "#0284c7"
+            });
+        });
+
+        // Populate Sidebar Legends
+        const w3cLegendContainer = document.getElementById('w3c-legend-list');
+        rawData.w3cGroups.forEach(g => {
+            let btn = document.createElement('button');
+            btn.className = "w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition flex items-center justify-between group";
+            btn.innerHTML = `
+                <span class="flex items-center">
+                    <span class="w-3 h-3 rounded-full mr-2.5" style="background-color: ${g.color}"></span>
+                    <span class="text-slate-300 group-hover:text-white font-semibold">${g.name}</span>
+                </span>
+                <span class="text-[10px] text-slate-500">${g.full.split(' ')[0]}</span>
+            `;
+            btn.onclick = () => focusOnNode(g.id);
+            w3cLegendContainer.appendChild(btn);
+        });
+
+        const sdgLegendContainer = document.getElementById('sdg-legend-list');
+        rawData.sdgs.forEach(s => {
+            let btn = document.createElement('button');
+            btn.className = "w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition flex items-center justify-between group";
+            btn.innerHTML = `
+                <span class="flex items-center">
+                    <span class="w-3 h-3 rounded-full mr-2.5" style="background-color: ${s.color}"></span>
+                    <span class="text-slate-300 group-hover:text-white font-semibold">${s.name}</span>
+                </span>
+                <span class="text-[10px] text-slate-500">${s.full.split(' ')[0]}</span>
+            `;
+            btn.onclick = () => focusOnNode(s.id);
+            sdgLegendContainer.appendChild(btn);
+        });
+
+        // Setup D3 Force Network Visualization
+        const container = document.getElementById('canvas-container');
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        const svg = d3.select("#network-svg")
+            .attr("viewBox", [0, 0, width, height]);
+
+        // Add Zoom Container Group
+        const g = svg.append("g");
+
+        const zoom = d3.zoom()
+            .scaleExtent([0.3, 3])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
+
+        // Simulation setup
+        const simulation = d3.forceSimulation(nodes)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(d => d.type === "hierarchy" ? 70 : 160))
+            .force("charge", d3.forceManyBody().strength(-350))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(d => d.radius + 18));
+
+        // Render Links
+        const link = g.append("g")
+            .selectAll("line")
+            .data(links)
+            .enter().append("line")
+            .attr("class", d => `link link-${d.type}`)
+            .attr("stroke", d => d.color)
+            .attr("stroke-dasharray", d => d.type === "association" ? "4,4" : "none")
+            .attr("stroke-width", d => d.type === "hierarchy" ? 2 : 1.5);
+
+        // Render Nodes Group
+        const node = g.append("g")
+            .selectAll(".node")
+            .data(nodes)
+            .enter().append("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        // Node Outer Glow / Rings
+        node.append("circle")
+            .attr("r", d => d.radius)
+            .attr("fill", d => d.color)
+            .attr("fill-opacity", 0.25)
+            .attr("stroke", d => d.color)
+            .attr("stroke-width", d => d.type === "target" ? 1.5 : 2.5);
+
+        // Inner Core Circle
+        node.append("circle")
+            .attr("r", d => d.radius * 0.6)
+            .attr("fill", d => d.color);
+
+        // FontAwesome Icons inside Nodes
+        node.append("text")
+            .attr("class", "fa")
+            .attr("text-anchor", "middle")
+            .attr("dominant-baseline", "central")
+            .attr("fill", "#ffffff")
+            .attr("font-size", d => d.type === "target" ? "9px" : "14px")
+            .text(d => {
+                // Map FA icons to unicode characters for SVG text
+                const iconMap = {
+                    "fa-universal-access": "\uf29a",
+                    "fa-language": "\uf1ab",
+                    "fa-leaf": "\uf06c",
+                    "fa-id-card": "\uf2c2",
+                    "fa-key": "\uf084",
+                    "fa-network-wired": "\uf6ff",
+                    "fa-building-columns": "\uf19c",
+                    "fa-graduation-cap": "\uf19d",
+                    "fa-bolt": "\uf0e7",
+                    "fa-chart-line": "\uf201",
+                    "fa-industry": "\uf275",
+                    "fa-scale-balanced": "\uf24e",
+                    "fa-recycle": "\uf1b8",
+                    "fa-handshake-angle": "\uf4c4",
+                    "fa-bullseye": "\uf140"
+                };
+                return iconMap[d.icon] || "\uf111";
+            });
+
+        // Node Labels below
+        node.append("text")
+            .attr("class", "node-label")
+            .attr("dy", d => d.radius + 14)
+            .attr("text-anchor", "middle")
+            .text(d => d.name);
+
+        // Node Click Event -> Open Drawer & Highlight Connections
+        node.on("click", (event, d) => {
+            event.stopPropagation();
+            focusOnNode(d.id);
+        });
+
+        // Background Click -> Clear selection
+        svg.on("click", () => {
+            clearSelection();
+        });
+
+        // Simulation Ticks
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        // Drag functions
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        // Focus & Highlighting Logic
+        let activeNodeId = null;
+
+        function focusOnNode(nodeId) {
+            activeNodeId = nodeId;
+            const selectedNode = nodes.find(n => n.id === nodeId);
+            if (!selectedNode) return;
+
+            // Find all connected node IDs
+            const connectedIds = new Set([nodeId]);
+            links.forEach(l => {
+                const sId = typeof l.source === 'object' ? l.source.id : l.source;
+                const tId = typeof l.target === 'object' ? l.target.id : l.target;
+
+                if (sId === nodeId) connectedIds.add(tId);
+                if (tId === nodeId) connectedIds.add(sId);
+            });
+
+            // Dim unconnected nodes & links
+            node.classed("dimmed", d => !connectedIds.has(d.id));
+            
+            link.classed("active", l => {
+                const sId = typeof l.source === 'object' ? l.source.id : l.source;
+                const tId = typeof l.target === 'object' ? l.target.id : l.target;
+                return sId === nodeId || tId === nodeId;
+            });
+            link.classed("dimmed", l => {
+                const sId = typeof l.source === 'object' ? l.source.id : l.source;
+                const tId = typeof l.target === 'object' ? l.target.id : l.target;
+                return sId !== nodeId && tId !== nodeId;
+            });
+
+            // Populate Right Drawer
+            openDrawer(selectedNode, connectedIds);
+        }
+
+        function clearSelection() {
+            activeNodeId = null;
+            node.classed("dimmed", false);
+            link.classed("active", false).classed("dimmed", false);
+            closeDrawer();
+        }
+
+        // Drawer Management
+        const drawer = document.getElementById('detail-drawer');
+        const closeDrawerBtn = document.getElementById('close-drawer');
+
+        closeDrawerBtn.onclick = clearSelection;
+
+        function openDrawer(n, connectedSet) {
+            document.getElementById('drawer-title').innerText = n.name;
+            document.getElementById('drawer-subtitle').innerText = n.full;
+            document.getElementById('drawer-description').innerText = n.desc || "No description available.";
+
+            const badge = document.getElementById('drawer-badge');
+            if (n.type === 'w3c') {
+                badge.innerText = "W3C Working Group";
+                badge.className = "px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-sky-500/20 text-sky-300 border border-sky-500/30";
+            } else if (n.type === 'sdg') {
+                badge.innerText = "UN Development Goal";
+                badge.className = "px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+            } else {
+                badge.innerText = "SDG Target Focus";
+                badge.className = "px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30";
+            }
+
+            // Populate Notes if available
+            const notesContainer = document.getElementById('drawer-notes-container');
+            if (n.notes) {
+                notesContainer.style.display = "block";
+                document.getElementById('drawer-notes').innerText = n.notes;
+            } else {
+                notesContainer.style.display = "none";
+            }
+
+            // List Connections
+            const connContainer = document.getElementById('drawer-connections');
+            connContainer.innerHTML = '';
+
+            let connList = nodes.filter(item => item.id !== n.id && connectedSet.has(item.id));
+            document.getElementById('drawer-conn-count').innerText = connList.length;
+
+            connList.forEach(c => {
+                let card = document.createElement('div');
+                card.className = "p-2.5 bg-slate-900/80 border border-slate-800 rounded-lg hover:border-slate-700 transition flex items-center justify-between cursor-pointer";
+                card.innerHTML = `
+                    <div class="flex items-center">
+                        <span class="w-2.5 h-2.5 rounded-full mr-2.5" style="background-color: ${c.color}"></span>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-200">${c.name}</p>
+                            <p class="text-[10px] text-slate-400 truncate max-w-[180px]">${c.full}</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-600"></i>
+                `;
+                card.onclick = (e) => {
+                    e.stopPropagation();
+                    focusOnNode(c.id);
+                };
+                connContainer.appendChild(card);
+            });
+
+            drawer.classList.remove('translate-x-full');
+        }
+
+        function closeDrawer() {
+            drawer.classList.add('translate-x-full');
+        }
+
+        // Category Filter Chips
+        document.querySelectorAll('.filter-chip').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-chip').forEach(b => {
+                    b.className = "filter-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-slate-800/80 text-slate-300 border border-slate-700 hover:bg-slate-700 transition";
+                });
+                btn.className = "filter-chip w-full text-left px-3 py-2 rounded-lg text-xs font-medium bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 transition";
+
+                const category = btn.getAttribute('data-category');
+                if (category === 'all') {
+                    node.style("display", "block");
+                    link.style("display", "block");
+                } else if (category === 'w3c') {
+                    node.style("display", d => d.type === 'w3c' || d.type === 'target' ? "block" : "none");
+                } else if (category === 'sdg') {
+                    node.style("display", d => d.type === 'sdg' || d.type === 'target' ? "block" : "none");
+                }
+            });
+        });
+
+        // Search Input Filter
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            if (!query) {
+                clearSelection();
+                return;
+            }
+
+            const matchedNode = nodes.find(n => 
+                n.id.toLowerCase().includes(query) || 
+                n.name.toLowerCase().includes(query) || 
+                n.full.toLowerCase().includes(query)
+            );
+
+            if (matchedNode) {
+                focusOnNode(matchedNode.id);
+            }
+        });
+
+        // Reset Button
+        document.getElementById('reset-btn').onclick = () => {
+            searchInput.value = '';
+            clearSelection();
+            svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
+        };
+    </script>
+</body>
+</html>
