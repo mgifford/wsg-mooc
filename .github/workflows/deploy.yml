@@ -41,6 +41,7 @@ jobs:
           mkdir -p dist
           cp -r liascript_courses dist/
           cp -r viewer dist/
+          cp -r sdgs dist/
           cp index.html dist/
 
       - name: Setup Pages
